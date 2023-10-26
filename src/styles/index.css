@@ -26,14 +26,36 @@ code {
   background-color: hsl(24, 8%, 88%);
 }
 
-/*Location Card*/
+
+/*LocationCard CSS*/
 .custom-card {
   margin-top: 150px;
-  width: 30rem;
+  width: 35rem;
 }
 
 .location-details {
   margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.location-title {
+  margin-right: 20px;
+}
+
+.location-place {
+  margin-top: 8px;
+}
+
+.card-text {
+  margin-left: 50px; 
+  margin-top: -25px;
+}
+
+#heart {
+  color: hsl(25, 68%, 50%);
+  font-size: 30px;
 }
 
 .card-title {
@@ -45,6 +67,27 @@ code {
   align-content: right;
 }
 
+#likes {
+  margin-top: 10px;
+}
+
 .likes-container {
-  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-likes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.truncate-text {
+  max-width: 360px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

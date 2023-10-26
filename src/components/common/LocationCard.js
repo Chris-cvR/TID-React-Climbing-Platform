@@ -1,12 +1,10 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import "../../styles/index.css";
-import picture from "../../assets/images/Blocs&Walls.jpg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import "../../styles/index.css";
+import picture from "../../assets/images/Blocs&Walls.jpg";
 
 
 function LocationCard() {
@@ -17,28 +15,27 @@ function LocationCard() {
             <Card className="custom-card mx-auto">
                 <Card.Img variant={image} src={image} />
                 <Card.Body>
-                    <Row>
-                        <Col md={3.5}>
-                            <div className="d-flex align-items-right ">
-                                <div className="d-flex flex-column align-items-center likes-container">
-                                    <FontAwesomeIcon icon={faHeart} />
-                                    <div id="likes">10</div>
-                                </div>
-                                <div className="location-details">
-                                    <Row>
-                                        <Col>
-                                            <h5 className="card-title">Blocs & Walls</h5>
-                                        </Col>
-                                        <Col>
-                                            <h6 className=" mt-1 card-location">Denmark</h6>
-                                        </Col>
-                                    </Row>
-                                    <small className="text-muted">Type: Bouldering, Gym</small>
-                                </div>
-
+                    <div className="d-flex align-items-top">
+                        <div className="likes-container">
+                            <div className="center-likes">
+                                <FontAwesomeIcon icon={faHeart} id="heart" />
+                                <div id="likes">10</div>
                             </div>
-                        </Col>
-                    </Row>
+                        </div>
+                        <div className="location-details">
+                            <div className="location-title">
+                                <Card.Title className="truncate-text">Copenhagen Boulders</Card.Title>
+                            </div>
+                            <div className="location-place">
+                                <Card.Subtitle><b>Denmark</b></Card.Subtitle>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Card.Text>
+                            <small className="text-muted">Type: Bouldering, Gym</small>
+                        </Card.Text>
+                    </div>
                 </Card.Body>
             </Card>
         </Container>
@@ -46,33 +43,3 @@ function LocationCard() {
 }
 
 export default LocationCard;
-
-
-
-/* 
-<Container>
-            <Card className="mx-auto card-width card-margin">
-                <a href="Location.html">
-                    <Card.Img variant="top" src={image} />
-                </a>
-                <Card.Body>
-                    <Row>
-                        <Col md={3.5}>
-                            <div className="d-flex align-items-center">
-                                <div id="likes-container">
-                                    <i className="fa fa-heart-o btn btn-default" onClick={btnClick} id="heart"></i>
-                                    <div id="likes">0</div>
-                                </div>
-                                <div id="location-details" className="ml-2">
-                                    <h5 className="card-title mb-2">Blocs & Walls</h5>
-                                    <h6 className="mt-1">Denmark</h6>
-                                    <small className="text-muted">Type: Bouldering, Gym</small>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row>
-                </Card.Body>
-            </Card>
-        </Container>
-
-*/
