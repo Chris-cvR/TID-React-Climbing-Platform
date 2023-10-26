@@ -5,6 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import "../../styles/index.css";
 import picture from "../../assets/images/Blocs&Walls.jpg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+
 
 function LocationCard() {
     const image = picture;
@@ -16,16 +19,23 @@ function LocationCard() {
                 <Card.Body>
                     <Row>
                         <Col md={3.5}>
-                            <div className="d-flex align-items-center">
-                                <div id="likes-container">
-                                    <i className="fa fa-heart-o btn btn-default" id="heart"></i>
-                                    <div id="likes">0</div>
+                            <div className="d-flex align-items-right ">
+                                <div className="d-flex flex-column align-items-center likes-container">
+                                    <FontAwesomeIcon icon={faHeart} />
+                                    <div id="likes">10</div>
                                 </div>
-                                <div id="location-details" className="ml-2">
-                                    <h5 className="card-title mb-2">Blocs & Walls</h5>
-                                    <h6 className="mt-1">Denmark</h6>
+                                <div className="location-details">
+                                    <Row>
+                                        <Col>
+                                            <h5 className="card-title">Blocs & Walls</h5>
+                                        </Col>
+                                        <Col>
+                                            <h6 className=" mt-1 card-location">Denmark</h6>
+                                        </Col>
+                                    </Row>
                                     <small className="text-muted">Type: Bouldering, Gym</small>
                                 </div>
+
                             </div>
                         </Col>
                     </Row>

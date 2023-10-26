@@ -31,3 +31,20 @@ code {
   margin-top: 150px;
   width: 30rem;
 }
+
+.location-details {
+  margin-left: 20px;
+}
+
+.card-title {
+  margin-right: auto;
+}
+
+.card-location {
+  margin-left: 20px;
+  align-content: right;
+}
+
+.likes-container {
+  margin-top: 4px;
+}
