@@ -29,8 +29,8 @@ code {
 
 /*LocationCard CSS*/
 .custom-card {
-  margin-top: 150px;
-  width: 35rem;
+  margin-top: 40px;
+  max-width: 35rem;
 }
 
 .location-details {

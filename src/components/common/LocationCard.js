@@ -4,16 +4,16 @@ import Container from 'react-bootstrap/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import "../../styles/index.css";
-import picture from "../../assets/images/Blocs&Walls.jpg";
 
 
-function LocationCard() {
-    const image = picture;
+function LocationCard({ picture, Title }) {
+    const LocationImage = picture;
+    const LocationTitle = Title;
 
     return (
         <Container className="my-5">
             <Card className="custom-card mx-auto">
-                <Card.Img variant={image} src={image} />
+                <Card.Img variant={LocationImage} src={LocationImage} />
                 <Card.Body>
                     <div className="d-flex align-items-top">
                         <div className="likes-container">
@@ -24,7 +24,7 @@ function LocationCard() {
                         </div>
                         <div className="location-details">
                             <div className="location-title">
-                                <Card.Title className="truncate-text">Copenhagen Boulders</Card.Title>
+                                <Card.Title className="truncate-text">{LocationTitle}</Card.Title>
                             </div>
                             <div className="location-place">
                                 <Card.Subtitle><b>Denmark</b></Card.Subtitle>

@@ -8,7 +8,7 @@ function CompleteNavbar() {
     const PeakPulseImage = images;
 
     return (
-        <Navbar fixed="top" className="custom-navbar">
+        <Navbar sticky="top" className="custom-navbar">
             <Container>
                 <Navbar.Brand href="#home">
                     <img
