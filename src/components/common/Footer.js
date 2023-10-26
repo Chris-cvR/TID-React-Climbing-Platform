@@ -1,3 +1,4 @@
+import PrimaryButton from "./PrimaryButton";
 
 function Footer() {
     return (
@@ -20,7 +21,9 @@ function Footer() {
               </div>
   
               <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <PrimaryButton>
 
+              </PrimaryButton>
               </div>
   
               <div className="col-md-2 col-lg-2 col-xl-3 mx-auto mb-4 text">
