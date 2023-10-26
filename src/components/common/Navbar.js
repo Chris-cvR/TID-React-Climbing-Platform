@@ -1,4 +1,4 @@
-import "../../styles/Navbar.css"
+import "../../styles/index.css"
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import images from "../../assets/images/PeakPulse.png"
