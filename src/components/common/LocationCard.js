@@ -29,9 +29,6 @@ function LocationCard() {
                             </div>
                         </Col>
                     </Row>
-
-
-
                 </Card.Body>
             </Card>
         </Container>
