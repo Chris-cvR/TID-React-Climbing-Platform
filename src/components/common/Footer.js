@@ -9,7 +9,7 @@ function Footer() {
       <section className="Footer">
         <div className="container text-center text-md-start mt-5">
           <div className="row mt-3">
-            <div className="col-md-6 col-lg-6 col-xl-6 mb-4">
+            <div className="col-md-8 col-lg-8 col-xl-8 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4 text">
                 <FontAwesomeIcon className="me-3 text" />PeakPulse
               </h6>
@@ -18,13 +18,13 @@ function Footer() {
               </p>
             </div>
 
-            <div className="col-md-6 col-lg-6 col-xl-6 mb-md-0">
+            <div className="col-md-4 col-lg-4 col-xl-4 mx-auto mb-md-0 text">
               <h6 className="text-uppercase fw-bold">Contact us:</h6>
               <p>
-                <FontAwesomeIcon icon={faHome} className="me-3" />Rued Langgaards Vej 7, 2300 Copenhagen, Danmark
+                <FontAwesomeIcon icon={faHome} className="me-3" />Rued Langgaards Vej 7,<br /> 2300 Copenhagen, Denmark
               </p>
               <p>
-                <FontAwesomeIcon icon={faEnvelope} className="me-3" />PeakPulse@itu.dk
+                <FontAwesomeIcon icon={faEnvelope} className="me-3" />info@PeakPulse.com
               </p>
               <p>
                 <FontAwesomeIcon icon={faPhone} className="me-3" />+45 72 18 50 00
