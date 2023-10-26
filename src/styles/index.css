@@ -91,3 +91,8 @@ code {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+#PrimaryButton {
+  background-color: hsl(25, 68%, 50%);
+  border-color: hsl(25, 68%, 50%);
+}
