@@ -1,4 +1,5 @@
 import Logo from "../assets/images/PeakPulse.png"
+import { NavLink } from "react-router-dom";
 
 function RegisterPage() {
 
@@ -65,7 +66,7 @@ function RegisterPage() {
                         <div class="text-center mt-3">
                             <button type="submit" className="btn btn-primary custom-button">Register</button>
                         </div>
-                        <h6>Already a member? <a href="/Login.html" className="link">Login</a> </h6>
+                        <h6>Already a member? <NavLink className="nav-link" to="/login">Login</NavLink> </h6>
                     </form>
                 </div>
 
