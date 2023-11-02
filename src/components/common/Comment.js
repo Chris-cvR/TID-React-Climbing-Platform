@@ -27,24 +27,28 @@ function Comment() {
         </div> // Map through the list of comments and display each in a separate container + add "UserName" as a title for each comment
       ))}
       <input
+        className="add-comment-textbox"
         type="text"
         placeholder="Enter your comment here"
-        style={{ width: "500px", height: "100px" }}
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
-      <label className="checkbox-container">
-        <input type="checkbox" />
-        #Safety
-      </label>
-      <label className="checkbox-container">
-        <input type="checkbox" />
-        #Experience
-      </label>
-      <label className="checkbox-container">
-        <input type="checkbox" />
-        #State
-      </label>
+      <div className="checkbox-container">
+        Hashtags:&nbsp;
+        <label className="checkbox-hashtag">
+          <input type="checkbox" />
+          #Safety&nbsp;&nbsp;&nbsp;
+        </label>
+        <label className="checkbox-hashtag">
+          <input type="checkbox" />
+          #Experience&nbsp;&nbsp;&nbsp;
+        </label>
+        <label className="checkbox-hashtag">
+          <input type="checkbox" />
+          #State&nbsp;&nbsp;&nbsp;
+        </label>
+      </div>
+
       <button className="comment-button" onClick={addComment}>
         Add Comment
       </button>

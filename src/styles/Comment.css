@@ -48,6 +48,12 @@ code {
   display: inline;
 }
 
+/*The input text-box for adding comments */
+.add-comment-textbox {
+  width: 500px;
+  height: 100px;
+}
+
 /*Styling for the "Add comment" button*/
 .comment-button {
   background-color: hsl(25, 68%, 50%);
@@ -62,8 +68,9 @@ code {
   font-size: small;
 }
 
-.checkbox-container {
-  display: inline;
-  position: relative;
-  margin-left: 300px;
+/*styling for the hashtags*/
+.checkbox-hashtag {
+  font-weight: initial;
+  font-size: small;
+  color: hsl(25, 68%, 50%);
 }
