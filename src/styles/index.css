@@ -244,3 +244,35 @@ code {
 .coordinate-value p {
   display: inline-block; 
 }
+
+.custom-input {
+  width: 150%;
+  font-size: 16px;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form{
+  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-logo{
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+}
+
+.NotAMember{
+  margin-top: 20px;
+  text-align: center;
+}
