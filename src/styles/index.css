@@ -95,17 +95,17 @@ code {
 .sidebar {
   position: fixed;
   width: 22%;
-  height: 100vh;
-  background: hsl(25, 68%, 50%);
+  height: 100%;
+  background: hsl(24, 8%, 88%);
+  margin-top: -150px;
 }
 
 .nav {
   position: relative;
   margin: 10%;
   text-align: right;
-  top: 18%;
+  top: 30%;
   transform: translateY(-50%);
-  font-weight: bold;
 }
 
 #dropdown-basic{
@@ -113,14 +113,16 @@ code {
   margin-bottom: 20;
   border-bottom: 1px solid hsl(0, 0%, 83%);
   background-color: hsl(24, 8%, 88%);
-  border-color: hsl(24, 8%, 88%);
+  border-color: hsl(25, 68%, 50%);
   border-radius: 2%;
-  color: black;
+  color: hsl(25, 68%, 50%);
+  width: 100%;
 }
 #PrimaryButton{
-  background-color: hsl(24, 8%, 88%);
-  border-color: hsl(24, 8%, 88%);
+  background-color: hsl(25, 68%, 50%);
+  border-color: hsl(25, 68%, 50%);
   border-radius: 2%;
-  color: black;
+  color: hsl(24, 8%, 88%);
+  width: 100%;
 
 }

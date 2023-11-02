@@ -10,8 +10,8 @@ function FeedPage() {
     return (
         <>
             <Navbar></Navbar>
-            <Sidebar></Sidebar>
             <div>
+                <Sidebar></Sidebar>
                 <LocationCard picture={picture1} Title={"Blocs & Walls"}></LocationCard>
                 <LocationCard picture={picture2} Title={"Copenhagen Boulders"}></LocationCard>
             </div>
