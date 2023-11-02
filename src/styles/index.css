@@ -146,7 +146,7 @@ code {
   margin-left: 10px;
   width: 400px;
   max-width: 400px;
-  max-height: 210px;
+  max-height: 200px;
   word-wrap: break-word;
   overflow: auto;
 }
@@ -160,6 +160,12 @@ code {
 
 .detailed-flex-container {
   margin-top: 15px;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.detailed-flex-container2 {
+  margin-top: 25px;
   display: flex;
   justify-content: space-between; 
 }
@@ -178,18 +184,34 @@ code {
   text-decoration: underline;
 }
 
+.detailed-likes-content h8  {
+  margin-right: 120px;
+  text-decoration: underline;
+}
+
+#detailed-likes {
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+#likes-heart {
+  margin-top: 5px;
+  color: hsl(25, 68%, 50%);
+  font-size: 30px;
+}
+
 .coordinate-container {
   display: flex;
-  align-items:column; /* Vertically align the content */
-  align-items: flex-start; /* Stack elements vertically and align them to the left */
+  align-items:column; 
+  align-items: flex-start;
 }
 
 .coordinate-container p {
   margin: 0;
-  margin-right: 5px; /* Add a small margin to separate the label and value */
+  margin-right: 5px; 
 }
 
 .coordinate-value p {
-  display: inline-block; /* Display the span as inline-block */
+  display: inline-block; 
 }
 
