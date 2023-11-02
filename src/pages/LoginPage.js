@@ -1,3 +1,4 @@
+import { NavLink } from "react-bootstrap";
 import Logo from "../assets/images/PeakPulse.png";
 
 function LoginPage() {
@@ -28,7 +29,7 @@ function LoginPage() {
 
                         <button type="Login" className="btn btn-primary custom-button">Login</button>
                     </form>
-                    <h6 className="NotAMember">Not a member? <a href="/Register.html" className="link">Register</a> </h6>
+                    <h6 className="NotAMember">Not a member? <NavLink className="nav-link" to="/register">Register</NavLink></h6>
                 </div>
             </div>
 

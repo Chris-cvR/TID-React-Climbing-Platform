@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 //import "../../styles/index.css";
 import "../../styles/Comment.css";
-import { text } from "@fortawesome/fontawesome-svg-core";
 
 function Comment() {
   // Initialize state variables using the useState hook
