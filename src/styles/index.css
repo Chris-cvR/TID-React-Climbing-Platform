@@ -47,6 +47,7 @@ code {
 
 .location-place {
   margin-top: 8px;
+  margin-right: 20px;
 }
 
 .card-text {
@@ -97,3 +98,70 @@ code {
   background-color: hsl(25, 68%, 50%);
   border-color: hsl(25, 68%, 50%);
 }
+
+.divider {
+  width: 1px; 
+  background-color: #000; 
+  margin: 0 15px; 
+  height: 100%; 
+}
+
+/* DetailedLocationCard Css */
+.DetailedCardStyle {
+  width: 900px;
+  height: 420px;
+
+}.DetailedContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.DetailedLocationImage {
+  max-width: 700px;
+  max-height: 800px;
+}
+
+.detailed-location-info {
+  margin-top: 20px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.detailed-location-place {
+    margin-top: 8px;
+    margin-right: 37px;
+}
+
+.detailed-location-title {
+  margin-left: 10px;
+}
+
+.detailed-text {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.detailed-truncate-text {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detailed-flex-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.detailed-text-container {
+  flex: 1;
+  padding: 10px; 
+  border: 1px solid black
+}
+
