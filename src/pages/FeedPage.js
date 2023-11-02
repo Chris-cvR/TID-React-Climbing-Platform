@@ -3,6 +3,7 @@ import Footer from "../components/common/Footer";
 import LocationCard from "../components/common/LocationCard";
 import picture1 from "../assets/images/Blocs&Walls.jpg";
 import picture2 from "../assets/images/cphBoulders.jpg";
+import Sidebar from "../components/sections/Sidebar"
 
 
 function FeedPage() {
