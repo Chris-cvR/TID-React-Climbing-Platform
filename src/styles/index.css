@@ -36,6 +36,7 @@ code {
 .location-details {
   margin-left: 20px;
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
   margin-bottom: 5px;
 }
@@ -86,7 +87,7 @@ code {
 }
 
 .truncate-text {
-  max-width: 360px;
+  max-width: 300px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
