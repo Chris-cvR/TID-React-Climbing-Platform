@@ -109,7 +109,7 @@ code {
 /* DetailedLocationCard Css */
 .DetailedCardStyle {
   width: 900px;
-  height: 420px;
+  height: 450px;
 
 }.DetailedContainer {
   margin-top: 20px;
@@ -144,6 +144,11 @@ code {
 .detailed-text {
   margin-top: 20px;
   margin-left: 10px;
+  width: 400px;
+  max-width: 400px;
+  max-height: 210px;
+  word-wrap: break-word;
+  overflow: auto;
 }
 
 .detailed-truncate-text {
@@ -154,7 +159,7 @@ code {
 }
 
 .detailed-flex-container {
-  margin-top: 30px;
+  margin-top: 15px;
   display: flex;
   justify-content: space-between; 
 }
@@ -162,6 +167,29 @@ code {
 .detailed-text-container {
   flex: 1;
   padding: 10px; 
-  border: 1px solid black
+  font-size: small;
+  display: flex;
+  justify-content: space-between;
+  max-width: 200px;
+}
+
+.detailed-content h8 {
+  margin-left: 9px;
+  text-decoration: underline;
+}
+
+.coordinate-container {
+  display: flex;
+  align-items:column; /* Vertically align the content */
+  align-items: flex-start; /* Stack elements vertically and align them to the left */
+}
+
+.coordinate-container p {
+  margin: 0;
+  margin-right: 5px; /* Add a small margin to separate the label and value */
+}
+
+.coordinate-value p {
+  display: inline-block; /* Display the span as inline-block */
 }
 
