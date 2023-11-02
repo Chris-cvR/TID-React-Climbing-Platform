@@ -45,6 +45,7 @@ code {
 .comment-title {
   color: hsl(25, 68%, 50%);
   font-weight: bold;
+  display: inline;
 }
 
 /*Styling for the "Add comment" button*/
@@ -53,4 +54,16 @@ code {
   color: hsl(27, 26%, 92%);
   margin-top: 10px;
   cursor: pointer;
+}
+
+/*Styling for "User Experience"*/
+.user-experience {
+  display: inline;
+  font-size: small;
+}
+
+.checkbox-container {
+  display: inline;
+  position: relative;
+  margin-left: 300px;
 }

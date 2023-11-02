@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 //import "../../styles/index.css";
 import "../../styles/Comment.css";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 function Comment() {
   // Initialize state variables using the useState hook
@@ -18,10 +19,10 @@ function Comment() {
   return (
     <div className="comment-container">
       <h2>Comments</h2>
-
       {comments.map((comment, index) => (
         <div key={index} className="posted-comment">
-          <p className="comment-title">UserName</p>
+          <p className="comment-title">UserName </p>
+          <p className="user-experience">(Beginner)</p>
           <p className="comment-text">{comment}</p>
         </div> // Map through the list of comments and display each in a separate container + add "UserName" as a title for each comment
       ))}
@@ -32,6 +33,18 @@ function Comment() {
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
+      <label className="checkbox-container">
+        <input type="checkbox" />
+        #Safety
+      </label>
+      <label className="checkbox-container">
+        <input type="checkbox" />
+        #Experience
+      </label>
+      <label className="checkbox-container">
+        <input type="checkbox" />
+        #State
+      </label>
       <button className="comment-button" onClick={addComment}>
         Add Comment
       </button>
