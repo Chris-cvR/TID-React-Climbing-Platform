@@ -1,15 +1,15 @@
-import NavBar from "../components/common/Navbar"
-import Footer from "../components/common/Footer"
 import DetailedLocationCard from "../components/common/DetailedLocationCard"
+import Navbar from "../components/common/Navbar"
+import Footer from "../components/common/Footer"
 
 
 function LocationPage() {
 
     return (
         <div>
-            <NavBar></NavBar>
+            <Navbar />
             <DetailedLocationCard></DetailedLocationCard>
-            <Footer></Footer>
+            <Footer />
         </div>
     );
 }
