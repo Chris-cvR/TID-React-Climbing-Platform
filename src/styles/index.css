@@ -276,3 +276,101 @@ form{
   margin-top: 20px;
   text-align: center;
 }
+
+.link {
+  color: hsl(25, 68%, 50%) !important;
+}
+
+.register-form{
+  height: 100vh;
+  padding-top: 5%;
+}
+
+.register{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-welcome{
+  text-align: center;
+}
+
+.welcome-text{
+  margin-top: 4%;
+}
+
+.custom-input{
+  width: 70%;
+  margin-bottom: 2%;
+}
+
+.input-field{
+  border: 1px solid hsl(0, 0%, 83%);
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  background: white;
+  margin-top: 10px;
+  width: 105%;
+  height: 40px;
+}
+
+.form-checkbox-label{
+  margin-left: 5px;
+}
+
+input[type="radio"] {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  outline: 1px solid hsl(0, 0%, 83%);
+  border: 1px solid white;
+  width: 13px;
+  height: 13px;
+  border-radius: 10%;
+}
+
+input[type="radio"]:checked {
+  background: hsl(25, 68%, 50%);
+}
+
+input[type="checkbox"] {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  outline: 1px solid hsl(0, 0%, 83%);
+  border: 1px solid white;
+  width: 13px;
+  height: 13px;
+  border-radius: 10%;
+  padding-right: 10px;
+}
+
+input[type="checkbox"]:checked {
+  background: hsl(25, 68%, 50%);
+}
+
+.experience-container {
+  border: 1px solid hsl(0, 0%, 83%);
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  left: -90px;
+  background: white;
+  margin-top: 10px;
+  width: 150%;
+}
+
+#exampleInputFirstName {
+  margin-bottom: -5%;
+}
+
+#exampleInputPassword2 {
+  margin-bottom: -5%;
+}
+
+h6 {
+  text-align: center;
+  margin-top: 10px;
+}
