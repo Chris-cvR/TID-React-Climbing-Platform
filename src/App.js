@@ -5,7 +5,7 @@ import LocationPage from './pages/LocationsPage'
 function App() {
   return (
     <div className="App">
-      <LocationPage />
+      <FeedPage />
     </div>
   );
 }
