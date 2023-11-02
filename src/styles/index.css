@@ -95,4 +95,23 @@ code {
 #PrimaryButton {
   background-color: hsl(25, 68%, 50%);
   border-color: hsl(25, 68%, 50%);
+  margin-top: 20px;
+}
+
+#dropdown-basicCL {
+  background-color: hsla(25, 68%, 50%, 0.789);
+  border-color: hsl(25, 68%, 50%);
+  margin-top: 20px;
+}
+
+#dropdown-basicCT {
+  background-color: hsla(25, 68%, 50%, 0.789);
+  border-color: hsl(25, 68%, 50%);
+  margin-top: 10px;
+}
+
+#sidebar{
+  margin-left: 60px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
