@@ -92,26 +92,35 @@ code {
   text-overflow: ellipsis;
 }
 
-#PrimaryButton {
-  background-color: hsl(25, 68%, 50%);
-  border-color: hsl(25, 68%, 50%);
-  margin-top: 20px;
+.sidebar {
+  position: fixed;
+  width: 22%;
+  height: 100vh;
+  background: hsl(25, 68%, 50%);
 }
 
-#dropdown-basicCL {
-  background-color: hsla(25, 68%, 50%, 0.789);
-  border-color: hsl(25, 68%, 50%);
-  margin-top: 20px;
+.nav {
+  position: relative;
+  margin: 10%;
+  text-align: right;
+  top: 18%;
+  transform: translateY(-50%);
+  font-weight: bold;
 }
 
-#dropdown-basicCT {
-  background-color: hsla(25, 68%, 50%, 0.789);
-  border-color: hsl(25, 68%, 50%);
-  margin-top: 10px;
-}
-
-#sidebar{
-  margin-left: 60px;
+#dropdown-basic{
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 20;
+  border-bottom: 1px solid hsl(0, 0%, 83%);
+  background-color: hsl(24, 8%, 88%);
+  border-color: hsl(24, 8%, 88%);
+  border-radius: 2%;
+  color: black;
+}
+#PrimaryButton{
+  background-color: hsl(24, 8%, 88%);
+  border-color: hsl(24, 8%, 88%);
+  border-radius: 2%;
+  color: black;
+
 }

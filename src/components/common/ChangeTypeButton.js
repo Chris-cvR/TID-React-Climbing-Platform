@@ -13,7 +13,7 @@ function ChangeTypeButton({TextCT, DItem1, DItem2, DItem3}) {
     return (
 
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basicCT">{ButtonTextCT}</Dropdown.Toggle>{' '}
+          <Dropdown.Toggle id="dropdown-basic">{ButtonTextCT}</Dropdown.Toggle>
     
           <Dropdown.Menu>
             <Dropdown.Item href="#/action-1">{DropdownItem1}</Dropdown.Item>
