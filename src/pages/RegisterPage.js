@@ -83,7 +83,7 @@ function RegisterPage() {
                         <div class="text-center mt-3">
                             <PrimaryButton Text="Register" />
                         </div>
-                        <h6>Already a member?<NavLink className="nav-link" to="/login">Login</NavLink> </h6>
+                        <h6 className='memberStatus'>Already a member?<NavLink className="nav-link" to="/login">Login</NavLink> </h6>
 
                     </form>
                 </div>
