@@ -152,6 +152,10 @@ footer{
   transform: translateY(-50%);
 }
 
+.custom-brand{
+  margin-left: -80px !important;
+}
+
 #dropdown-basic{
   margin-top: 20px;
   margin-bottom: 20;
