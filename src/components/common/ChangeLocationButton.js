@@ -1,24 +1,40 @@
-import Dropdown from 'react-bootstrap/Dropdown';
+// ChangeLocationButton.js
 
-function ChangeLocationButton({TextCL, DItem1, DItem2, DItem3}) {
+import React, {useState} from 'react';
 
-    const ButtonTextCL= TextCL;
-    const DropdownItem1= DItem1;
-    const DropdownItem2= DItem2;
-    const DropdownItem3= DItem3;
+function ChangeLocationButton({ TextCL, DItem1, DItem2, DItem3, type }) {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
-            <Dropdown>
-              <Dropdown.Toggle id="dropdown-basic">{ButtonTextCL}</Dropdown.Toggle>
+  return (
+    <div className="change-location-button dropdown">
+      <button
+        className="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+        onClick={toggleDropdown}
+      >
+        {TextCL}
+      </button>
+      <div className={`dropdown-menu${isOpen ? ' show' : ''}`} aria-labelledby="dropdownMenuButton">
+        <label>
+          <input type={type} name="location" value={DItem1} /> {DItem1}
+        </label>
+        <label>
+          <input type={type} name="location" value={DItem2} /> {DItem2}
+        </label>
+        <label>
+          <input type={type} name="location" value={DItem3} /> {DItem3}
+        </label>
+      </div>
+    </div>
+  );
+}
 
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">{DropdownItem1}</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">{DropdownItem2}</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">{DropdownItem3}</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          );
-        }
-    
-    export default ChangeLocationButton;
+export default ChangeLocationButton;
