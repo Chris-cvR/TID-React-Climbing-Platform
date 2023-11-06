@@ -1,11 +1,12 @@
 import Logo from "../assets/images/PeakPulse.png"
 import { NavLink } from "react-router-dom";
+import PrimaryButton from "../components/common/PrimaryButton";
 
 function RegisterPage() {
 
     return (
         <div>
-            <div className="container w-50 mt-5 register-form">
+            <div className="container w-50 register-form">
                 <div className="logo-welcome">
                     <img
                         src={Logo}
@@ -64,7 +65,7 @@ function RegisterPage() {
                         </div>
 
                         <div class="text-center mt-3">
-                            <button type="submit" className="btn btn-primary custom-button">Register</button>
+                            <PrimaryButton Text="Register" />
                         </div>
                         <h6>Already a member? <NavLink className="nav-link" to="/login">Login</NavLink> </h6>
                     </form>

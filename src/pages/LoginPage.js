@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../assets/images/PeakPulse.png";
+import PrimaryButton from "../components/common/PrimaryButton";
 
 function LoginPage() {
 
@@ -27,7 +28,7 @@ function LoginPage() {
                             <input type="text" className="form-control" id="exampleInputPassword" placeholder="Password" />
                         </div>
 
-                        <button type="Login" className="btn btn-primary custom-button">Login</button>
+                        <PrimaryButton Text="Register" />
                     </form>
                     <h6 className="NotAMember">Not a member? <NavLink className="nav-link" to="/register">Register!</NavLink></h6>
                 </div>

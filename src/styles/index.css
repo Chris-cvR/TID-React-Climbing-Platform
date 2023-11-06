@@ -120,13 +120,13 @@ code {
   color: hsl(25, 68%, 50%);
   width: 100%;
 }
+
 #PrimaryButton{
   background-color: hsl(25, 68%, 50%);
   border-color: hsl(25, 68%, 50%);
-  border-radius: 2%;
+  border-radius: 5px;
   color: hsl(24, 8%, 88%);
   width: 100%;
-
 }
 
 .divider {
@@ -259,7 +259,6 @@ code {
 }
 
 form{
-  margin-top: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -277,7 +276,7 @@ form{
   text-align: center;
 }
 
-.link {
+.nav-link {
   color: hsl(25, 68%, 50%) !important;
 }
 
