@@ -1,8 +1,30 @@
+import React, {useState} from 'react';
 import Logo from "../assets/images/PeakPulse.png"
 import { NavLink } from "react-router-dom";
 import PrimaryButton from "../components/common/PrimaryButton";
 
 function RegisterPage() {
+
+    const [formData, setFormData] = useState([
+        {id: 1, label: 'First Name', type: 'text', value: ''},
+        {id: 2, label: 'Last Name', type: 'text', value: ''},
+        {id: 3, label: 'Email', type: 'email', value: ''},
+        {id: 4, label: 'Password', type: 'password', value: ''},
+        {id: 5, label: 'Repeat Password', type: 'password', value: ''},
+        {id: 6, label: 'Experience Level', type: 'radio', value: '', options: ['beginner', 'intermediate', 'advanced']},
+    ]);
+
+    const handleInputChange = (e, id) => {
+        const updateFormData = formData.map((field) =>
+        field.id === id ? {...field, value: e.target.value} : field
+        );
+        setFormData(updateFormData);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        //code for submitting data to API
+    }
 
     return (
         <div>
@@ -18,56 +40,51 @@ function RegisterPage() {
                     <p className="welcome-text">Join the PeakPulse community!</p>
                 </div>
                 <div className="register">
-                    <form>
+                    <form onSubmit={handleSubmit}>
 
                         <div className="row">
                             <div className="col-md-8">
-                                <div className="custom-input">
-
-                                    <input type="name" className="input-field" id="exampleInputFirstName" placeholder="First Name*" />
+                                {formData.slice(0, 5).map((field) => (
+                                <div className="custom-input" key={field.id}>
+                                    <input
+                                        type={field.type}
+                                        className={`input-field ${field.label === 'First Name' || field.label === 'Password' ? 'margin-bottom' : ''}`}
+                                        placeholder={field.label}
+                                        value={field.value}
+                                        onChange={(e) => handleInputChange(e, field.id)}
+                                        required
+                                    />
                                 </div>
-
-                                <div className="custom-input">
-                                    <input type="name" className="input-field" id="exampleInputLastName" placeholder="Last Name*" />
-                                </div>
-
-                                <div className="custom-input">
-                                    <input type="name" className="input-field" id="exampleInputEmail" placeholder="E-Mail*" />
-                                </div>
-
-                                <div className="custom-input">
-                                    <input type="name" className="input-field" id="exampleInputPassword2" placeholder="Password*" />
-                                </div>
-
-                                <div className="custom-input">
-                                    <input type="name" className="input-field" id="exampleInputPassword2" placeholder="Repeat Password*" />
-                                </div>
+                                ))}
                             </div>
-
                             <div className="col-md-4">
                                 <div className="experience-container">
-                                    <span className="experience-label">Choose your experience level*:</span>
-                                    <div className="form-checkbox">
-                                        <input className="form-checkbox-input" type="radio" id="beginner" name="experience" value="beginner" />
-                                        <label className="form-checkbox-label" for="beginner">Beginner</label>
+                                <span className="experience-label">{formData[5].label}:</span>
+                                {formData[5].options.map((option) => (
+                                    <div className="form-checkbox" key={option}>
+                                    <input
+                                        className="form-checkbox-input"
+                                        type="radio"
+                                        id={option}
+                                        name="experience"
+                                        value={option}
+                                        checked={formData[5].value === option}
+                                        onChange={(e) => handleInputChange(e, formData[5].id)}
+                                    />
+                                    <label className="form-checkbox-label" htmlFor={option}>
+                                        {option.charAt(0).toUpperCase() + option.slice(1)}
+                                    </label>
                                     </div>
-                                    <div className="form-checkbox">
-                                        <input className="form-checkbox-input" type="radio" id="intermediate" name="experience" value="intermediate" />
-                                        <label className="form-checkbox-label" for="intermediate">Intermediate</label>
-                                    </div>
-                                    <div className="form-checkbox">
-                                        <input className="form-checkbox-input" type="radio" id="advanced" name="experience" value="advanced" />
-                                        <label className="form-checkbox-label" for="advanced">Advanced</label>
-                                    </div>
+                                ))}
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="text-center mt-3">
                             <PrimaryButton Text="Register" />
                         </div>
-                        <h6>Already a member? <NavLink className="nav-link" to="/login">Login</NavLink> </h6>
+                        <h6>Already a member?<NavLink className="nav-link" to="/login">Login</NavLink> </h6>
+
                     </form>
                 </div>
 
