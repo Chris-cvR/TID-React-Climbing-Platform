@@ -361,11 +361,7 @@ input[type="checkbox"]:checked {
   width: 150%;
 }
 
-#exampleInputFirstName {
-  margin-bottom: -5%;
-}
-
-#exampleInputPassword2 {
+.margin-bottom{
   margin-bottom: -5%;
 }
 
