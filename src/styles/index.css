@@ -113,6 +113,19 @@ footer{
   z-index: 2;
 }
 
+#SecondaryButton{
+  width: 100%;
+  margin-top: 5%;
+  color: hsl(25, 68%, 50%);
+  background-color: white;
+  border-color: rgb(205, 196, 196);
+  text-align: center;
+}
+
+#SecondaryButton:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
 .btn-secondary {
   width: 200px;
   margin-top: 5%;

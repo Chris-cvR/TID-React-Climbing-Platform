@@ -1,15 +1,15 @@
 import Button from 'react-bootstrap/Button';
 import "../../styles/index.css";
 
-function PrimaryButton({Text, onClick}) {
+function SecondaryButton({Text, onClick}) {
 
     const ButtonText= Text;
     
     return (
         <>
-            <Button id="PrimaryButton" onClick={onClick}>{ButtonText}</Button>
+            <Button id="SecondaryButton" onClick={onClick}>{ButtonText}</Button>
         </>
     );
 }
 
-export default PrimaryButton;
+export default SecondaryButton;
