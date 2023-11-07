@@ -1,5 +1,3 @@
-// ChangeLocationButton.js
-
 import React, {useState} from 'react';
 
 function ChangeLocationButton({ TextCL, DItem1, DItem2, DItem3, type }) {
