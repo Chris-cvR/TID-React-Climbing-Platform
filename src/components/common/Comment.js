@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-//import "../../styles/index.css";
-import "../../styles/Comment.css";
+import "../../styles/index.css";
 
 function Comment() {
   // Initialize state variables using the useState hook
