@@ -481,3 +481,12 @@ input[type="checkbox"]:checked {
   font-size: small;
   color: hsl(25, 68%, 50%);
 }
+
+.page-container{
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  line-height: 1.8;
+  text-align: justify;
+}
