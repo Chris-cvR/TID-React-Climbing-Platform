@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
-import Logo from "../assets/images/PeakPulse.png";
+import Logo from "../assets/images/PeakPulse_white.png";
 import PrimaryButton from "../components/common/PrimaryButton";
 import image from "../assets/images/CityOfRocks_KieranHadley_BathRock_Calamari12b-2048x1152.jpg"
 

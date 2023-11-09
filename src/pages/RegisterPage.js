@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logo from "../assets/images/PeakPulse.png"
+import Logo from "../assets/images/PeakPulse_white.png"
 import { NavLink } from "react-router-dom";
 import PrimaryButton from "../components/common/PrimaryButton";
 import image from "../assets/images/ClimbingWoman.jpg"
@@ -28,7 +28,7 @@ function RegisterPage() {
     }
 
     return (
-        <div style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', color: 'white' }}>
+        <div style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center', color: 'white' }}>
             <div className="container w-50 register-form">
                 <div className="logo-welcome">
                     <img
