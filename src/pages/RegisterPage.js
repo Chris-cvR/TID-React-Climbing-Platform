@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Logo from "../assets/images/PeakPulse_white.png"
 import { NavLink } from "react-router-dom";
 import PrimaryButton from "../components/common/PrimaryButton";
-import image from "../assets/images/ClimbingWoman.jpg"
+import image from "../assets/images/climb_cliff.png.jpg.webp";
 
 function RegisterPage() {
 
@@ -44,7 +44,7 @@ function RegisterPage() {
                     <form onSubmit={handleSubmit}>
 
                         <div className="row">
-                            <div className="col-md-8">
+                            <div className="col-md-6">
                                 {formData.slice(0, 5).map((field) => (
                                     <div className="custom-input" key={field.id}>
                                         <input
@@ -58,7 +58,7 @@ function RegisterPage() {
                                     </div>
                                 ))}
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                 <div className="experience-container">
                                     <span className="experience-label">{formData[5].label}:</span>
                                     {formData[5].options.map((option) => (
