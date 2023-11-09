@@ -333,7 +333,7 @@ form{
   padding: 20px;
 }
 
-.NotAMember{
+.not-a-member{
   margin-top: 20px;
   text-align: center;
 }
@@ -427,7 +427,7 @@ input[type="checkbox"]:checked {
   margin-bottom: -5%;
 }
 
-.memberStatus {
+.member-status {
   text-align: center;
   margin-top: 10px;
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import Logo from "../assets/images/PeakPulse.png";
 import PrimaryButton from "../components/common/PrimaryButton";
@@ -11,8 +11,8 @@ function LoginPage() {
     });
 
     const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        setLoginData({...loginData, [name]: value});
+        const { name, value } = e.target;
+        setLoginData({ ...loginData, [name]: value });
     };
 
     const handleSubmit = (e) => {
@@ -21,7 +21,7 @@ function LoginPage() {
     }
 
     return (
-        <div style={{backgroundImage:`url(${image})`, backgroundSize: 'cover', color: 'white'}}>
+        <div style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', color: 'white' }}>
             <div className="login-container">
                 <div className="login-image">
                     <img className="login-logo"
@@ -40,7 +40,6 @@ function LoginPage() {
                             <input
                                 type='text'
                                 className='form-control'
-                                id='exampleInputEmail'
                                 placeholder='Email'
                                 name='email'
                                 value={loginData.email}
@@ -49,24 +48,23 @@ function LoginPage() {
                         </div>
 
                         <div className="mb-3 custom-input">
-                            <input 
-                                type="text" 
-                                className="form-control" 
-                                id="exampleInputPassword"
+                            <input
+                                type="text"
+                                className="form-control"
                                 placeholder='Password'
                                 name='password'
                                 value={loginData.password}
-                                onChange={handleInputChange} 
+                                onChange={handleInputChange}
                             />
                         </div>
 
-                        <PrimaryButton Text="Login"/>
+                        <PrimaryButton Text="Login" />
                     </form>
-                    <h6 className="NotAMember">Not a member? <NavLink className="nav-link" to="/register">Register</NavLink></h6>
+                    <h6 className="not-a-member">Not a member? <NavLink className="nav-link" to="/register">Register</NavLink></h6>
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 }
 
