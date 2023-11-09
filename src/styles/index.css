@@ -95,11 +95,8 @@ code {
 }
 
 .sidebar {
-  position: sticky;
-  width: 22%;
-  height: 100vh;
+  position: float;
   background: hsl(24, 8%, 88%);
-  margin-top: -100px;
   z-index: 1;
 }
 
@@ -147,12 +144,9 @@ footer{
 }
 
 .nav {
-  padding-top: 10%;
-  position: relative;
-  margin: 10%;
-  text-align: right;
-  top: 30%;
-  transform: translateY(-50%);
+  padding-top: 50px;
+  position: sticky;
+  padding-left: 50;
 }
 
 #dropdown-basic{
@@ -496,4 +490,10 @@ input[type="checkbox"]:checked {
   margin-bottom: 50px;
   line-height: 1.8;
   text-align: justify;
+}
+
+.main-wrapper {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(0,1fr) minmax(0,2fr);
 }
