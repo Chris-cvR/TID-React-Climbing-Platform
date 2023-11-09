@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { NavLink } from "react-router-dom";
 import Logo from "../assets/images/PeakPulse.png";
 import PrimaryButton from "../components/common/PrimaryButton";
+import image from "../assets/images/CityOfRocks_KieranHadley_BathRock_Calamari12b-2048x1152.jpg"
 
 function LoginPage() {
     const [loginData, setLoginData] = useState({
@@ -20,7 +21,7 @@ function LoginPage() {
     }
 
     return (
-        <>
+        <div style={{backgroundImage:`url(${image})`, backgroundSize: 'cover', color: 'white'}}>
             <div className="login-container">
                 <div className="login-image">
                     <img className="login-logo"
@@ -59,13 +60,13 @@ function LoginPage() {
                             />
                         </div>
 
-                        <PrimaryButton Text="Login" />
+                        <PrimaryButton Text="Login"/>
                     </form>
                     <h6 className="NotAMember">Not a member? <NavLink className="nav-link" to="/register">Register</NavLink></h6>
                 </div>
             </div>
 
-        </>
+        </div>
     );
 }
 
