@@ -77,7 +77,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                 <div className="col-md-4 border rounded">
                                     <Form.Group controlId="formControl_4">
                                         <Form.Label>Type</Form.Label>
-                                        {valueFor("Type").options.map(option => (
+                                        {formData.find(item => item.label === "Type").options.map(option => (
                                             <Form.Check
                                                 type="checkbox"
                                                 label={option}
@@ -90,7 +90,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                 <div className="col-md-4 border rounded">
                                     <Form.Group controlId="formControl_5">
                                         <Form.Label>Experience Level</Form.Label>
-                                        {valueFor("Experience Level").options.map(option => (
+                                        {formData.find(item => item.label === "Experience Level").options.map(option => (
                                             <Form.Check
                                                 type="radio"
                                                 label={option}
