@@ -94,16 +94,12 @@ code {
   text-overflow: ellipsis;
 }
 
-#PrimaryButton:hover{
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
-}
-
 .sidebar {
-  position: fixed;
+  position: sticky;
   width: 22%;
   height: 100vh;
   background: hsl(24, 8%, 88%);
-  margin-top: -150px;
+  margin-top: -100px;
   z-index: 1;
 }
 
@@ -113,20 +109,14 @@ footer{
   z-index: 2;
 }
 
-#SecondaryButton{
-  width: 100%;
-  margin-top: 5%;
+.dropdown-toggle{
   color: hsl(25, 68%, 50%);
   background-color: white;
   border-color: rgb(205, 196, 196);
-  text-align: center;
+  
 }
 
-#SecondaryButton:hover {
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
-}
-
-.btn-secondary {
+.dropdown-toggle {
   width: 200px;
   margin-top: 5%;
   color: hsl(25, 68%, 50%);
@@ -134,12 +124,12 @@ footer{
   border-color: white;
 }
 
-.dropdown-buttons{
-  margin-top: 10%;
+.dropdown-toggle:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
 }
 
-.btn-secondary:hover {
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
+.dropdown-buttons-sidebar{
+  margin-top: 10%;
 }
 
 .dropdown input[type="checkbox"]{
@@ -176,12 +166,29 @@ footer{
   width: 100%;
 }
 
-#PrimaryButton{
+#primary-button{
   background-color: hsl(25, 68%, 50%);
   border-color: hsl(25, 68%, 50%);
   border-radius: 5px;
   color: hsl(24, 8%, 88%);
   width: 100%;
+}
+
+#primary-button:hover{
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+#secondary-button {
+  width: 100%;
+  margin-top: 5%;
+  color: hsl(25, 68%, 50%);
+  background-color: white;
+  border-color: rgb(205, 196, 196);
+  text-align: center;
+}
+
+#secondary-button:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
 }
 
 .divider {

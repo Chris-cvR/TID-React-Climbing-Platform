@@ -11,7 +11,7 @@ function LocationCard({ picture, Title }) {
     const LocationTitle = Title;
 
     return (
-        <Container className="my-5">
+        <Container className="my-5 location-card">
             <Card className="custom-card mx-auto">
                 <Card.Img variant={LocationImage} src={LocationImage} />
                 <Card.Body>

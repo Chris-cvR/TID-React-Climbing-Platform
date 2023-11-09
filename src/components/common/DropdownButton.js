@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-function ChangeTypeButton({ TextCT, DItem1, DItem2, DItem3, type }) {
+function DropdownButton({ textct, ditem1, ditem2, ditem3, type }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -12,27 +12,26 @@ function ChangeTypeButton({ TextCT, DItem1, DItem2, DItem3, type }) {
       <button
         className='btn btn-secondary dropdown-toggle'
         type='button'
-        id='dropdownMenuButton'
         data-toggle='dropdown'
         aria-haspopup='true'
         aria-expanded='false'
         onClick={toggleDropdown}
       >
-        {TextCT}
+        {textct}
       </button>
-      <div className={`dropdown-menu${isOpen ? ' show' : ''}`} aria-labelledby='dropdownMenuButton'>
+      <div className={`dropdown-menu${isOpen ? ' show' : ''}`} aria-labelledby='drop-down-menu-button'>
         <label>
-          <input type={type} name="type" value={DItem1} /> {DItem1}
+          <input type={type} name="type" value={ditem1} /> {ditem1}
         </label>
         <label>
-          <input type={type} name="type" value={DItem2} /> {DItem2}
+          <input type={type} name="type" value={ditem2} /> {ditem2}
         </label>
         <label>
-          <input type={type} name="type" value={DItem3} /> {DItem3}
+          <input type={type} name="type" value={ditem3} /> {ditem3}
         </label>
       </div>
     </div>
   );
 }
 
-export default ChangeTypeButton;
+export default DropdownButton;

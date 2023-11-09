@@ -1,10 +1,8 @@
-import VeryImportantPicture from '../assets/images/SpookyCet.jpg'
 import Navbar from "../components/common/Navbar"
 import Footer from "../components/common/Footer"
 
 function AboutPage() {
 
-    const CuteCet = VeryImportantPicture;
     return (
         <div>
             <Navbar />

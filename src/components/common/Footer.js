@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -16,6 +17,7 @@ function Footer() {
               <p className="text">
                 Unlock New Heights with PeakPulse: Your Ultimate Destination to share your Climbing Adventures. Discover, Explore, and Conquer the World's Most Thrilling Climbing Locations. © 2023 PeakPulse
               </p>
+              <p><NavLink className="nav-link" to="/about">About</NavLink></p>
             </div>
 
             <div className="col-md-4 col-lg-4 col-xl-4 mx-auto mb-md-0 text">

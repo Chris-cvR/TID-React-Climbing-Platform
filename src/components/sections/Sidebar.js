@@ -1,19 +1,18 @@
 import React from 'react';
-import ChangeLocationButton from "../common/ChangeLocationButton";
-import ChangeTypeButton from "../common/ChangeTypeButton";
+import DropdownButton from "../common/DropdownButton";
 import PrimaryButton from "../common/PrimaryButton";
 import "../../styles/index.css";
 
-function Sidebar({handleShow}) {
+function Sidebar({ handleShow }) {
 
   return (
     <div className="sidebar">
       <nav className="nav">
         <ul>
           <PrimaryButton Text={"Create Location"} onClick={handleShow}></PrimaryButton>
-          <div className='dropdown-buttons'>
-            <ChangeLocationButton TextCL={"Change Country"} DItem1={"Denmark"} DItem3={"Germany"} DItem2={"Norway"} type="radio" />
-            <ChangeTypeButton TextCT={"Change Type"} DItem1={"Gym-Lead"} DItem3={"Gym-Bouler"} DItem2={"Outdoor-Boulder"} type="checkbox" />
+          <div className='dropdown-buttons-sidebar'>
+            <DropdownButton textct={"Change Country"} ditem1={"Denmark"} ditem3={"Germany"} ditem2={"Norway"} type="radio" />
+            <DropdownButton textct={"Change Type"} ditem1={"Gym-Lead"} ditem3={"Gym-Bouler"} ditem2={"Outdoor-Boulder"} type="checkbox" />
           </div>
         </ul>
       </nav>
