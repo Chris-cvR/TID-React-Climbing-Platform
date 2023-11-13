@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/index.css";
+import PrimaryButton from "../common/PrimaryButton";
 
 function Comment() {
   // Initialize state variables using the useState hook
@@ -9,7 +10,15 @@ function Comment() {
   // Function to add a new comment to the list
   const addComment = () => {
     if (newComment) {
-      setComments([...comments, newComment]); // Update the list of comments with the new comment
+      // Create comment with assigning id and text to each. Maybe we need to have title here as well?
+      const commentObject = {
+        id: Date.now(), // Timestamp as id - Not sure if we want this, but I figured it might make sense in this case
+        text: newComment,
+        title: "UserName",
+        experience: "Beginner",
+      };
+
+      setComments([...comments, commentObject]); // Update the list of comments with the new comment
       setNewComment(""); // Clear the input field
     }
   };
@@ -17,11 +26,11 @@ function Comment() {
   return (
     <div className="comment-container">
       <h2>Comments</h2>
-      {comments.map((comment, index) => (
-        <div key={index} className="posted-comment">
-          <p className="comment-title">UserName </p>
-          <p className="user-experience">(Beginner)</p>
-          <p className="comment-text">{comment}</p>
+      {comments.map((comment) => (
+        <div key={comment.id} className="posted-comment">
+          <p className="comment-title">{comment.title} </p>
+          <p className="user-experience">{comment.experience}</p>
+          <p className="comment-text">{comment.text}</p>
         </div> // Map through the list of comments and display each in a separate container + add "UserName" as a title for each comment
       ))}
       <input
@@ -47,9 +56,9 @@ function Comment() {
         </label>
       </div>
 
-      <button className="comment-button" onClick={addComment}>
-        Add Comment
-      </button>
+      <PrimaryButton id="comment-button" onClick={addComment}>
+        {"Add Comment"}
+      </PrimaryButton>
     </div>
   );
 }

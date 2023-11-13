@@ -2,8 +2,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -12,20 +12,18 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 /* src/index.css */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-
 /*Navbar CSS*/
 .custom-navbar {
   border-bottom: 1px solid hsl(0, 0%, 83%);
   background-color: hsl(24, 8%, 88%);
 }
-
 
 /*LocationCard CSS*/
 .custom-card {
@@ -51,7 +49,7 @@ code {
 }
 
 .card-text {
-  margin-left: 50px; 
+  margin-left: 50px;
   margin-top: -25px;
 }
 
@@ -100,17 +98,16 @@ code {
   z-index: 1;
 }
 
-footer{
+footer {
   position: relative;
   background: hsl(24, 8%, 88%);
   z-index: 2;
 }
 
-.dropdown-toggle{
+.dropdown-toggle {
   color: hsl(25, 68%, 50%);
   background-color: white;
   border-color: rgb(205, 196, 196);
-  
 }
 
 .dropdown-toggle {
@@ -125,11 +122,11 @@ footer{
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
 }
 
-.dropdown-buttons-sidebar{
+.dropdown-buttons-sidebar {
   margin-top: 10%;
 }
 
-.dropdown input[type="checkbox"]{
+.dropdown input[type="checkbox"] {
   margin-left: 10px;
   margin-right: 2px;
 }
@@ -149,7 +146,7 @@ footer{
   padding-left: 50;
 }
 
-#dropdown-basic{
+#dropdown-basic {
   margin-top: 20px;
   margin-bottom: 20;
   border-bottom: 1px solid hsl(0, 0%, 83%);
@@ -160,7 +157,7 @@ footer{
   width: 100%;
 }
 
-#primary-button{
+#primary-button {
   background-color: hsl(25, 68%, 50%);
   border-color: hsl(25, 68%, 50%);
   border-radius: 5px;
@@ -168,7 +165,7 @@ footer{
   width: 100%;
 }
 
-#primary-button:hover{
+#primary-button:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -186,18 +183,18 @@ footer{
 }
 
 .divider {
-  width: 1px; 
-  background-color: #000; 
-  margin: 0 15px; 
-  height: 100%; 
+  width: 1px;
+  background-color: #000;
+  margin: 0 15px;
+  height: 100%;
 }
 
 /* DetailedLocationCard Css */
 .DetailedCardStyle {
   width: 900px;
   height: 450px;
-
-}.DetailedContainer {
+}
+.DetailedContainer {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
@@ -219,8 +216,8 @@ footer{
 }
 
 .detailed-location-place {
-    margin-top: 8px;
-    margin-right: 37px;
+  margin-top: 8px;
+  margin-right: 37px;
 }
 
 .detailed-location-title {
@@ -247,18 +244,18 @@ footer{
 .detailed-flex-container {
   margin-top: 15px;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 .detailed-flex-container2 {
   margin-top: 25px;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 .detailed-text-container {
   flex: 1;
-  padding: 10px; 
+  padding: 10px;
   font-size: small;
   display: flex;
   justify-content: space-between;
@@ -270,7 +267,7 @@ footer{
   text-decoration: underline;
 }
 
-.detailed-likes-content h8  {
+.detailed-likes-content h8 {
   margin-right: 120px;
   text-decoration: underline;
 }
@@ -288,17 +285,17 @@ footer{
 
 .coordinate-container {
   display: flex;
-  align-items:column; 
+  align-items: column;
   align-items: flex-start;
 }
 
 .coordinate-container p {
   margin: 0;
-  margin-right: 5px; 
+  margin-right: 5px;
 }
 
 .coordinate-value p {
-  display: inline-block; 
+  display: inline-block;
 }
 
 .custom-input {
@@ -314,20 +311,20 @@ footer{
   height: 100vh;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.login-logo{
+.login-logo {
   width: 200px;
   height: 200px;
   padding: 20px;
 }
 
-.not-a-member{
+.not-a-member {
   margin-top: 20px;
   text-align: center;
 }
@@ -336,31 +333,31 @@ form{
   color: hsl(25, 68%, 50%) !important;
 }
 
-.register-form{
+.register-form {
   height: 100vh;
   padding-top: 5%;
 }
 
-.register{
+.register {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.logo-welcome{
+.logo-welcome {
   text-align: center;
 }
 
-.welcome-text{
+.welcome-text {
   margin-top: 4%;
 }
 
-.custom-input{
+.custom-input {
   width: 70%;
   margin-bottom: 2%;
 }
 
-.input-field{
+.input-field {
   border: 1px solid hsl(0, 0%, 83%);
   padding: 10px;
   border-radius: 5px;
@@ -371,7 +368,7 @@ form{
   height: 40px;
 }
 
-.form-checkbox-label{
+.form-checkbox-label {
   margin-left: 5px;
 }
 
@@ -418,7 +415,7 @@ input[type="checkbox"]:checked {
   color: black;
 }
 
-.margin-bottom{
+.margin-bottom {
   margin-bottom: -5%;
 }
 
@@ -433,12 +430,13 @@ input[type="checkbox"]:checked {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  border: 1px solid hsl(300, 1%, 19%);
+  border: 1px solid rgb(0, 0, 0, 0.175);
+  border-radius: 0.375rem;
   width: 900px;
   height: fit-content;
   margin: auto;
   padding: 50px;
-  background-color: hsl(27, 26%, 92%);
+  background-color: #fff;
 }
 /*style for each posted comment*/
 .posted-comment {
@@ -461,6 +459,8 @@ input[type="checkbox"]:checked {
 .add-comment-textbox {
   width: 500px;
   height: 100px;
+  border: 1px solid rgb(0, 0, 0, 0.175);
+  border-radius: 0.375rem;
 }
 
 /*Styling for the "Add comment" button*/
@@ -484,7 +484,7 @@ input[type="checkbox"]:checked {
   color: hsl(25, 68%, 50%);
 }
 
-.page-container{
+.page-container {
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 50px;
@@ -496,5 +496,5 @@ input[type="checkbox"]:checked {
 .main-wrapper {
   display: grid;
   gap: 3rem;
-  grid-template-columns: minmax(0,1fr) minmax(0,2fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
 }
