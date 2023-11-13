@@ -16,6 +16,7 @@ function Comment() {
         text: newComment,
         title: "UserName",
         experience: "Beginner",
+        tags: "#Safety #Experience",
       };
 
       setComments([...comments, commentObject]); // Update the list of comments with the new comment
@@ -31,6 +32,7 @@ function Comment() {
           <p className="comment-title">{comment.title} </p>
           <p className="user-experience">{comment.experience}</p>
           <p className="comment-text">{comment.text}</p>
+          <p className="comment-tags">{comment.tags}</p>
         </div> // Map through the list of comments and display each in a separate container + add "UserName" as a title for each comment
       ))}
       <input

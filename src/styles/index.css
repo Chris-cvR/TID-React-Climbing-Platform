@@ -440,11 +440,11 @@ input[type="checkbox"]:checked {
 }
 /*style for each posted comment*/
 .posted-comment {
-  border-top: 1px solid hsl(300, 1%, 19%);
-  border-left: 1px solid hsl(300, 1%, 19%);
   width: 500px;
   height: fit-content;
-  background-color: hsl(27, 26%, 92%);
+  background-color: hsl(0, 0%, 83%, 0.3);
+  border-left: 2px solid hsl(0, 0%, 83%);
+  border-top: 2px solid hsl(0, 0%, 83%);
   padding: 5px;
   margin-bottom: 15px;
 }
@@ -475,6 +475,13 @@ input[type="checkbox"]:checked {
 .user-experience {
   display: inline;
   font-size: small;
+}
+
+.comment-tags {
+  font-size: small;
+  color: hsl(25, 68%, 50%);
+  font-weight: initial;
+  text-align: right;
 }
 
 /*styling for the hashtags*/
