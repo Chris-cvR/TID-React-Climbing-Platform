@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import PrimaryButton from "../common/PrimaryButton";
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import SecondaryButton from './SecondaryButton';
+import { Button } from 'antd';
 
 const CreateLocation = ({ show, handleClose }) => {
     const [formData, setFormData] = useState([
@@ -130,7 +130,8 @@ const CreateLocation = ({ show, handleClose }) => {
                                 <SecondaryButton Text={"Cancel"} onClick={handleClose}></SecondaryButton>
                             </div>
                             <div className="col">
-                                <PrimaryButton id="primary-button" type='submit' Text={"Save Changes"} onClick={handleClose}></PrimaryButton>
+                                <Button type='submit' onClick={handleClose} className="form-button" size="large"> Save Changes </ Button>
+
                             </div>
                         </div>
                     </div>

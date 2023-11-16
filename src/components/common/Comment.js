@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/index.css";
-import PrimaryButton from "../common/PrimaryButton";
+import { Button } from 'antd';
 
 function Comment() {
   // Initialize state variables using the useState hook
@@ -58,9 +58,8 @@ function Comment() {
         </label>
       </div>
 
-      <PrimaryButton id="comment-button" onClick={addComment}>
-        {"Add Comment"}
-      </PrimaryButton>
+      <Button onClick={addComment} className="form-button" id="comment-button"> Add Comment </ Button>
+
     </div>
   );
 }

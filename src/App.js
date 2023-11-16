@@ -4,7 +4,7 @@ import FeedPage from './pages/FeedPage';
 import LoginPage from './pages/LoginPage'
 import DetailedLocationPage from './pages/LocationsPage'
 import AboutPage from './pages/AboutPage'
-import RegisterPage from './pages/RegisterPage';
+import { RegistrationPage } from './pages/RegistrationPage';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path='/login' element={<LoginPage />}></Route>
           <Route path='/location' element={<DetailedLocationPage />}></Route>
           <Route path='/about' element={<AboutPage />}></Route>
-          <Route path='/register' element={<RegisterPage />}></Route>
+          <Route path='/register' element={<RegistrationPage />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
