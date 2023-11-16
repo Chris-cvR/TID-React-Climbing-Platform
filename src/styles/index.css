@@ -165,7 +165,7 @@ footer{
   border-color: hsl(25, 68%, 50%);
   border-radius: 5px;
   color: hsl(24, 8%, 88%);
-  width: 100%;
+  width: 200px !important;
 }
 
 #primary-button:hover{
@@ -302,7 +302,7 @@ footer{
 }
 
 .custom-input {
-  width: 150%;
+  width: 200px !important;
   font-size: 16px;
 }
 
@@ -411,10 +411,9 @@ input[type="checkbox"]:checked {
   padding: 10px;
   border-radius: 5px;
   position: relative;
-  left: -90px;
   background: white;
   margin-top: 10px;
-  width: 150%;
+  width: 200px;
   color: black;
 }
 
