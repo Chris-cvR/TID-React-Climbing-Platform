@@ -135,8 +135,8 @@ const CreateLocation = ({ show, handleClose }) => {
                                 <SecondaryButton Text={"Cancel"} onClick={handleClose}></SecondaryButton>
                             </div>
                             <div className="col">
-                                <PrimaryButton id="primary-button" type='submit' Text={"Save Changes"} onClick={handleClose}></PrimaryButton>
-                            </div> 
+                                <Button type='submit' onClick={handleClose} className="form-button" size="large"> Save Changes </ Button>
+                            </div>
                         </div>
                     </div>
                 </Modal.Footer>
