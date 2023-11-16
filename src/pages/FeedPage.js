@@ -18,12 +18,12 @@ function FeedPage() {
         <div>
             <Navbar />
             <div className="main-wrapper">
-            <Sidebar handleShow={handleShow} />
-            <CreateLocation show={show} handleClose={handleClose} />
-            <div className="feed">
-            <LocationCard picture={picture1} Title={"Blocs & Walls"}></LocationCard>
-            <LocationCard picture={picture2} Title={"Copenhagen Boulders"}></LocationCard>
-            </div>
+                <Sidebar handleShow={handleShow} />
+                <CreateLocation show={show} handleClose={handleClose} />
+                <div className="feed">
+                    <LocationCard picture={picture1} Title={"Blocs & Walls"}></LocationCard>
+                    <LocationCard picture={picture2} Title={"Copenhagen Boulders"}></LocationCard>
+                </div>
             </div>
             <Footer />
         </div>

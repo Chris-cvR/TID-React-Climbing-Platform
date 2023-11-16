@@ -16,6 +16,11 @@ const CreateLocation = ({ show, handleClose }) => {
         { id: 7, label: 'Picture', type: 'file', value: '' },
     ]);
 
+    function valueFor(label) {
+        const field = formData.find(item => item.label === label);
+        return field ? field.value : undefined;
+    }
+
     const handleInputChange = (id, e) => {
         const updatedFormData = formData.map(item =>
             item.id === id ? { ...item, value: e.target.value } : item
@@ -42,7 +47,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                 <FormControl
                                     type="text"
                                     placeholder="Enter Title"
-                                    value={formData[0].value}
+                                    value={valueFor("Title")}
                                     onChange={(e) => handleInputChange(1, e)}
                                 />
                             </Form.Group>
@@ -55,7 +60,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                         <FormControl
                                             type="number"
                                             placeholder="Enter Latitude"
-                                            value={formData[1].value}
+                                            value={valueFor("Latitude")}
                                             onChange={(e) => handleInputChange(2, e)}
                                         />
                                     </Form.Group>
@@ -64,7 +69,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                         <FormControl
                                             type="number"
                                             placeholder="Enter Longitude"
-                                            value={formData[2].value}
+                                            value={valueFor("Longitude")}
                                             onChange={(e) => handleInputChange(3, e)}
                                         />
                                     </Form.Group>
@@ -72,7 +77,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                 <div className="col-md-4 border rounded">
                                     <Form.Group controlId="formControl_4">
                                         <Form.Label>Type</Form.Label>
-                                        {formData[3].options.map(option => (
+                                        {formData.find(item => item.label === "Type").options.map(option => (
                                             <Form.Check
                                                 type="checkbox"
                                                 label={option}
@@ -85,7 +90,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                 <div className="col-md-4 border rounded">
                                     <Form.Group controlId="formControl_5">
                                         <Form.Label>Experience Level</Form.Label>
-                                        {formData[4].options.map(option => (
+                                        {formData.find(item => item.label === "Experience Level").options.map(option => (
                                             <Form.Check
                                                 type="radio"
                                                 label={option}
@@ -105,7 +110,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                 <FormControl
                                     type="text"
                                     placeholder="Enter Description"
-                                    value={formData[5].value}
+                                    value={valueFor("Description")}
                                     onChange={(e) => handleInputChange(6, e)}
                                 />
                             </Form.Group>
