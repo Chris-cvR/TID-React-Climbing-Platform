@@ -1,10 +1,13 @@
 import Button from 'react-bootstrap/Button';
-import "../../styles/index.css"
+import "../../styles/index.css";
 
-function PrimaryButton() {
+function PrimaryButton({ Text, onClick }) {
+
+    const ButtonText = Text;
+
     return (
         <>
-            <Button id="PrimaryButton" >Create Location</Button>{' '}
+            <Button id="primary-button" onClick={onClick}>{ButtonText}</Button>
         </>
     );
 }

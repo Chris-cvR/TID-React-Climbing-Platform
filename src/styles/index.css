@@ -36,6 +36,7 @@ code {
 .location-details {
   margin-left: 20px;
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
   margin-bottom: 5px;
 }
@@ -46,6 +47,7 @@ code {
 
 .location-place {
   margin-top: 8px;
+  margin-right: 20px;
 }
 
 .card-text {
@@ -86,13 +88,413 @@ code {
 }
 
 .truncate-text {
-  max-width: 360px;
+  max-width: 300px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-#PrimaryButton {
+.sidebar {
+  position: float;
+  background: hsl(24, 8%, 88%);
+  z-index: 1;
+}
+
+footer{
+  position: relative;
+  background: hsl(24, 8%, 88%);
+  z-index: 2;
+}
+
+.dropdown-toggle{
+  color: hsl(25, 68%, 50%);
+  background-color: white;
+  border-color: rgb(205, 196, 196);
+  
+}
+
+.dropdown-toggle {
+  width: 200px;
+  margin-top: 5%;
+  color: hsl(25, 68%, 50%);
+  background-color: white;
+  border-color: white;
+}
+
+.dropdown-toggle:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dropdown-buttons-sidebar{
+  margin-top: 10%;
+}
+
+.dropdown input[type="checkbox"]{
+  margin-left: 10px;
+  margin-right: 2px;
+}
+
+.dropdown input[type="radio"] {
+  margin-left: 10px;
+  margin-right: 2px;
+}
+
+.dropdown-menu label {
+  display: block;
+}
+
+.nav {
+  padding-top: 50px;
+  position: sticky;
+  padding-left: 50;
+}
+
+#dropdown-basic{
+  margin-top: 20px;
+  margin-bottom: 20;
+  border-bottom: 1px solid hsl(0, 0%, 83%);
+  background-color: hsl(24, 8%, 88%);
+  border-color: hsl(25, 68%, 50%);
+  border-radius: 2%;
+  color: hsl(25, 68%, 50%);
+  width: 100%;
+}
+
+#primary-button{
   background-color: hsl(25, 68%, 50%);
   border-color: hsl(25, 68%, 50%);
+  border-radius: 5px;
+  color: hsl(24, 8%, 88%);
+  width: 100%;
+}
+
+#primary-button:hover{
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+#secondary-button {
+  width: 100%;
+  margin-top: 5%;
+  color: hsl(25, 68%, 50%);
+  background-color: white;
+  border-color: rgb(205, 196, 196);
+  text-align: center;
+}
+
+#secondary-button:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+.divider {
+  width: 1px; 
+  background-color: #000; 
+  margin: 0 15px; 
+  height: 100%; 
+}
+
+/* DetailedLocationCard Css */
+.DetailedCardStyle {
+  width: 900px;
+  height: 450px;
+
+}.DetailedContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.DetailedLocationImage {
+  max-width: 700px;
+  max-height: 800px;
+}
+
+.detailed-location-info {
+  margin-top: 20px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.detailed-location-place {
+    margin-top: 8px;
+    margin-right: 37px;
+}
+
+.detailed-location-title {
+  margin-left: 10px;
+}
+
+.detailed-text {
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 400px;
+  max-width: 400px;
+  max-height: 200px;
+  word-wrap: break-word;
+  overflow: auto;
+}
+
+.detailed-truncate-text {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detailed-flex-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.detailed-flex-container2 {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.detailed-text-container {
+  flex: 1;
+  padding: 10px; 
+  font-size: small;
+  display: flex;
+  justify-content: space-between;
+  max-width: 200px;
+}
+
+.detailed-content h8 {
+  margin-left: 9px;
+  text-decoration: underline;
+}
+
+.detailed-likes-content h8  {
+  margin-right: 120px;
+  text-decoration: underline;
+}
+
+#detailed-likes {
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+#likes-heart {
+  margin-top: 5px;
+  color: hsl(25, 68%, 50%);
+  font-size: 30px;
+}
+
+.coordinate-container {
+  display: flex;
+  align-items:column; 
+  align-items: flex-start;
+}
+
+.coordinate-container p {
+  margin: 0;
+  margin-right: 5px; 
+}
+
+.coordinate-value p {
+  display: inline-block; 
+}
+
+.custom-input {
+  width: 150%;
+  font-size: 16px;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-logo{
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+}
+
+.not-a-member{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.nav-link {
+  color: hsl(25, 68%, 50%) !important;
+}
+
+.register-form{
+  height: 100vh;
+  padding-top: 5%;
+}
+
+.register{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-welcome{
+  text-align: center;
+}
+
+.welcome-text{
+  margin-top: 4%;
+}
+
+.custom-input{
+  width: 70%;
+  margin-bottom: 2%;
+}
+
+.input-field{
+  border: 1px solid hsl(0, 0%, 83%);
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  background: white;
+  margin-top: 10px;
+  width: 105%;
+  height: 40px;
+}
+
+.form-checkbox-label{
+  margin-left: 5px;
+}
+
+input[type="radio"] {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  outline: 1px solid hsl(0, 0%, 83%);
+  border: 1px solid white;
+  width: 13px;
+  height: 13px;
+  border-radius: 10%;
+}
+
+input[type="radio"]:checked {
+  background: hsl(25, 68%, 50%);
+}
+
+input[type="checkbox"] {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  outline: 1px solid hsl(0, 0%, 83%);
+  border: 1px solid white;
+  width: 13px;
+  height: 13px;
+  border-radius: 10%;
+  padding-right: 10px;
+}
+
+input[type="checkbox"]:checked {
+  background: hsl(25, 68%, 50%);
+}
+
+.experience-container {
+  border: 1px solid hsl(0, 0%, 83%);
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  left: -90px;
+  background: white;
+  margin-top: 10px;
+  width: 150%;
+  color: black;
+}
+
+.margin-bottom{
+  margin-bottom: -5%;
+}
+
+.member-status {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/*Comment container*/
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px solid hsl(300, 1%, 19%);
+  width: 900px;
+  height: fit-content;
+  margin: auto;
+  padding: 50px;
+  background-color: hsl(27, 26%, 92%);
+}
+/*style for each posted comment*/
+.posted-comment {
+  border-top: 1px solid hsl(300, 1%, 19%);
+  border-left: 1px solid hsl(300, 1%, 19%);
+  width: 500px;
+  height: fit-content;
+  background-color: hsl(27, 26%, 92%);
+  padding: 5px;
+  margin-bottom: 15px;
+}
+/*Stying for the user name*/
+.comment-title {
+  color: hsl(25, 68%, 50%);
+  font-weight: bold;
+  display: inline;
+}
+
+/*The input text-box for adding comments */
+.add-comment-textbox {
+  width: 500px;
+  height: 100px;
+}
+
+/*Styling for the "Add comment" button*/
+.comment-button {
+  background-color: hsl(25, 68%, 50%);
+  color: hsl(27, 26%, 92%);
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/*Styling for "User Experience"*/
+.user-experience {
+  display: inline;
+  font-size: small;
+}
+
+/*styling for the hashtags*/
+.checkbox-hashtag {
+  font-weight: initial;
+  font-size: small;
+  color: hsl(25, 68%, 50%);
+}
+
+.page-container{
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.main-wrapper {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(0,1fr) minmax(0,2fr);
 }

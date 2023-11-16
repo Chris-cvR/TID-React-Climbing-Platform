@@ -2,6 +2,7 @@ import "../../styles/index.css"
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import images from "../../assets/images/PeakPulse.png"
+import { NavLink, Link } from "react-router-dom";
 
 function CompleteNavbar() {
 
@@ -10,7 +11,7 @@ function CompleteNavbar() {
     return (
         <Navbar sticky="top" className="custom-navbar">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand as={Link} to="/" className="custom-brand">
                     <img
                         alt=""
                         src={PeakPulseImage}
@@ -22,7 +23,8 @@ function CompleteNavbar() {
                 </Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
-                        Signed in as: <a href="src/pages/LoginPage.js">User!</a>
+                        Signed in as:
+                        <NavLink className="nav-link" to="/login">User!</NavLink>
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Container>

@@ -1,19 +1,37 @@
-import Dropdown from 'react-bootstrap/Dropdown';
+import React, { useState } from 'react';
 
-function DropdownButton() {
-    return (
-        <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Dropdown Button
-            </Dropdown.Toggle>
+function DropdownButton({ textct, ditem1, ditem2, ditem3, type }) {
+  const [isOpen, setIsOpen] = useState(false);
 
-            <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </Dropdown.Menu>
-        </Dropdown>
-    );
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className="change-type-button dropdown">
+      <button
+        className='btn btn-secondary dropdown-toggle'
+        type='button'
+        data-toggle='dropdown'
+        aria-haspopup='true'
+        aria-expanded='false'
+        onClick={toggleDropdown}
+      >
+        {textct}
+      </button>
+      <div className={`dropdown-menu${isOpen ? ' show' : ''}`} aria-labelledby='drop-down-menu-button'>
+        <label>
+          <input type={type} name="type" value={ditem1} /> {ditem1}
+        </label>
+        <label>
+          <input type={type} name="type" value={ditem2} /> {ditem2}
+        </label>
+        <label>
+          <input type={type} name="type" value={ditem3} /> {ditem3}
+        </label>
+      </div>
+    </div>
+  );
 }
 
-export default Dropdownbutton;
+export default DropdownButton;

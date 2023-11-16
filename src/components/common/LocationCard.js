@@ -11,7 +11,7 @@ function LocationCard({ picture, Title }) {
     const LocationTitle = Title;
 
     return (
-        <Container className="my-5">
+        <Container className="my-5 location-card">
             <Card className="custom-card mx-auto">
                 <Card.Img variant={LocationImage} src={LocationImage} />
                 <Card.Body>
@@ -27,13 +27,13 @@ function LocationCard({ picture, Title }) {
                                 <Card.Title className="truncate-text">{LocationTitle}</Card.Title>
                             </div>
                             <div className="location-place">
-                                <Card.Subtitle><b>Denmark</b></Card.Subtitle>
+                                <Card.Subtitle className="location-country"><b>Denmark</b></Card.Subtitle>
                             </div>
                         </div>
                     </div>
                     <div>
                         <Card.Text>
-                            <small className="text-muted">Type: Bouldering, Gym</small>
+                            <small className="text-muted">Bouldering, Gym</small>
                         </Card.Text>
                     </div>
                 </Card.Body>
