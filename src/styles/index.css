@@ -311,6 +311,8 @@ footer {
   color: hsl(9, 68%, 50%);
   font-size: 15px;
   font-weight: 600;
+  max-width: 300px;
+  text-align: center;
 }
 
 form {
@@ -358,13 +360,12 @@ form {
 }
 
 .register-container {
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
-  padding: 20px 0;
-  text-align: left;
-  height: 100vh;
-  padding-top: 5%;
+  padding-top: 13%;
+}
+
+.register-input-fields{
+  display: flex;
+  flex-direction: column;
 }
 
 .proficiency-selector {
