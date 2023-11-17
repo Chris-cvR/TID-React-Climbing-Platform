@@ -307,6 +307,12 @@ footer {
   height: 100vh;
 }
 
+.error-message {
+  color: hsl(9, 68%, 50%);
+  font-size: 15px;
+  font-weight: 600;
+}
+
 form {
   display: flex;
   flex-direction: column;
