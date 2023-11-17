@@ -3,8 +3,12 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import images from "../../assets/images/PeakPulse.png"
 import { NavLink, Link } from "react-router-dom";
+import Parse from 'parse/dist/parse.min.js';
+import { Button } from 'antd';
 
-function CompleteNavbar() {
+const CompleteNavbar = ({logout}) => {
+
+    const user = Parse.User.current();
 
     const PeakPulseImage = images;
 
@@ -22,10 +26,10 @@ function CompleteNavbar() {
                     PeakPulse
                 </Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                        Signed in as:
-                        <NavLink className="nav-link" to="/login">User!</NavLink>
+                    <Navbar.Text className="navbar-text">
+                        Hello, {user ? user.get("username") : 'Guest'}!
                     </Navbar.Text>
+                    <Button id="logout-button" className="form-button" size="large" onClick={logout}>Logout</Button>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

@@ -25,6 +25,14 @@ code {
   background-color: hsl(24, 8%, 88%);
 }
 
+.navbar-text{
+  margin-right: 2%;
+}
+
+#logout-button{
+  width: 100px !important;
+}
+
 /*LocationCard CSS*/
 .custom-card {
   margin-top: 40px;

@@ -6,6 +6,8 @@ import Navbar from "../components/common/Navbar"
 import Footer from "../components/common/Footer"
 import React, { useState } from 'react';
 import CreateLocation from "../components/common/CreateLocation";
+import Parse from 'parse/dist/parse.min.js';
+import { useNavigate } from 'react-router-dom';
 
 function FeedPage() {
 
@@ -14,9 +16,19 @@ function FeedPage() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const navigate = useNavigate();
+
+    const logout = () => {
+        Parse.User.logOut().then(() => {
+            navigate('/login');
+        }).catch((error) => {
+            console.errror('Failed to log out, with error: ', error);
+        });
+    }
+
     return (
         <div>
-            <Navbar />
+            <Navbar logout={logout}/>
             <div className="main-wrapper">
                 <Sidebar handleShow={handleShow} />
                 <CreateLocation show={show} handleClose={handleClose} />

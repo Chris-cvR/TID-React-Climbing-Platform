@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useHistory } from 'react-router-dom';
 import './styles/App.css';
 import FeedPage from './pages/FeedPage';
 import LoginPage from './pages/LoginPage'
@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage'
 import { RegistrationPage } from './pages/RegistrationPage';
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
