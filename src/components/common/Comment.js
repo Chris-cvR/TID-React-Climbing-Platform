@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/index.css";
-import { Button } from 'antd';
+import { Button } from "antd";
+import Parse from "parse/dist/parse.min.js";
 
 function Comment() {
   // Initialize state variables using the useState hook
@@ -10,14 +11,21 @@ function Comment() {
   // Function to add a new comment to the list
   const addComment = () => {
     if (newComment) {
+      //Fetch data of current user
+      const currentUser = Parse.User.current();
       // Create comment with assigning id and text to each. Maybe we need to have title here as well?
       const commentObject = {
         id: Date.now(), // Timestamp as id - Not sure if we want this, but I figured it might make sense in this case
         text: newComment,
-        title: "UserName",
         experience: "Beginner",
         tags: "#Safety #Experience",
       };
+
+      if (currentUser) {
+        commentObject.title = currentUser.get("username"); //get the username of the current user
+      } else {
+        commentObject.title = "User_Not_Found"; //if the user does not exist. This should be changed, since it should not be possible to comment without being logged in.
+      }
 
       setComments([...comments, commentObject]); // Update the list of comments with the new comment
       setNewComment(""); // Clear the input field
@@ -58,8 +66,10 @@ function Comment() {
         </label>
       </div>
 
-      <Button onClick={addComment} className="form-button" id="comment-button"> Add Comment </ Button>
-
+      <Button onClick={addComment} className="form-button" id="comment-button">
+        {" "}
+        Add Comment{" "}
+      </Button>
     </div>
   );
 }
