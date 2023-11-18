@@ -9,27 +9,44 @@ function Comment() {
   const [newComment, setNewComment] = useState(""); // Store the new comment being typed by the user
 
   // Function to add a new comment to the list
-  const addComment = () => {
+  const addComment = async () => {
     if (newComment) {
       //Fetch data of current user
       const currentUser = Parse.User.current();
-      // Create comment with assigning id and text to each. Maybe we need to have title here as well?
-      const commentObject = {
-        id: Date.now(), // Timestamp as id - Not sure if we want this, but I figured it might make sense in this case
-        text: newComment,
-        tags: "#Safety #Experience",
-      };
+      //Create Parse object for the Comment class and save it to the database
+      const Comment = Parse.Object.extend("Comment");
+      const commentToSave = new Comment();
+      // set class attributes
+      commentToSave.set("CommentText", newComment);
+      commentToSave.set("UserID", currentUser);
+      //commentToSave.set('LocationID', currentLocation);
+      //commentToSave.set('HashtagID', checkedHashtags);
 
       if (currentUser) {
-        commentObject.title = currentUser.get("username"); //get the username of the current user
-        commentObject.experience = currentUser.get("experience");
+        commentToSave.set("username", currentUser.get("username")); //get the username of the current user
+        commentToSave.set("experience", currentUser.get("experience"));
       } else {
-        commentObject.title = "User_Not_Found"; //if the user does not exist. This should be changed, since it should not be possible to comment without being logged in.
-        commentObject.experience = "Not_Found";
+        commentToSave.set("username", ""); //if the user does not exist
+        commentToSave.set("experience", "");
       }
 
-      setComments([...comments, commentObject]); // Update the list of comments with the new comment
-      setNewComment(""); // Clear the input field
+      try {
+        const savedComment = await commentToSave.save();
+        //Comment object saved successfully
+
+        const commentObject = {
+          id: savedComment.id,
+          text: newComment,
+          username: savedComment.get("username"),
+          experience: savedComment.get("experience"),
+          tags: "#Safety #Experience",
+        };
+
+        setComments([...comments, commentObject]); // Update the list of comments with the new comment
+        setNewComment(""); // Clear the input field
+      } catch (error) {
+        console.log(`Could not add comment. Error code: ${error}`);
+      }
     }
   };
 
@@ -38,7 +55,7 @@ function Comment() {
       <h2>Comments</h2>
       {comments.map((comment) => (
         <div key={comment.id} className="posted-comment">
-          <p className="comment-title">{comment.title} </p>
+          <p className="comment-title">{comment.username} </p>
           <p className="user-experience">{comment.experience}</p>
           <p className="comment-text">{comment.text}</p>
           <p className="comment-tags">{comment.tags}</p>
@@ -63,7 +80,7 @@ function Comment() {
         </label>
         <label className="checkbox-hashtag">
           <input type="checkbox" />
-          #State&nbsp;&nbsp;&nbsp;
+          #Experience&nbsp;&nbsp;&nbsp;
         </label>
       </div>
 
