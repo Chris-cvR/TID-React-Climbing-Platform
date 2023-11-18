@@ -339,7 +339,7 @@ form {
   font-family: "Montserrat", sans-serif !important;
 }
 
-.form-button:hover{
+.form-button:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19) !important;
 }
 
@@ -465,7 +465,7 @@ input[type="checkbox"]:checked {
   margin-bottom: 15px;
 }
 /*Stying for the user name*/
-.comment-title {
+.comment-username {
   color: hsl(25, 68%, 50%);
   font-weight: bold;
   display: inline;

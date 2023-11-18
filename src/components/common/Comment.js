@@ -87,7 +87,7 @@ function Comment() {
       <h2>Comments</h2>
       {comments.map((comment) => (
         <div key={comment.id} className="posted-comment">
-          <p className="comment-title">{comment.username} </p>
+          <p className="comment-username">{comment.username} </p>
           <p className="user-experience">{comment.experience}</p>
           <p className="comment-text">{comment.text}</p>
           <p className="comment-tags">{comment.tags}</p>
