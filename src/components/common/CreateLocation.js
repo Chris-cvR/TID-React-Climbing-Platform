@@ -22,7 +22,7 @@ const CreateLocation = ({ show, handleClose }) => {
     function valueFor(label) {
         const field = formData.find(item => item.label === label);
         return field ? field.value : undefined;
-    }
+    };
 
     const handleInputChange = (id, e) => {
         const value = id === 8 ? e.target.files[0] : e.target.value;
@@ -30,7 +30,7 @@ const CreateLocation = ({ show, handleClose }) => {
             item.id === id ? { ...item, value: value } : item
         );
         setFormData(updatedFormData);
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -48,7 +48,6 @@ const CreateLocation = ({ show, handleClose }) => {
             let parseFile = new Parse.File(imageFileName, { base64: dataUri });
 
             parseFile.save().then(savedFile => {
-                console.log('File saved: ' + savedFile);
 
                 newLocation.set("Name", valueFor("Title"));
                 newLocation.set("Latitude", Number(valueFor("Latitude")));
@@ -61,7 +60,7 @@ const CreateLocation = ({ show, handleClose }) => {
                 // Assume that "Countries" class has an object with objectId equals to the CountryID
                 var Countries = Parse.Object.extend("Countries");
                 var query = new Parse.Query(Countries);
-                console.log(valueFor("Country"));
+                
                 query.equalTo("Country", valueFor("Country")); // first "Countyr" is the column in the Countries table
                 query.first().then((country) => {
                 if (!country) {
@@ -103,7 +102,9 @@ const CreateLocation = ({ show, handleClose }) => {
         };
 
         reader.readAsDataURL(imageFile);
-    }
+
+        handleClose();
+    };
 
     return (
         <>
