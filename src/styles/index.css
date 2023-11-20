@@ -159,11 +159,13 @@ footer {
 
 #secondary-button {
   width: 100%;
-  margin-top: 5%;
   color: hsl(25, 68%, 50%);
   background-color: white;
   border-color: rgb(205, 196, 196);
   text-align: center;
+  border-width: 1px;
+  border-radius: 8px;
+  height: 40px;
 }
 
 #secondary-button:hover {
@@ -389,7 +391,7 @@ form {
   margin-left: 5px;
 }
 
-input[type="radio"] {
+#radio-button {
   box-sizing: border-box;
   appearance: none;
   background: white;
@@ -400,7 +402,7 @@ input[type="radio"] {
   border-radius: 10%;
 }
 
-input[type="radio"]:checked {
+#radio-button:checked {
   background: hsl(25, 68%, 50%);
 }
 
@@ -418,6 +420,10 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   background: hsl(25, 68%, 50%);
+}
+
+.margin-12{
+  margin-right: 12px !important;
 }
 
 .experience-container {

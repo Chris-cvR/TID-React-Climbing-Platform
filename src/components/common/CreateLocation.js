@@ -124,9 +124,9 @@ const CreateLocation = ({ show, handleClose }) => {
                                 />
                             </Form.Group>
                         </div>
-                        <div className='container mt-2'>
-                            <div className="row w-100">
-                                <div className="col-md-4">
+                        <div className='container-fluid mt-2'>
+                            <div className="row">
+                                <div className="col">
                                     <Form.Group controlId="formControl_2">
                                         <Form.Label>Latitude</Form.Label>
                                         <FormControl
@@ -145,6 +145,9 @@ const CreateLocation = ({ show, handleClose }) => {
                                             onChange={(e) => handleInputChange(3, e)}
                                         />
                                     </Form.Group>
+                
+                                </div>
+                                <div className="col">
                                     <Form.Group controlId="formControl_4">
                                         <Form.Label>Country</Form.Label>
                                         <FormControl
@@ -154,8 +157,6 @@ const CreateLocation = ({ show, handleClose }) => {
                                             onChange={(e) => handleInputChange(4, e)}
                                         />
                                     </Form.Group>
-                                </div>
-                                <div className="col-md-4 border rounded">
                                     <Form.Group controlId="formControl_5">
                                         <Form.Label>Type</Form.Label>
                                         <Form.Select onChange={(e) => handleInputChange(5, e)}>
@@ -167,11 +168,12 @@ const CreateLocation = ({ show, handleClose }) => {
                                         </Form.Select>
                                     </Form.Group>
                                 </div>
-                                <div className="col-md-4 border rounded">
+                                <div className="col border rounded margin-12">
                                     <Form.Group controlId="formControl_6">
                                         <Form.Label>Difficulty</Form.Label>
                                         {formData.find(item => item.label === "Difficulty").options.map(option => (
                                             <Form.Check
+                                                id="radio-button"
                                                 type="radio"
                                                 label={option}
                                                 key={option}
@@ -195,8 +197,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                 />
                             </Form.Group>
                         </div>
-                        <div className="row">
-                            <div className="col-md-8">
+                        <div className="row w-100">
                                 <Form.Group controlId="formControl_8">
                                     <Form.Label>Picture</Form.Label>
                                     <FormControl
@@ -204,18 +205,17 @@ const CreateLocation = ({ show, handleClose }) => {
                                         onChange={(e) => handleInputChange(8, e)}
                                     />
                                 </Form.Group>
-                            </div>
                         </div>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <div className='container'>
-                        <div className="row">
+                    <div className="container">
+                        <div className="row w-100">
                             <div className="col">
                                 <SecondaryButton Text={"Cancel"} onClick={handleClose}></SecondaryButton>
                             </div>
                             <div className="col">
-                                <Button type='submit' onClick={handleSubmit} className="form-button" size="large"> Save Changes </ Button>
+                                <Button type='submit' onClick={handleSubmit} className="form-button" size="large">Save Changes </ Button>
 
                             </div>
                         </div>
