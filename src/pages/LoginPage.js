@@ -10,6 +10,7 @@ export const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [currentUser, setCurrentUser] = useState(null);
+    const [errorMessage,setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
@@ -19,12 +20,6 @@ export const LoginPage = () => {
         const passwordValue = password;
         try {
             const loggedInUser = await Parse.User.logIn(usernameValue, passwordValue);
-            // logIn returns the corresponding ParseUser object
-            alert(
-                `Success! User ${loggedInUser.get(
-                    'username'
-                )} has successfully signed in!`
-            );
             // To verify that this is in fact the current user, `current` can be used
             const currentUser = await Parse.User.current();
             console.log(loggedInUser === currentUser);
@@ -38,27 +33,14 @@ export const LoginPage = () => {
             return true;
         } catch (error) {
             // Error can be caused by wrong parameters or lack of Internet connection
-            alert(`Error! ${error.message}`);
+            setErrorMessage('Invalid username or password.');
             return false;
         }
     };
 
-    const doUserLogOut = async function () {
-        try {
-            await Parse.User.logOut();
-            // To verify that current user is now empty, currentAsync can be used
-            const currentUser = await Parse.User.current();
-            if (currentUser === null) {
-                alert('Success! No user is logged in anymore!');
-            }
-            // Update state variable holding current user
-            getCurrentUser();
-            return true;
-        } catch (error) {
-            alert(`Error! ${error.message}`);
-            return false;
-        }
-    };
+    const clearErrorMessage = () => {
+        setErrorMessage('');
+    }
 
     // Function that will return current user and also update current username
     const getCurrentUser = async function () {
@@ -87,7 +69,11 @@ export const LoginPage = () => {
                         <div className="mb-3 custom-input">
                             <Input
                                 value={username}
-                                onChange={(event) => setUsername(event.target.value)}
+                                onChange={(event) => {
+                                    setUsername(event.target.value);
+                                    clearErrorMessage();
+                                    }
+                                }
                                 placeholder="Username"
                                 size="large"
                             />
@@ -96,15 +82,18 @@ export const LoginPage = () => {
                         <div className="mb-3 custom-input">
                             <Input
                                 value={password}
-                                onChange={(event) => setPassword(event.target.value)}
+                                onChange={(event) => {
+                                    setPassword(event.target.value)
+                                    clearErrorMessage();
+                                    }
+                                }
                                 placeholder="Password"
                                 size="large"
                                 type="password"
                             />
                         </div>
-
+                        {errorMessage && <p className='error-message'>{errorMessage}</p>}
                         <Button onClick={() => doUserLogIn()} className="form-button" size="large"> Log In </ Button>
-                        <Button onClick={() => doUserLogOut()} className="form-button" size="large"> Log Out </ Button>
 
                     </form>
                     <h6 className="not-a-member">Not a member? <NavLink className="nav-link" to="/register">Register</NavLink></h6>
