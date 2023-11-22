@@ -1,10 +1,11 @@
-import { BrowserRouter, Routes, Route, useHistory } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles/App.css';
 import FeedPage from './pages/FeedPage';
 import LoginPage from './pages/LoginPage'
 import DetailedLocationPage from './pages/LocationsPage'
 import AboutPage from './pages/AboutPage'
 import { RegistrationPage } from './pages/RegistrationPage';
+import TestingPage from './pages/TestingPage';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/location' element={<DetailedLocationPage />}></Route>
           <Route path='/about' element={<AboutPage />}></Route>
           <Route path='/register' element={<RegistrationPage />}></Route>
+          <Route path='/test' element={<TestingPage />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
