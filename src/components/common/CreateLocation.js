@@ -161,6 +161,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                     <Form.Group controlId="formControl_5">
                                         <Form.Label>Type</Form.Label>
                                         <Form.Select onChange={(e) => handleInputChange(5, e)}>
+                                            <option value=""></option>
                                             {formData.find(item => item.label === "Type").options.map(option => (
                                                 <option key={option} value={option}>
                                                     {option}

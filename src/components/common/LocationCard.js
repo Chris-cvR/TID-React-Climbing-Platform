@@ -31,7 +31,6 @@ export const LocationCard = () => {
         readLocations();
     }, []); // Empty dependency array ensures that this effect runs once on mount
 
-
     return (
         <div>
             <div className="container">
@@ -46,6 +45,7 @@ export const LocationCard = () => {
                                     <List.Item className="card_items">
                                         <Container className="my-5 location-card">
                                             <Card className="custom-card mx-auto">
+                                                {console.log(item.get('Country'))}
                                                 <Card.Img className="card-img-custom" src={item.get('Picture')?.url()} />
                                                 <Card.Body>
                                                     <div className="d-flex align-items-top">
@@ -61,7 +61,7 @@ export const LocationCard = () => {
                                                             </div>
                                                             <div className="location-place">
                                                                 <Card.Subtitle className="location-country">
-                                                                    <b>{ }</b>
+                                                                    <b>{item.get('Countries')?.get('Country')}</b>
                                                                 </Card.Subtitle>
                                                             </div>
                                                         </div>
