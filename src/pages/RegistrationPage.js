@@ -34,16 +34,23 @@ export const RegistrationPage = () => {
             user.set("experience", experienceValue);
 
             // Save the new user data object
-            await user.save();
-            // Since the signUp method returns a Promise, we need to call it using await
-            alert(
-                `Success! User ${usernameValue} was successfully created!`
-            );
+            await user.signUp();
+            //User is logged in after signing up, so data can be accessed
+            const loggedInUser = await Parse.User.logIn(usernameValue, passwordValue);
+
             navigate("/");
             return true;
         } catch (error) {
             // signUp can fail if any parameter is blank or failed an uniqueness check on the server
+            if (error.message.includes('username')){
+                setErrorMessage('Username is already taken.');
+            }else if (error.message.includes('password')){
             setErrorMessage('The password must contain at least one special character and uppercase letter.');
+            }else if (!experienceValue) {
+            setErrorMessage('Please select a proficiency level.');
+            }else {
+                setErrorMessage('An unexpected error occurred. Please try again.')
+            }    
             return false;
         }
     };

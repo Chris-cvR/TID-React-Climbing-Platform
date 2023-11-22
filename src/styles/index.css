@@ -381,9 +381,9 @@ form {
 .form-button:hover{
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19) !important;
 }
-
+/*Register page*/
 .register-container {
-  padding-top: 13%;
+  padding-top: 5%;
 }
 
 .register-input-fields{
@@ -404,7 +404,7 @@ form {
 }
 
 .welcome-text {
-  margin-top: 4%;
+  margin-top: 2%;
 }
 
 .custom-input {
