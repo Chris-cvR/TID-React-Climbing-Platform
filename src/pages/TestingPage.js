@@ -1,11 +1,11 @@
-import TestingLocationCard from "../components/common/TestingLocationCard";
-import { TodoList } from "../components/common/Test2";
+import OldLocationCard from "../components/common/OldLocationCard";
+import picture1 from "../assets/images/Blocs&Walls.jpg";
 
 function TestingPage() {
 
     return (
-        <TodoList />
+        <OldLocationCard picture={picture1} Title={"Blocs & Walls"}></OldLocationCard>
     )
 }
 
-export default TestingPage;
+export default TestingPage; 

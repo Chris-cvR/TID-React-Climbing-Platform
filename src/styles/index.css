@@ -36,6 +36,7 @@ code {
 /*LocationCard CSS*/
 .custom-card {
   margin-top: 40px;
+
   max-width: 35rem;
 }
 
@@ -73,6 +74,11 @@ code {
 .card-location {
   margin-left: 20px;
   align-content: right;
+}
+
+.card-img-custom {
+  max-width: 35rem;
+  max-height: 25rem;
 }
 
 #likes {

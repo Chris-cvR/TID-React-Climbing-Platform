@@ -1,6 +1,4 @@
-import LocationCard from "../components/common/LocationCard";
-import picture1 from "../assets/images/Blocs&Walls.jpg";
-import picture2 from "../assets/images/cphBoulders.jpg";
+import { LocationCard } from "../components/common/LocationCard";
 import Sidebar from "../components/sections/Sidebar"
 import Navbar from "../components/common/Navbar"
 import Footer from "../components/common/Footer"
@@ -28,14 +26,11 @@ function FeedPage() {
 
     return (
         <div>
-            <Navbar logout={logout}/>
+            <Navbar logout={logout} />
             <div className="main-wrapper">
                 <Sidebar handleShow={handleShow} />
                 <CreateLocation show={show} handleClose={handleClose} />
-                <div className="feed">
-                    <LocationCard picture={picture1} Title={"Blocs & Walls"}></LocationCard>
-                    <LocationCard picture={picture2} Title={"Copenhagen Boulders"}></LocationCard>
-                </div>
+                <LocationCard />
             </div>
             <Footer />
         </div>
