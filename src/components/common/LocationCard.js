@@ -13,11 +13,11 @@ export const LocationCard = () => {
     const [loading, setLoading] = useState(true); // Add loading state
 
     const readLocations = async function () {
-        // Reading parse objects is done by using Parse.Query
         const parseQuery = new Parse.Query('Location');
+        parseQuery.include('Country'); //This part is crucial if we want to fetch data that is a pointer to a different class in our backend. Along with the code on line 68. Without it done this way you cant fetch data that is a pointer to another class.
         try {
             let locations = await parseQuery.find();
-            // Set results to state variable
+
             setReadLocations(locations);
             setLoading(false); // Set loading to false when data is fetched
             return true;
@@ -29,10 +29,9 @@ export const LocationCard = () => {
         }
     };
 
-    // Use useEffect to fetch data on component mount
     useEffect(() => {
         readLocations();
-    }, []); // Empty dependency array ensures that this effect runs once on mount
+    }, []);
 
     return (
         <div>
@@ -64,7 +63,7 @@ export const LocationCard = () => {
                                                             </div>
                                                             <div className="location-place">
                                                                 <Card.Subtitle className="location-country">
-                                                                    <b>{item.get('Countries')?.get('Country')}</b>
+                                                                    <b>{item.get('Country').get('Country')}</b>
                                                                 </Card.Subtitle>
                                                             </div>
                                                         </div>
