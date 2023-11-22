@@ -35,7 +35,7 @@ export const LocationCard = () => {
 
     return (
         <div>
-            <div className="container">
+            <div className="location-container">
                 <div>
                     {loading && <div>Loading...</div>}
                     {!loading && readResults !== null &&
@@ -45,7 +45,7 @@ export const LocationCard = () => {
                             <List
                                 dataSource={readResults}
                                 renderItem={(item) => (
-                                    <List.Item className="card_items">
+                                    <List.Item className="card-items">
                                         <Container className="my-5 location-card">
                                             <Card className="custom-card mx-auto">
                                                 <Card.Img className="card-img-custom" src={item.get('Picture')?.url()} />

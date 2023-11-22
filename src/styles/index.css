@@ -40,6 +40,11 @@ code {
   max-width: 35rem;
 }
 
+.location-container{
+  display: flex;
+  align-items: center !important;
+}
+
 .location-details {
   margin-left: 20px;
   display: flex;
@@ -110,6 +115,8 @@ code {
   position: float;
   background: hsl(24, 8%, 88%);
   z-index: 1;
+  width: fit-content;
+  padding-right: 8%;
 }
 
 footer {
@@ -152,6 +159,10 @@ footer {
 
 .dropdown-menu label {
   display: block;
+}
+
+.dropdown-menu{
+  padding-right: 10%;
 }
 
 .nav {
@@ -440,6 +451,22 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
+  background: hsl(25, 68%, 50%);
+}
+
+input[type="radio"] {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  outline: 1px solid hsl(0, 0%, 83%);
+  border: 1px solid white;
+  width: 13px;
+  height: 13px;
+  border-radius: 10%;
+  padding-right: 10px;
+}
+
+input[type="radio"]:checked {
   background: hsl(25, 68%, 50%);
 }
 
