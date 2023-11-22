@@ -318,6 +318,10 @@ footer {
   font-size: 16px;
 }
 
+.crop-image{
+  object-fit: cover;
+}
+
 .login-container {
   display: flex;
   flex-direction: column;

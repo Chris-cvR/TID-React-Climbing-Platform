@@ -48,7 +48,7 @@ export const LocationCard = () => {
                                     <List.Item className="card-items">
                                         <Container className="my-5 location-card">
                                             <Card className="custom-card mx-auto">
-                                                <Card.Img className="card-img-custom" src={item.get('Picture')?.url()} />
+                                                <Card.Img className="card-img-custom crop-image" src={item.get('Picture')?.url()} />
                                                 <Card.Body>
                                                     <div className="d-flex align-items-top">
                                                         <div className="likes-container">
