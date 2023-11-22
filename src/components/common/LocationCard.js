@@ -10,6 +10,7 @@ import '../../styles/index.css';
 
 export const LocationCard = () => {
     const [readResults, setReadLocations] = useState([]);
+    const [loading, setLoading] = useState(true); // Add loading state
 
     const readLocations = async function () {
         // Reading parse objects is done by using Parse.Query
@@ -18,10 +19,12 @@ export const LocationCard = () => {
             let locations = await parseQuery.find();
             // Set results to state variable
             setReadLocations(locations);
+            setLoading(false); // Set loading to false when data is fetched
             return true;
         } catch (error) {
-            //Safety in case of internet error
+            // Safety in case of an internet error
             alert(`Error! ${error.message}`);
+            setLoading(false); // Set loading to false in case of an error
             return false;
         }
     };
@@ -35,7 +38,8 @@ export const LocationCard = () => {
         <div>
             <div className="container">
                 <div>
-                    {readResults !== null &&
+                    {loading && <div>Loading...</div>}
+                    {!loading && readResults !== null &&
                         readResults !== undefined &&
                         readResults.length > 0 && (
 
@@ -45,7 +49,6 @@ export const LocationCard = () => {
                                     <List.Item className="card_items">
                                         <Container className="my-5 location-card">
                                             <Card className="custom-card mx-auto">
-                                                {console.log(item.get('Country'))}
                                                 <Card.Img className="card-img-custom" src={item.get('Picture')?.url()} />
                                                 <Card.Body>
                                                     <div className="d-flex align-items-top">
