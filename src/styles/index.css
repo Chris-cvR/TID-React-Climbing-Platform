@@ -35,7 +35,6 @@ code {
 
 /*LocationCard CSS*/
 .custom-card {
-  margin-top: 40px;
 
   max-width: 35rem;
 }
@@ -211,7 +210,7 @@ footer {
   margin-left: 10px;
   width: 400px;
   max-width: 400px;
-  max-height: 200px;
+  max-height: 280px;
   word-wrap: break-word;
   overflow: auto;
 }
@@ -567,4 +566,9 @@ input[type="radio"]:checked {
 
 .comments-container{
   margin-bottom: 20px;
+}
+
+.checkbox-container{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

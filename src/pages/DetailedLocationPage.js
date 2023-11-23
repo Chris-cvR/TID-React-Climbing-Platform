@@ -106,7 +106,7 @@ const DetailedLocationPage = () => {
                 <Comment locationId={id} />
             </div>
             <div className="comments-container">
-                <CommentFactory locationId={id}></CommentFactory>
+                <CommentFactory locationId={id} />
             </div>
             <Footer />
         </div>

@@ -1,4 +1,4 @@
-import { LocationCard } from "../components/common/LocationCard";
+import { LocationCardFactory } from "../components/sections/LocationCardFactory";
 import Sidebar from "../components/sections/Sidebar"
 import Navbar from "../components/common/Navbar"
 import Footer from "../components/common/Footer"
@@ -30,7 +30,7 @@ function FeedPage() {
             <div className="main-wrapper">
                 <Sidebar handleShow={handleShow} />
                 <CreateLocation show={show} handleClose={handleClose} />
-                <LocationCard />
+                <LocationCardFactory />
             </div>
             <Footer />
         </div>

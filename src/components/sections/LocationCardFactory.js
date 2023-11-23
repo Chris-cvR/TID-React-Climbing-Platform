@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/index.css';
 
-export const LocationCard = () => {
+export const LocationCardFactory = () => {
     const [readResults, setReadLocations] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -45,7 +45,7 @@ export const LocationCard = () => {
                                 dataSource={[...readResults].reverse()}
                                 renderItem={(item) => (
                                     <List.Item className="card-items">
-                                        <Container className="my-5 location-card">
+                                        <Container className="my-4 location-card">
                                             <Card className="custom-card mx-auto">
                                                 <Link to={`/location/${item.id}`}>
                                                     <Card.Img className="card-img-custom crop-image" src={item.get('Picture')?.url()} />
