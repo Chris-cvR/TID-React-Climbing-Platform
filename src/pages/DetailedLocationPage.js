@@ -34,7 +34,7 @@ const DetailedLocationPage = () => {
     return (
         <div>
             <Navbar />
-            <div>
+            <div className="detailed-container">
                 <Container className="detailed-container">
                     {locationDetails && (
                         <Card className=" detailed-card-style">
@@ -102,10 +102,12 @@ const DetailedLocationPage = () => {
                     )}
                 </Container>
             </div>
-            <div>
+            <div className="detailed-container">
                 <Comment locationId={id} />
             </div>
-            <CommentFactory locationId={id}></CommentFactory>
+            <div className="comments-container">
+                <CommentFactory locationId={id}></CommentFactory>
+            </div>
             <Footer />
         </div>
     );

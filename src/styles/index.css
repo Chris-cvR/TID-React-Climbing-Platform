@@ -560,3 +560,11 @@ input[type="radio"]:checked {
 .custom-dropdown:hover{
   border-color: red !important;
 }
+
+.detailed-container {
+  margin-bottom: 10px;
+}
+
+.comments-container{
+  margin-bottom: 20px;
+}
