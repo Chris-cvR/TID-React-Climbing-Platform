@@ -8,6 +8,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import Comment from '../components/common/Comment'
 import Navbar from '../components/common/Navbar'
 import Footer from '../components/common/Footer'
+import CommentFactory from '../components/sections/CommentFactory';
 
 const DetailedLocationPage = () => {
     const { id } = useParams();
@@ -104,6 +105,7 @@ const DetailedLocationPage = () => {
             <div>
                 <Comment locationId={id} />
             </div>
+            <CommentFactory locationId={id}></CommentFactory>
             <Footer />
         </div>
     );

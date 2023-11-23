@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import Parse from "parse/dist/parse.min.js";
+import CommentFactory from "../sections/CommentFactory";
 
 function Comment({ locationId }) {
   // Initialize state variables using the useState hook
@@ -57,6 +58,7 @@ function Comment({ locationId }) {
         // Comment object saved successfully
         const commentObject = {
           id: savedComment.id,
+          locationID: locationId,
           text: newComment,
           username: currentUser.get("username"),
           experience: currentUser.get("experience"),
@@ -98,14 +100,6 @@ function Comment({ locationId }) {
   return (
     <div className="comment-container">
       <h2>Comments</h2>
-      {comments.map((comment) => (
-        <div key={comment.id} className="posted-comment">
-          <p className="comment-username">{comment.username} </p>
-          <p className="user-experience">{comment.experience}</p>
-          <p className="comment-text">{comment.text}</p>
-          <p className="comment-tags">{comment.tags}</p>
-        </div>
-      ))}
       <input
         className="add-comment-textbox"
         type="text"
