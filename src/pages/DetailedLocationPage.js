@@ -34,13 +34,13 @@ const DetailedLocationPage = () => {
     return (
         <div>
             <div>
-                <Container className="DetailedContainer">
+                <Container className="detailed-container">
                     {locationDetails && (
-                        <Card className=" DetailedCardStyle">
+                        <Card className=" detailed-card-style">
                             <Card.Body className="d-flex">
                                 {/* Left side with the image */}
                                 <div className="mr-5">
-                                    <Card.Img className="DetailedLocationImage" src={locationDetails.get('Picture')?.url()} />
+                                    <Card.Img className="crop-image detailed-location-image" src={locationDetails.get('Picture')?.url()} />
                                     <div className="detailed-flex-container">
                                         <div className="detailed-content">
                                             <h8>Coordinates</h8>
@@ -58,13 +58,14 @@ const DetailedLocationPage = () => {
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <div>
                                         <div className="detailed-content">
-                                            <h8>Address</h8>
-                                            <div className="detailed-text-container">
-                                                <p>{locationDetails.get('Address')}</p>
+                                            <div className='col'><h8>Type</h8></div>
+                                            <div className="col detailed-text-container">
+                                                {locationDetails.get('Type')}
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
 
@@ -73,32 +74,26 @@ const DetailedLocationPage = () => {
 
                                 {/* Right side with text information */}
                                 <div>
-                                    <div className="detailed-location-info">
-                                        <div className="detailed-location-title">
-                                            <Card.Title className="detailed-truncate-text">{locationDetails.get('Name')}</Card.Title>
+                                    <div className="row detailed-location-info">
+                                        <div className="col-auto .mr-auto detailed-likes-content">
+                                            <FontAwesomeIcon icon={faHeart} id="likes-heart" />
+                                            <div id="detailed-likes">{locationDetails.get('Likes')}</div>
                                         </div>
-                                        <div className="detailed-location-place">
-                                            <Card.Subtitle className="location-country"><b>{locationDetails.get('Country').get('Country')}</b></Card.Subtitle>
+                                        <div className="col detailed-location-title">
+                                            <Card.Title className="col float-start detailed-truncate-text">{locationDetails.get('Name')}</Card.Title>
+                                        </div>
+                                        <div className="col detailed-location-place">
+                                            <Card.Subtitle className="col float-end location-country"><b>{locationDetails.get('Country').get('Country')}</b></Card.Subtitle>
                                         </div>
                                     </div>
+                        
                                     <div className='detailed-text'>
                                         {locationDetails.get('Description')}
                                     </div>
                                     <div className="detailed-flex-container2">
-                                        <div className="detailed-content">
-                                            <h8>Type</h8>
-                                            <div className="detailed-text-container">
-                                                <p>{locationDetails.get('Type')}</p>
-                                            </div>
-                                        </div>
+                                       
 
-                                        <div className="detailed-likes-content">
-                                            <h8>Likes</h8>
-                                            <div className="coordinate-container">
-                                                <FontAwesomeIcon icon={faHeart} id="likes-heart" />
-                                                <div id="detailed-likes">{locationDetails.get('Likes')}</div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </Card.Body>
