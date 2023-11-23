@@ -540,3 +540,12 @@ input[type="radio"]:checked {
   gap: 3rem;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
 }
+
+.location-container a {
+  text-decoration: none; /* Remove default underline */
+  color: #000;
+}
+
+.location-container .card-title-link:hover {
+  text-decoration: underline; 
+}
