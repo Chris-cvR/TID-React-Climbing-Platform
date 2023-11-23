@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import Parse from "parse/dist/parse.min.js";
-import CommentFactory from "../sections/CommentFactory";
 
 function Comment({ locationId }) {
-  // Initialize state variables using the useState hook
   const [comments, setComments] = useState([]); // Store the list of comments
   const [newComment, setNewComment] = useState(""); // Store the new comment being typed by the user
   const [hashtags, setHashtags] = useState([]); // Keeping track of available hashtags
@@ -99,7 +97,7 @@ function Comment({ locationId }) {
 
   return (
     <div className="comment-container">
-      <h2>Comments</h2>
+      <h2>Add Comment</h2>
       <input
         className="add-comment-textbox"
         type="text"
@@ -123,7 +121,7 @@ function Comment({ locationId }) {
 
       <Button onClick={addComment} className="form-button" size="large">
         {" "}
-        Add Comment{" "}
+        Comment{" "}
       </Button>
     </div>
   );

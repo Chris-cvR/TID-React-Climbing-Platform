@@ -572,3 +572,32 @@ input[type="radio"]:checked {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.comments-filters{
+  margin-bottom: 10px;
+  max-width: 270px;
+  margin-left: 900px;
+}
+
+.comment-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif !important;
+  margin-bottom: 2px;
+}
+
+.comment-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid  hsl(0, 0%, 83%, 0.3);
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.comment-username{
+  font-size: large;
+}

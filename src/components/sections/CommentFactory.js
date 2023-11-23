@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Parse from 'parse/dist/parse.min.js';
-// if you use antd button somewhere, you can import it
-// import { Button } from 'antd';
 import '../../styles/index.css'
 import { List } from 'antd';
-import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom'; // Import Link from React Router
-import Container from 'react-bootstrap/Container';
+import { Container } from 'react-bootstrap';
 
 
 function CommentFactory({ locationId }) {
@@ -39,6 +35,7 @@ function CommentFactory({ locationId }) {
     return (
         <div>
             <div className="comment-container">
+                <h2>Comments</h2>
                 <div>
                     {readResults !== null &&
                         readResults !== undefined &&
@@ -46,14 +43,16 @@ function CommentFactory({ locationId }) {
                             <List
                                 dataSource={[...readResults].reverse()}
                                 renderItem={(item) => (
-                                    <List.Item className="card-items">
-                                        <div class="comment-card">
-                                            <p class="username">{item.get('UserID').get('username')}</p>
-                                            <b class="experience">{item.get('UserID').get('experience')}</b>
-                                            <p class="comment-text">{item.get('CommentText')}</p>
-                                            <p class="name">{item.get('Name')}</p>
-                                        </div>
-
+                                    <List.Item className="comment-card-items">
+                                        <Container className="comment-card-container">
+                                            <div className="comment-card">
+                                                <div className="user-info">
+                                                    <p className="comment-username">{item.get('UserID').get('username')}</p>
+                                                    <p>{item.get('UserID').get('experience')}</p>
+                                                </div>
+                                                <p>{item.get('CommentText')}</p>
+                                            </div>
+                                        </Container>
                                     </List.Item>
                                 )}
                             />
