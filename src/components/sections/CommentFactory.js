@@ -16,7 +16,7 @@ function CommentFactory({ locationId }) {
         const readComment = async function () {
             // Create a new query on the Comment class
             const parseQuery = new Parse.Query('Comment');
-            parseQuery.include('User');
+            parseQuery.include('UserID');
             parseQuery.include('Hashtags');
 
             // Use equalTo to find comments related to a specific locationId
