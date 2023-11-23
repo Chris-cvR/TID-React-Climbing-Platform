@@ -19,8 +19,6 @@ const DetailedLocationPage = () => {
 
         try {
             const location = await parseQuery.get(id);
-            console.log('Fetched location details:', location);
-            console.log(location.get('Name'))
             setLocationDetails(location);
         } catch (error) {
             console.error('Error fetching location details:', error);
@@ -28,7 +26,6 @@ const DetailedLocationPage = () => {
     };
 
     useEffect(() => {
-        console.log('Fetching location details for objectid:', id);
         fetchLocationDetails();
     }, [id]);
 
@@ -62,13 +59,13 @@ const DetailedLocationPage = () => {
                                             </div>
                                         </div>
                                         <div>
-                                        <div className="detailed-content">
-                                            <div className='col'><h8>Type</h8></div>
-                                            <div className="col detailed-text-container">
-                                                {locationDetails.get('Type')}
+                                            <div className="detailed-content">
+                                                <div className='col'><h8>Type</h8></div>
+                                                <div className="col detailed-text-container">
+                                                    {locationDetails.get('Type')}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
 
@@ -89,14 +86,14 @@ const DetailedLocationPage = () => {
                                             <Card.Subtitle className="col float-end location-country"><b>{locationDetails.get('Country').get('Country')}</b></Card.Subtitle>
                                         </div>
                                     </div>
-                        
+
                                     <div className='detailed-text'>
                                         {locationDetails.get('Description')}
                                     </div>
                                     <div className="detailed-flex-container2">
-                                       
 
-                                        
+
+
                                     </div>
                                 </div>
                             </Card.Body>
@@ -105,7 +102,7 @@ const DetailedLocationPage = () => {
                 </Container>
             </div>
             <div>
-                <Comment />
+                <Comment locationId={id} />
             </div>
             <Footer />
         </div>
