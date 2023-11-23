@@ -125,17 +125,10 @@ footer {
   z-index: 2;
 }
 
-.custom-dropdown{
-  font-family: "Montserrat", sans-serif !important;
-}
-
 .dropdown-buttons-sidebar {
   margin-top: 10%;
-}
-
-.option-button{
-  position:relative !important;
-  display: block !important;  
+  display: flex;
+  flex-direction: column;
 }
 
 .nav {
@@ -553,4 +546,17 @@ input[type="radio"]:checked {
 
 .location-container .card-title-link:hover {
   text-decoration: underline; 
+}
+
+.dropdown-button-group{
+  margin-bottom: 10px;
+}
+
+.custom-dropdown{
+  font-family: "Montserrat", sans-serif !important;
+  border-color: black !important;
+}
+
+.custom-dropdown:hover{
+  border-color: red !important;
 }
