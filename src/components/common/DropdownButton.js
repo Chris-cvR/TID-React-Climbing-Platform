@@ -1,37 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Select } from 'antd';
+import Parse from 'parse/dist/parse.min.js';
 
-function DropdownButton({ textct, ditem1, ditem2, ditem3, type }) {
-  const [isOpen, setIsOpen] = useState(false);
+const DropdownButton = ({ parseClassName, columnName, placeHolderText }) => {
+    const [options, setOptions] = useState([]);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+    useEffect(() => {
+        const fetchOptions = async () => {
+            const parseQuery = new Parse.Query(parseClassName);
 
-  return (
-    <div className="change-type-button dropdown">
-      <button
-        className='btn btn-secondary dropdown-toggle'
-        type='button'
-        data-toggle='dropdown'
-        aria-haspopup='true'
-        aria-expanded='false'
-        onClick={toggleDropdown}
-      >
-        {textct}
-      </button>
-      <div className={`dropdown-menu${isOpen ? ' show' : ''}`} aria-labelledby='drop-down-menu-button'>
-        <label>
-          <input type={type} name="type" value={ditem1} /> {ditem1}
-        </label>
-        <label>
-          <input type={type} name="type" value={ditem2} /> {ditem2}
-        </label>
-        <label>
-          <input type={type} name="type" value={ditem3} /> {ditem3}
-        </label>
-      </div>
-    </div>
-  );
-}
+            try {
+                parseQuery.select(columnName);
+                let values = await parseQuery.find();
+
+                const optionList = values.map(item => ({
+                    value: item.get(columnName),
+                }));
+
+                setOptions(optionList);
+                console.log(optionList);
+                return true;
+            } catch (error) {
+                alert(`Error! ${error.message}`);
+                return false;
+            }
+        };
+
+        fetchOptions();
+    }, [parseClassName, columnName]);
+
+    const handleChange = (value) => {
+        console.log(`Selected values: ${value}`);
+    };
+
+    return (
+        <Select
+            className='custom-dropdown'
+            size='large'
+            mode="tags"
+            style={{
+                width: '100%',
+            }}
+            placeholder={placeHolderText}
+            onChange={handleChange}
+            options={options}
+        />
+    );
+};
 
 export default DropdownButton;

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
-import SecondaryButton from './SecondaryButton';
 import { Button } from 'antd';
 import Parse from 'parse/dist/parse.min.js';
 
@@ -214,7 +213,7 @@ const CreateLocation = ({ show, handleClose }) => {
                     <div className="container">
                         <div className="row w-100">
                             <div className="col">
-                                <SecondaryButton Text={"Cancel"} onClick={handleClose}></SecondaryButton>
+                                <Button className="form-button-secondary" size="large" onClick={handleClose}> Cancel </Button>
                             </div>
                             <div className="col">
                                 <Button type='submit' onClick={handleSubmit} className="form-button" size="large">Save Changes </ Button>

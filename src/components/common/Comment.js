@@ -114,7 +114,7 @@ function Comment() {
         ))}
       </div>
 
-      <Button onClick={addComment} className="form-button" id="comment-button">
+      <Button onClick={addComment} className="form-button" size="large">
         {" "}
         Add Comment{" "}
       </Button>

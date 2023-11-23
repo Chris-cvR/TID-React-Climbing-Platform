@@ -125,44 +125,12 @@ footer {
   z-index: 2;
 }
 
-.dropdown-toggle {
-  color: hsl(25, 68%, 50%);
-  background-color: white;
-  border-color: rgb(205, 196, 196);
-}
-
-.dropdown-toggle {
-  width: 200px;
-  margin-top: 5%;
-  color: hsl(25, 68%, 50%);
-  background-color: white;
-  border-color: white;
-}
-
-.dropdown-toggle:hover {
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
+.custom-dropdown{
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .dropdown-buttons-sidebar {
   margin-top: 10%;
-}
-
-.dropdown input[type="checkbox"] {
-  margin-left: 10px;
-  margin-right: 2px;
-}
-
-.dropdown input[type="radio"] {
-  margin-left: 10px;
-  margin-right: 2px;
-}
-
-.dropdown-menu label {
-  display: block;
-}
-
-.dropdown-menu{
-  padding-right: 10%;
 }
 
 .nav {
@@ -182,19 +150,20 @@ footer {
   width: 100%;
 }
 
-#secondary-button {
-  width: 100%;
-  color: hsl(25, 68%, 50%);
-  background-color: white;
-  border-color: rgb(205, 196, 196);
-  text-align: center;
-  border-width: 1px;
-  border-radius: 8px;
-  height: 40px;
+.form-button-secondary {
+  width: 100% !important;
+  color: hsl(25, 68%, 50%) !important;
+  background-color: white !important;
+  border-color: rgb(205, 196, 196) !important;
+  text-align: center !important;
+  border-width: 1px !important;
+  border-radius: 8px !important;
+  height: 40px !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
-#secondary-button:hover {
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
+.form-button-secondary:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19) !important;
 }
 
 .divider {
@@ -372,7 +341,7 @@ form {
 .form-button {
   background-color: hsl(25, 68%, 50%) !important;
   border-color: hsl(25, 68%, 50%) !important;
-  border-radius: 5px;
+  border-radius: 5px !important;
   color: hsl(24, 8%, 88%) !important;
   width: 200px !important;
   font-family: "Montserrat", sans-serif !important;
@@ -535,14 +504,6 @@ input[type="radio"]:checked {
   height: 100px;
   border: 1px solid rgb(0, 0, 0, 0.175);
   border-radius: 0.375rem;
-}
-
-/*Styling for the "Add comment" button*/
-.comment-button {
-  background-color: hsl(25, 68%, 50%);
-  color: hsl(27, 26%, 92%);
-  margin-top: 10px;
-  cursor: pointer;
 }
 
 /*Styling for "User Experience"*/

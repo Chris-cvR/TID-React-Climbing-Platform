@@ -6,6 +6,8 @@ import { Container, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import Comment from '../components/common/Comment'
+import Navbar from '../components/common/Navbar'
+import Footer from '../components/common/Footer'
 
 const DetailedLocationPage = () => {
     const { id } = useParams();
@@ -33,6 +35,7 @@ const DetailedLocationPage = () => {
 
     return (
         <div>
+            <Navbar />
             <div>
                 <Container className="DetailedContainer">
                     {locationDetails && (
@@ -107,8 +110,9 @@ const DetailedLocationPage = () => {
                 </Container>
             </div>
             <div>
-                <Comment></Comment>
+                <Comment />
             </div>
+            <Footer />
         </div>
     );
 };
