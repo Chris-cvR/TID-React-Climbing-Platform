@@ -133,6 +133,11 @@ footer {
   margin-top: 10%;
 }
 
+.option-button{
+  position:relative !important;
+  display: block !important;  
+}
+
 .nav {
   padding-top: 50px;
   position: sticky;

@@ -11,7 +11,8 @@ function Sidebar({ handleShow }) {
         <ul>
           <Button onClick={handleShow} className="form-button" size="large"> Create Location </ Button>
           <div className='dropdown-buttons-sidebar'>
-            <DropdownButton parseClassName='Countries' columnName='Country' placeHolderText='Countries'></DropdownButton>
+            <DropdownButton id="option-button" parseClassName='Countries' columnName='Country' placeHolderText='Countries'></DropdownButton> 
+            <DropdownButton id="option-button" parseClassName='Types' columnName='TypeName' placeHolderText='Type'></DropdownButton>
           </div>
         </ul>
       </nav>
