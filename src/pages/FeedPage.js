@@ -20,7 +20,7 @@ function FeedPage() {
         Parse.User.logOut().then(() => {
             navigate('/login');
         }).catch((error) => {
-            console.errror('Failed to log out, with error: ', error);
+            console.error('Failed to log out, with error: ', error);
         });
     }
 
