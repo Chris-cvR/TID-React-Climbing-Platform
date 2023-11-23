@@ -10,7 +10,7 @@ export const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [currentUser, setCurrentUser] = useState(null);
-    const [errorMessage,setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
@@ -72,7 +72,7 @@ export const LoginPage = () => {
                                 onChange={(event) => {
                                     setUsername(event.target.value);
                                     clearErrorMessage();
-                                    }
+                                }
                                 }
                                 placeholder="Username"
                                 size="large"
@@ -85,7 +85,7 @@ export const LoginPage = () => {
                                 onChange={(event) => {
                                     setPassword(event.target.value)
                                     clearErrorMessage();
-                                    }
+                                }
                                 }
                                 placeholder="Password"
                                 size="large"

@@ -13,7 +13,7 @@ export const RegistrationPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [experience, setExperience] = useState('');
-    const [errorMessage,setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
@@ -34,16 +34,23 @@ export const RegistrationPage = () => {
             user.set("experience", experienceValue);
 
             // Save the new user data object
-            await user.save();
-            // Since the signUp method returns a Promise, we need to call it using await
-            alert(
-                `Success! User ${usernameValue} was successfully created!`
-            );
+            await user.signUp();
+            //User is logged in after signing up, so data can be accessed
+            const loggedInUser = await Parse.User.logIn(usernameValue, passwordValue);
+
             navigate("/");
             return true;
         } catch (error) {
             // signUp can fail if any parameter is blank or failed an uniqueness check on the server
-            setErrorMessage('The password must contain at least one special character and uppercase letter.');
+            if (error.message.includes('username')) {
+                setErrorMessage('Username is already taken.');
+            } else if (error.message.includes('password')) {
+                setErrorMessage('The password must contain at least one special character and uppercase letter.');
+            } else if (!experienceValue) {
+                setErrorMessage('Please select a proficiency level.');
+            } else {
+                setErrorMessage('An unexpected error occurred. Please try again.')
+            }
             return false;
         }
     };
@@ -66,33 +73,33 @@ export const RegistrationPage = () => {
                 </div>
                 <div className="register-form-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <div className='register-input-fields'>
-                    <Input
-                        value={username}
-                        onChange={(event) => {
-                            setUsername(event.target.value);
-                            clearErrorMessage();
+                        <Input
+                            value={username}
+                            onChange={(event) => {
+                                setUsername(event.target.value);
+                                clearErrorMessage();
                             }
-                        }
-                        placeholder="Username"
-                        size="large"
-                        className="custom-input"
-                        style={{marginTop: '4%'}}
-                    />
-                    <Input
-                        value={password}
-                        onChange={(event) => {
-                            setPassword(event.target.value);
-                            clearErrorMessage();
                             }
-                        }
-                        placeholder="Password"
-                        size="large"
-                        type="password"
-                        className="custom-input"
-                        style={{marginTop: '4%'}}
-                    />
+                            placeholder="Username"
+                            size="large"
+                            className="custom-input"
+                            style={{ marginTop: '4%' }}
+                        />
+                        <Input
+                            value={password}
+                            onChange={(event) => {
+                                setPassword(event.target.value);
+                                clearErrorMessage();
+                            }
+                            }
+                            placeholder="Password"
+                            size="large"
+                            type="password"
+                            className="custom-input"
+                            style={{ marginTop: '4%' }}
+                        />
                     </div>
-                    <label className='proficiency-selector' style={{marginBottom: '20px'}}>
+                    <label className='proficiency-selector' style={{ marginBottom: '20px' }}>
                         Proficiency Level:
                         <select value={experience} onChange={(e) => setExperience(e.target.value)}>
                             <option value=""></option>

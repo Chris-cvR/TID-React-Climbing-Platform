@@ -36,7 +36,13 @@ code {
 /*LocationCard CSS*/
 .custom-card {
   margin-top: 40px;
+
   max-width: 35rem;
+}
+
+.location-container{
+  display: flex;
+  align-items: center !important;
 }
 
 .location-details {
@@ -75,6 +81,11 @@ code {
   align-content: right;
 }
 
+.card-img-custom {
+  max-width: 35rem;
+  max-height: 25rem;
+}
+
 #likes {
   margin-top: 10px;
 }
@@ -104,6 +115,8 @@ code {
   position: float;
   background: hsl(24, 8%, 88%);
   z-index: 1;
+  width: fit-content;
+  padding-right: 8%;
 }
 
 footer {
@@ -146,6 +159,10 @@ footer {
 
 .dropdown-menu label {
   display: block;
+}
+
+.dropdown-menu{
+  padding-right: 10%;
 }
 
 .nav {
@@ -301,6 +318,10 @@ footer {
   font-size: 16px;
 }
 
+.crop-image{
+  object-fit: cover;
+}
+
 .login-container {
   display: flex;
   flex-direction: column;
@@ -357,12 +378,12 @@ form {
   font-family: "Montserrat", sans-serif !important;
 }
 
-.form-button:hover{
+.form-button:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19) !important;
 }
-
+/*Register page*/
 .register-container {
-  padding-top: 13%;
+  padding-top: 5%;
 }
 
 .register-input-fields{
@@ -383,7 +404,7 @@ form {
 }
 
 .welcome-text {
-  margin-top: 4%;
+  margin-top: 2%;
 }
 
 .custom-input {
@@ -437,6 +458,22 @@ input[type="checkbox"]:checked {
   background: hsl(25, 68%, 50%);
 }
 
+input[type="radio"] {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  outline: 1px solid hsl(0, 0%, 83%);
+  border: 1px solid white;
+  width: 13px;
+  height: 13px;
+  border-radius: 10%;
+  padding-right: 10px;
+}
+
+input[type="radio"]:checked {
+  background: hsl(25, 68%, 50%);
+}
+
 .margin-12{
   margin-right: 12px !important;
 }
@@ -486,7 +523,7 @@ input[type="checkbox"]:checked {
   margin-bottom: 15px;
 }
 /*Stying for the user name*/
-.comment-title {
+.comment-username {
   color: hsl(25, 68%, 50%);
   font-weight: bold;
   display: inline;

@@ -2,11 +2,11 @@ import "../../styles/index.css"
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import images from "../../assets/images/PeakPulse.png"
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Parse from 'parse/dist/parse.min.js';
 import { Button } from 'antd';
 
-const CompleteNavbar = ({logout}) => {
+const CompleteNavbar = ({ logout }) => {
 
     const user = Parse.User.current();
 

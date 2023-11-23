@@ -1,12 +1,12 @@
 import React from 'react';
-import "../../styles/index.css";
-import picture1 from "../../assets/images/Blocs&Walls.jpg"
+import "../styles/index.css";
+import picture1 from "../assets/images/Blocs&Walls.jpg"
 import { Container, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
-function LocationCard() {
+function OldDetailedLocationCard() {
     const LocationImage = picture1;
 
     return (
@@ -89,6 +89,6 @@ function LocationCard() {
     );
 };
 
-export default LocationCard;
+export default OldDetailedLocationCard;
 
 

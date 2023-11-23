@@ -11,7 +11,7 @@ const CreateLocation = ({ show, handleClose }) => {
         { id: 1, label: 'Title', type: 'text', value: '' },
         { id: 2, label: 'Latitude', type: 'number', value: '' },
         { id: 3, label: 'Longitude', type: 'number', value: '' },
-        { id: 4, label: 'Country', type: 'text', value: ''},
+        { id: 4, label: 'Country', type: 'text', value: '' },
         { id: 5, label: 'Type', type: 'checkbox', value: '', options: ['Alpine', 'Boulder', 'Cliff', 'Freeclimb', 'Gym', 'Horizontal', 'Ice', 'Indoor', 'Lead', 'Outdoor', 'Speedclimb', 'Sport', 'Urban'] },
         { id: 6, label: 'Difficulty', type: 'radio', value: '', options: ['Beginner', 'Intermediate', 'Advanced'] },
         { id: 7, label: 'Description', type: 'text', value: '' },
@@ -60,38 +60,38 @@ const CreateLocation = ({ show, handleClose }) => {
                 // Assume that "Countries" class has an object with objectId equals to the CountryID
                 var Countries = Parse.Object.extend("Countries");
                 var query = new Parse.Query(Countries);
-                
+
                 query.equalTo("Country", valueFor("Country")); // first "Countyr" is the column in the Countries table
                 query.first().then((country) => {
-                if (!country) {
-                    // Country doesn't exist. Create a new one.
-                    country = new Countries();
-                    country.set("Country", valueFor("Country"));
-                    return country.save();
-                } else {
-                    // Country already exists, do nothing.
-                    return country;
-                }
-                }).then((country) => {
-                // Now, country is either the existing country, or a new one created above. 
-
-                newLocation.set("Country", country); // Set pointer to Country object
-
-                let loggedInUser = Parse.User.current();
-                if(loggedInUser){
-                    newLocation.set("UserID", loggedInUser);
-                }else{
-                    console.log("No user logged in")
-                }
-                
-                newLocation.save().then(
-                    (result) => {
-                        if (typeof document !== 'undefined') console.log(`Location created succesfully: ${JSON.stringify(result)}`);
-                    },
-                    (error) => {
-                        if (typeof document !== 'undefined') console.log(`Error while creating Location: ${JSON.stringify(error)}`);
+                    if (!country) {
+                        // Country doesn't exist. Create a new one.
+                        country = new Countries();
+                        country.set("Country", valueFor("Country"));
+                        return country.save();
+                    } else {
+                        // Country already exists, do nothing.
+                        return country;
                     }
-                );
+                }).then((country) => {
+                    // Now, country is either the existing country, or a new one created above. 
+
+                    newLocation.set("Country", country); // Set pointer to Country object
+
+                    let loggedInUser = Parse.User.current();
+                    if (loggedInUser) {
+                        newLocation.set("UserID", loggedInUser);
+                    } else {
+                        console.log("No user logged in")
+                    }
+
+                    newLocation.save().then(
+                        (result) => {
+                            if (typeof document !== 'undefined') console.log(`Location created succesfully: ${JSON.stringify(result)}`);
+                        },
+                        (error) => {
+                            if (typeof document !== 'undefined') console.log(`Error while creating Location: ${JSON.stringify(error)}`);
+                        }
+                    );
                 }).catch(error => {
                     console.error('Error while saving file: ', error);
                 });
@@ -146,7 +146,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                             onChange={(e) => handleInputChange(3, e)}
                                         />
                                     </Form.Group>
-                
+
                                 </div>
                                 <div className="col">
                                     <Form.Group controlId="formControl_4">
@@ -161,11 +161,12 @@ const CreateLocation = ({ show, handleClose }) => {
                                     <Form.Group controlId="formControl_5">
                                         <Form.Label>Type</Form.Label>
                                         <Form.Select onChange={(e) => handleInputChange(5, e)}>
+                                            <option value=""></option>
                                             {formData.find(item => item.label === "Type").options.map(option => (
                                                 <option key={option} value={option}>
                                                     {option}
                                                 </option>
-                                        ))}
+                                            ))}
                                         </Form.Select>
                                     </Form.Group>
                                 </div>
@@ -199,13 +200,13 @@ const CreateLocation = ({ show, handleClose }) => {
                             </Form.Group>
                         </div>
                         <div className="row w-100">
-                                <Form.Group controlId="formControl_8">
-                                    <Form.Label>Picture</Form.Label>
-                                    <FormControl
-                                        type="file"
-                                        onChange={(e) => handleInputChange(8, e)}
-                                    />
-                                </Form.Group>
+                            <Form.Group controlId="formControl_8">
+                                <Form.Label>Picture</Form.Label>
+                                <FormControl
+                                    type="file"
+                                    onChange={(e) => handleInputChange(8, e)}
+                                />
+                            </Form.Group>
                         </div>
                     </Form>
                 </Modal.Body>
