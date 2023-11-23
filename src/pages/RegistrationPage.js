@@ -106,6 +106,7 @@ export const RegistrationPage = () => {
                             <option value="beginner">Beginner</option>
                             <option value="intermediate">Intermediate</option>
                             <option value="advanced">Advanced</option>
+                            <option value="advanced">Pro</option>
                         </select>
                     </label>
                     {errorMessage && <p className='error-message'>{errorMessage}</p>}
