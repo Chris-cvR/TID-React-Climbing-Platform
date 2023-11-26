@@ -23,7 +23,6 @@ function CommentFactory({ locationId }) {
                 let commentsReceived = await parseQuery.find();
                 // Set the results to state variable
                 setReadComments(commentsReceived);
-                console.log(commentsReceived); // Log the correct variable
             } catch (error) {
                 // Handle errors, like lack of Internet connection
                 alert(`Error! ${error.message}`);

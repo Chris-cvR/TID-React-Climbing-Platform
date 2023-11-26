@@ -38,7 +38,7 @@ export const RegistrationPage = () => {
             //User is logged in after signing up, so data can be accessed
             const loggedInUser = await Parse.User.logIn(usernameValue, passwordValue);
 
-            navigate("/");
+            navigate("/feed");
             return true;
         } catch (error) {
             // signUp can fail if any parameter is blank or failed an uniqueness check on the server
@@ -66,12 +66,12 @@ export const RegistrationPage = () => {
                     <img
                         src={Logo}
                         alt=""
-                        width="150"
-                        height="150"
+                        width="160"
+                        height="160"
                     />
                     <p className="welcome-text">Join the PeakPulse community!</p>
                 </div>
-                <div className="register-form-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div className="register-form-container">
                     <div className='register-input-fields'>
                         <Input
                             value={username}
@@ -111,7 +111,7 @@ export const RegistrationPage = () => {
                     </label>
                     {errorMessage && <p className='error-message'>{errorMessage}</p>}
                     <Button onClick={() => doUserRegistration()} className="form-button" size="large"> Sign Up </ Button>
-                    <h6 className="member-status"> Already a member? <NavLink className="nav-link" to="/login">Login</NavLink></h6>
+                    <h6 className="member-status"> Already a member? <NavLink className="nav-link" to="/feed">Login</NavLink></h6>
                 </div>
             </div>
         </div>

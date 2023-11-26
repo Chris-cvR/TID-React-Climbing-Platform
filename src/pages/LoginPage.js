@@ -29,7 +29,7 @@ export const LoginPage = () => {
             // Update state variable holding current user
             getCurrentUser();
 
-            navigate("/");
+            navigate("/feed");
             return true;
         } catch (error) {
             // Error can be caused by wrong parameters or lack of Internet connection
@@ -56,8 +56,8 @@ export const LoginPage = () => {
                 <div className="login-image">
                     <img className="login-logo"
                         src={Logo}
-                        width="100"
-                        height="100"
+                        width="150"
+                        height="150"
                         alt=""
                     />
                 </div>

@@ -349,7 +349,7 @@ form {
 }
 /*Register page*/
 .register-container {
-  padding-top: 5%;
+  padding-top: 15.5%;
 }
 
 .register-input-fields{
@@ -538,6 +538,10 @@ input[type="radio"]:checked {
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
 }
 
+.location-container{
+  margin-left: 80px;
+}
+
 .location-container a {
   text-decoration: none; /* Remove default underline */
   color: #000;
@@ -584,6 +588,7 @@ input[type="radio"]:checked {
   padding: 10px;
   font-family: "Montserrat", sans-serif !important;
   margin-bottom: 2px;
+  width: 780px;
 }
 
 .comment-card {
@@ -600,4 +605,10 @@ input[type="radio"]:checked {
 
 .comment-username{
   font-size: large;
+}
+
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

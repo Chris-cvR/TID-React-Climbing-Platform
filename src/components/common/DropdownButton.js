@@ -18,7 +18,6 @@ const DropdownButton = ({ parseClassName, columnName, placeHolderText }) => {
                 }));
 
                 setOptions(optionList);
-                console.log(optionList);
                 return true;
             } catch (error) {
                 alert(`Error! ${error.message}`);

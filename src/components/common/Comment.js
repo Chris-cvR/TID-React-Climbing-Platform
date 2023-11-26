@@ -73,6 +73,8 @@ function Comment({ locationId }) {
         setSelectedHashtags([]);
         // Reset checked status
         setCheckedStatus({});
+
+        window.location.reload();
       } catch (error) {
         console.log(`Could not add comment. Error code: ${error}`);
       }

@@ -29,8 +29,6 @@ export const LocationCardFactory = () => {
 
     useEffect(() => {
         readLocations();
-        console.log(readResults)
-
     }, []);
 
     return (

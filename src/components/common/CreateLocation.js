@@ -17,25 +17,51 @@ const CreateLocation = ({ show, handleClose }) => {
         { id: 8, label: 'Picture', type: 'file', value: null },
     ]);
 
+    const [inputError, setInputError] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     function valueFor(label) {
         const field = formData.find(item => item.label === label);
         return field ? field.value : undefined;
-    };
+    }
 
     const handleInputChange = (id, e) => {
-        const value = id === 8 ? e.target.files[0] : e.target.value;
+        let value = id === 8 ? e.target.files[0] : e.target.value;
+
         const updatedFormData = formData.map(item =>
             item.id === id ? { ...item, value: value } : item
         );
+
         setFormData(updatedFormData);
     };
 
-    const handleSubmit = (e) => {
+    const handleCloseModal = () => {
+        setInputError(false);
+        setShowSuccessMessage(false);
+        handleClose();
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        //code for submitting data to API
-        const Location = Parse.Object.extend("Location");
+
+        const isAnyFieldEmpty = formData.some(item => item.type !== 'file' && (item.value === '' || item.value === null));
+
+        if (isAnyFieldEmpty) {
+            setInputError(true);
+            return;
+        }
+
+        const Location = Parse.Object.extend('Location');
         const newLocation = new Location();
+
+        // Convert Country input to first letter capitalized and the rest lowercased
+        const countryValue = valueFor("Country");
+        const formattedCountry = countryValue && countryValue.trim() !== ""
+            ? countryValue.trim().charAt(0).toUpperCase() + countryValue.slice(1).toLowerCase()
+            : "";
+
+        console.log("Formatted Country:", formattedCountry);
 
         const imageFile = valueFor("Picture");
         const reader = new FileReader();
@@ -47,7 +73,6 @@ const CreateLocation = ({ show, handleClose }) => {
             let parseFile = new Parse.File(imageFileName, { base64: dataUri });
 
             parseFile.save().then(savedFile => {
-
                 newLocation.set("Name", valueFor("Title"));
                 newLocation.set("Latitude", Number(valueFor("Latitude")));
                 newLocation.set("Longitude", Number(valueFor("Longitude")));
@@ -56,36 +81,49 @@ const CreateLocation = ({ show, handleClose }) => {
                 newLocation.set("Description", valueFor("Description"));
                 newLocation.set("Picture", savedFile);
 
-                // Assume that "Countries" class has an object with objectId equals to the CountryID
                 var Countries = Parse.Object.extend("Countries");
                 var query = new Parse.Query(Countries);
 
-                query.equalTo("Country", valueFor("Country")); // first "Countyr" is the column in the Countries table
+                query.equalTo("Country", formattedCountry);
                 query.first().then((country) => {
                     if (!country) {
-                        // Country doesn't exist. Create a new one.
                         country = new Countries();
-                        country.set("Country", valueFor("Country"));
+                        country.set("Country", formattedCountry);
                         return country.save();
                     } else {
-                        // Country already exists, do nothing.
                         return country;
                     }
                 }).then((country) => {
-                    // Now, country is either the existing country, or a new one created above. 
-
-                    newLocation.set("Country", country); // Set pointer to Country object
+                    newLocation.set("Country", country);
 
                     let loggedInUser = Parse.User.current();
                     if (loggedInUser) {
                         newLocation.set("UserID", loggedInUser);
                     } else {
-                        console.log("No user logged in")
+                        console.log("No user logged in");
                     }
 
                     newLocation.save().then(
                         (result) => {
-                            if (typeof document !== 'undefined') console.log(`Location created succesfully: ${JSON.stringify(result)}`);
+                            if (typeof document !== 'undefined') console.log(`Location created successfully: ${JSON.stringify(result)}`);
+                            setSuccessMessage('Location created successfully!');
+                            setShowSuccessMessage(true);
+                            // Reset form data
+                            setFormData([
+                                { id: 1, label: 'Title', type: 'text', value: '' },
+                                { id: 2, label: 'Latitude', type: 'number', value: '' },
+                                { id: 3, label: 'Longitude', type: 'number', value: '' },
+                                { id: 4, label: 'Country', type: 'text', value: '' },
+                                { id: 5, label: 'Type', type: 'checkbox', value: '', options: ['Alpine', 'Boulder', 'Cliff', 'Freeclimb', 'Gym', 'Horizontal', 'Ice', 'Indoor', 'Lead', 'Outdoor', 'Speedclimb', 'Sport', 'Urban'] },
+                                { id: 6, label: 'Difficulty', type: 'radio', value: '', options: ['Beginner', 'Intermediate', 'Advanced'] },
+                                { id: 7, label: 'Description', type: 'text', value: '' },
+                                { id: 8, label: 'Picture', type: 'file', value: null },
+                            ]);
+                            // Wait for 2 seconds before hiding success message and refreshing
+                            setTimeout(() => {
+                                setShowSuccessMessage(false);
+                                window.location.reload();
+                            }, 2000);
                         },
                         (error) => {
                             if (typeof document !== 'undefined') console.log(`Error while creating Location: ${JSON.stringify(error)}`);
@@ -96,18 +134,17 @@ const CreateLocation = ({ show, handleClose }) => {
                 });
             });
         };
+
         reader.onerror = function (error) {
             console.log('Error: ', error);
         };
 
         reader.readAsDataURL(imageFile);
-
-        handleClose();
     };
 
     return (
         <>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Create Location</Modal.Title>
                 </Modal.Header>
@@ -115,7 +152,7 @@ const CreateLocation = ({ show, handleClose }) => {
                     <Form onSubmit={handleSubmit}>
                         <div className="row w-100">
                             <Form.Group controlId="formControl_1">
-                                <Form.Label>Title</Form.Label>
+                                <Form.Label>Title*</Form.Label>
                                 <FormControl
                                     type="text"
                                     placeholder="Enter Title"
@@ -128,7 +165,7 @@ const CreateLocation = ({ show, handleClose }) => {
                             <div className="row">
                                 <div className="col">
                                     <Form.Group controlId="formControl_2">
-                                        <Form.Label>Latitude</Form.Label>
+                                        <Form.Label>Latitude*</Form.Label>
                                         <FormControl
                                             type="number"
                                             placeholder="Enter Latitude"
@@ -137,7 +174,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                         />
                                     </Form.Group>
                                     <Form.Group controlId="formControl_3">
-                                        <Form.Label>Longitude</Form.Label>
+                                        <Form.Label>Longitude*</Form.Label>
                                         <FormControl
                                             type="number"
                                             placeholder="Enter Longitude"
@@ -149,7 +186,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                 </div>
                                 <div className="col">
                                     <Form.Group controlId="formControl_4">
-                                        <Form.Label>Country</Form.Label>
+                                        <Form.Label>Country*</Form.Label>
                                         <FormControl
                                             type="text"
                                             placeholder="Enter Country"
@@ -158,7 +195,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                         />
                                     </Form.Group>
                                     <Form.Group controlId="formControl_5">
-                                        <Form.Label>Type</Form.Label>
+                                        <Form.Label>Type*</Form.Label>
                                         <Form.Select onChange={(e) => handleInputChange(5, e)}>
                                             <option value=""></option>
                                             {formData.find(item => item.label === "Type").options.map(option => (
@@ -171,7 +208,7 @@ const CreateLocation = ({ show, handleClose }) => {
                                 </div>
                                 <div className="col border rounded margin-12">
                                     <Form.Group controlId="formControl_6">
-                                        <Form.Label>Difficulty</Form.Label>
+                                        <Form.Label>Difficulty*</Form.Label>
                                         {formData.find(item => item.label === "Difficulty").options.map(option => (
                                             <Form.Check
                                                 id="radio-button"
@@ -189,7 +226,7 @@ const CreateLocation = ({ show, handleClose }) => {
                         </div>
                         <div className="row w-100">
                             <Form.Group controlId="formControl_7">
-                                <Form.Label>Description</Form.Label>
+                                <Form.Label>Description*</Form.Label>
                                 <FormControl
                                     type="text"
                                     placeholder="Enter Description"
@@ -200,24 +237,35 @@ const CreateLocation = ({ show, handleClose }) => {
                         </div>
                         <div className="row w-100">
                             <Form.Group controlId="formControl_8">
-                                <Form.Label>Picture</Form.Label>
+                                <Form.Label>Image*</Form.Label>
                                 <FormControl
                                     type="file"
                                     onChange={(e) => handleInputChange(8, e)}
                                 />
                             </Form.Group>
                         </div>
+
+                        {inputError && (
+                            <div className="row w-100 text-danger">
+                                Please provide input for all fields marked with a *
+                            </div>
+                        )}
+
+                        {showSuccessMessage && (
+                            <div className="row w-100 text-success">
+                                {successMessage}
+                            </div>
+                        )}
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="container">
                         <div className="row w-100">
                             <div className="col">
-                                <Button className="form-button-secondary" size="large" onClick={handleClose}> Cancel </Button>
+                                <Button className="form-button-secondary" size="large" onClick={handleCloseModal}> Cancel </Button>
                             </div>
                             <div className="col">
-                                <Button type='submit' onClick={handleSubmit} className="form-button" size="large">Save Changes </ Button>
-
+                                <Button type='submit' onClick={handleSubmit} className="form-button" size="large"> Save Changes </Button>
                             </div>
                         </div>
                     </div>

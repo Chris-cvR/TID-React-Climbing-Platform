@@ -15,7 +15,7 @@ const CompleteNavbar = ({ logout }) => {
     return (
         <Navbar sticky="top" className="custom-navbar">
             <Container>
-                <Navbar.Brand as={Link} to="/" className="custom-brand">
+                <Navbar.Brand as={Link} to="/feed" className="custom-brand">
                     <img
                         alt=""
                         src={PeakPulseImage}
