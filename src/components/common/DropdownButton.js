@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Select } from 'antd';
 import Parse from 'parse/dist/parse.min.js';
 
-const DropdownButton = ({ parseClassName, columnName, placeHolderText }) => {
+const DropdownButton = ({ parseClassName, columnName, placeHolderText, onValuesChange }) => {
     const [options, setOptions] = useState([]);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const DropdownButton = ({ parseClassName, columnName, placeHolderText }) => {
     }, [parseClassName, columnName]);
 
     const handleChange = (value) => {
-        console.log(`Selected values: ${value}`);
+        onValuesChange(value);
     };
 
     return (

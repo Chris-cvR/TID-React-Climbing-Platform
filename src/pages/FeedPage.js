@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 function FeedPage() {
 
     const [show, setShow] = useState(false);
+    const [selectedCountries, setSelectedCountries] = useState([]);
+    const [selectedTypes, setSelectedTypes] = useState([]);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -24,13 +26,21 @@ function FeedPage() {
         });
     }
 
+    const handleCountryChange = (values) => {
+        setSelectedCountries(values);
+    };
+
+    const handleTypeChange = (values) => {
+        setSelectedTypes(values);
+    };
+
     return (
         <div>
             <Navbar logout={logout} />
             <div className="main-wrapper">
-                <Sidebar handleShow={handleShow} />
+                <Sidebar handleShow={handleShow} onCountryChange={handleCountryChange} onTypeChange={handleTypeChange} />
                 <CreateLocation show={show} handleClose={handleClose} />
-                <LocationCardFactory />
+                <LocationCardFactory selectedCountries={selectedCountries} selectedTypes={selectedTypes} />
             </div>
             <Footer />
         </div>

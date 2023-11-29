@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import { Link } from 'react-router-dom';
 import Parse from 'parse/dist/parse.min.js';
 import { List } from 'antd';
 import Card from 'react-bootstrap/Card';
@@ -8,15 +8,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/index.css';
 
-export const LocationCardFactory = () => {
+export const LocationCardFactory = ({ selectedCountries, selectedTypes }) => {
     const [readResults, setReadLocations] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const readLocations = async function () {
         const parseQuery = new Parse.Query('Location');
         parseQuery.include('Country');
+
+        // Default state: show all cards when no filters are selected
+        if (selectedCountries.length === 0 && selectedTypes.length === 0) {
+            console.log("No filters selected - Fetching all locations");
+        } else {
+            // Apply filters based on selected values
+            console.log("Applying filters - Countries:", selectedCountries);
+            console.log("Applying filters - Types:", selectedTypes);
+
+            if (selectedCountries.length > 0) {
+                parseQuery.containedIn('Country', selectedCountries);
+            }
+
+            if (selectedTypes.length > 0) {
+                parseQuery.containedIn('TypeName', selectedTypes);
+            }
+        }
+
         try {
             let locations = await parseQuery.find();
+            console.log("Fetched locations:", locations);
             setReadLocations(locations);
             setLoading(false);
             return true;
@@ -28,8 +47,16 @@ export const LocationCardFactory = () => {
     };
 
     useEffect(() => {
-        readLocations();
-    }, []);
+        const fetchData = async () => {
+            try {
+                await readLocations();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, [selectedCountries, selectedTypes]);
 
     return (
         <div>
@@ -42,7 +69,7 @@ export const LocationCardFactory = () => {
                             <List
                                 dataSource={[...readResults].reverse()}
                                 renderItem={(item) => (
-                                    <List.Item className="card-items">
+                                    <List.Item className="card-items" key={item.id}>
                                         <Container className="my-4 location-card">
                                             <Card className="custom-card mx-auto">
                                                 <Link to={`/location/${item.id}`}>
