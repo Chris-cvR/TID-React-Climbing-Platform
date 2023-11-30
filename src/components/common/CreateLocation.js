@@ -100,7 +100,6 @@ const CreateLocation = ({ show, handleClose }) => {
                 if (!country) {
                     const newCountry = new Countries();
                     newCountry.set("Country", formattedCountry);
-                    console.log(newCountry + "I WAS FIRST HERE");
                     await newCountry.save();
                     newLocation.set("Country", newCountry);
                 } else {
@@ -111,7 +110,6 @@ const CreateLocation = ({ show, handleClose }) => {
                 if (!difficulty) {
                     const newDifficulty = new Difficulty();
                     newDifficulty.set("Difficulty", formattedDifficulty);
-                    console.log(newDifficulty + "I AM HERE");
                     await newDifficulty.save();
                     newLocation.set("Difficulty", newDifficulty);
                 } else {
@@ -127,7 +125,6 @@ const CreateLocation = ({ show, handleClose }) => {
 
                 await newLocation.save();
 
-                console.log(`Location created successfully: ${JSON.stringify(newLocation)}`);
                 setSuccessMessage('Location created successfully!');
                 setShowSuccessMessage(true);
 

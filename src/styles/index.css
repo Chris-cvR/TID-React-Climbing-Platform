@@ -49,7 +49,6 @@ code {
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
-  margin-bottom: 5px;
 }
 
 .location-title {
@@ -63,7 +62,7 @@ code {
 
 .card-text {
   margin-left: 50px;
-  margin-top: -25px;
+  margin-top: -35px;
 }
 
 #heart {
@@ -94,7 +93,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: -5px;
+  margin-top: -20px;
 }
 
 .center-likes {
@@ -102,6 +101,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 4px;
 }
 
 .truncate-text {
@@ -617,4 +617,8 @@ input[type="radio"]:checked {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.location-difficulty{
+  margin-top: 15px;
 }

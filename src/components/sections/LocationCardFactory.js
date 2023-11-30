@@ -12,6 +12,7 @@ export const LocationCardFactory = () => {
     const readLocationsQuery = async function () {
         const parseQuery = new Parse.Query('Location');
         parseQuery.include('Country');
+        parseQuery.include('Difficulty');
         parseQuery.descending('updatedAt'); //Now the cards are sorted based on popularity 
 
         try {
@@ -50,6 +51,7 @@ export const LocationCardFactory = () => {
                                                 locationName={item.get('Name')}
                                                 locationCountry={item.get('Country').get('Country')}
                                                 locationType={item.get('Type')}
+                                                locationDifficulty={item.get('Difficulty').get('Difficulty')}
                                             />
                                         </Container>
                                     </List.Item>

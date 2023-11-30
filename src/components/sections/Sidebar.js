@@ -17,6 +17,9 @@ function Sidebar({ handleShow }) {
             <div className='dropdown-button-group'>
               <DBFetcherDropdownButton parseClassName='Types' columnName='TypeName' placeHolderText='Type'></DBFetcherDropdownButton>
             </div>
+            <div className='dropdown-button-group'>
+              <DBFetcherDropdownButton parseClassName='Difficulty' columnName='Difficulty' placeHolderText='Difficulty'></DBFetcherDropdownButton>
+            </div>
           </div>
         </ul>
       </nav>
