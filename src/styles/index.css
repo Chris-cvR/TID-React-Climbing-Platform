@@ -624,7 +624,3 @@ input[type="radio"]:checked {
   flex-direction: column;
   align-items: center;
 }
-
-.location-difficulty{
-  margin-top: 15px;
-}
