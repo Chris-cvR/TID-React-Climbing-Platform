@@ -38,7 +38,11 @@ const CompleteNavbar = () => {
                 </Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text className="navbar-text">
-                        Hello, {user ? user.get("username") : 'Guest'}!
+                        Hello, {user ? (
+                            <Link to={`/user/${user.get("username")}`}>
+                                {user.get("username")}
+                            </Link>
+                        ) : 'Guest'}!
                     </Navbar.Text>
                     <Button id="logout-button" className="form-button" size="large" onClick={logout}>Logout</Button>
                 </Navbar.Collapse>
