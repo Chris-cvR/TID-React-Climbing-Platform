@@ -14,6 +14,7 @@ export const RegistrationPage = () => {
     const [password, setPassword] = useState('');
     const [experience, setExperience] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [profilePicutre, setProfilePicture] = useState(null);
 
     const navigate = useNavigate();
 
@@ -28,10 +29,17 @@ export const RegistrationPage = () => {
             const User = Parse.Object.extend("User");
             const user = new User();
 
+            let profilePictureoToSave;
+            if (profilePicutre) {
+                profilePictureoToSave = new Parse.File(profilePicutre.name, profilePicutre);
+                await profilePictureoToSave.save();
+            }
+
             // Set the user attributes
             user.set("username", usernameValue);
             user.set("password", passwordValue);
             user.set("experience", experienceValue);
+            if(profilePictureoToSave) user.set("ProfilePicture", profilePictureoToSave);
 
             // Save the new user data object
             await user.signUp();
@@ -95,6 +103,17 @@ export const RegistrationPage = () => {
                             placeholder="Password"
                             size="large"
                             type="password"
+                            className="custom-input"
+                            style={{ marginTop: '4%' }}
+                        />
+                        <Input
+                            type="file"
+                            onChange={(event) => {
+                                setProfilePicture(event.target.files[0]);
+                                clearErrorMessage();
+                            }}
+                            placeholder="Profile Picture"
+                            size="large"
                             className="custom-input"
                             style={{ marginTop: '4%' }}
                         />

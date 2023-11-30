@@ -633,3 +633,30 @@ input[type="radio"]:checked {
   justify-content: center;
   margin: 5%;
 }
+
+.user-page-input {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  border: 1px solid;
+  border-color: rgb(205, 196, 196);
+}
+
+.change-password-container{
+  margin-top: 20px;
+}
+
+.change-profile-picture-container{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-page-profile-picture{
+  height: 160;
+  width: 160;
+}
