@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import '../../styles/index.css';
 import LikeFunctionality from '../common/LikeFunctionality';
 
-function SimpleLocationCard({ locationURL, locationPicture, locationID, locationName, locationCountry, locationType }) {
+function SimpleLocationCard({ locationURL, locationPicture, locationID, locationName, locationCountry, locationType, locationDifficulty }) {
 
     return (
         <Card className="custom-card mx-auto">
@@ -21,28 +21,27 @@ function SimpleLocationCard({ locationURL, locationPicture, locationID, location
                     <div className="location-details">
                         <div className="location-title">
                             <Card.Title className="truncate-text">
-                                <Link to={locationURL} className="card-title-link">
-                                    {locationName}
-                                </Link>
+                                <Link to={locationURL} className="card-title-link">{locationName}</Link>
                             </Card.Title>
                         </div>
                         <div className="location-place">
                             <Card.Subtitle className="location-country">
                                 <b>{locationCountry}</b>
                             </Card.Subtitle>
+                            <Card.Subtitle className="location-difficulty">
+                                <p>{locationDifficulty}</p>
+                            </Card.Subtitle>
                         </div>
                     </div>
                 </div>
                 <div>
                     <Card.Text>
-                        <small className="text-muted">{locationType}</small>
+                        <large>{locationType}</large>
                     </Card.Text>
                 </div>
             </Card.Body>
         </Card>
-
     )
-
 }
 
 export default SimpleLocationCard;

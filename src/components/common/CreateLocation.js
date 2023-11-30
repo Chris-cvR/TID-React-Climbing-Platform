@@ -12,7 +12,7 @@ const CreateLocation = ({ show, handleClose }) => {
         { id: 3, label: 'Longitude', type: 'number', value: '' },
         { id: 4, label: 'Country', type: 'text', value: '' },
         { id: 5, label: 'Type', type: 'checkbox', value: '', options: ['Alpine', 'Boulder', 'Cliff', 'Freeclimb', 'Gym', 'Horizontal', 'Ice', 'Indoor', 'Lead', 'Outdoor', 'Speedclimb', 'Sport', 'Urban'] },
-        { id: 6, label: 'Difficulty', type: 'radio', value: '', options: ['Beginner', 'Intermediate', 'Advanced'] },
+        { id: 6, label: 'Difficulty', type: 'text', value: '' },
         { id: 7, label: 'Description', type: 'text', value: '' },
         { id: 8, label: 'Picture', type: 'file', value: null },
     ]);
@@ -55,7 +55,6 @@ const CreateLocation = ({ show, handleClose }) => {
         const Location = Parse.Object.extend('Location');
         const newLocation = new Location();
 
-        // Convert Country input to first letter capitalized and the rest lowercased
         const countryValue = valueFor("Country");
         const formattedCountry = countryValue && countryValue.trim() !== ""
             ? countryValue.trim().charAt(0).toUpperCase() + countryValue.slice(1).toLowerCase()
@@ -63,76 +62,90 @@ const CreateLocation = ({ show, handleClose }) => {
 
         console.log("Formatted Country:", formattedCountry);
 
+        const difficultyValue = valueFor("Difficulty");
+        const formattedDifficulty = difficultyValue && difficultyValue.trim() !== ""
+            ? difficultyValue.trim().charAt(0).toUpperCase() + difficultyValue.slice(1).toLowerCase()
+            : "";
+
+        console.log("Formatted Difficulty", formattedDifficulty);
+
         const imageFile = valueFor("Picture");
         const reader = new FileReader();
 
-        reader.onloadend = function () {
+        reader.onloadend = async function () {
             const dataUri = reader.result;
             const imageFileName = imageFile.name;
 
-            let parseFile = new Parse.File(imageFileName, { base64: dataUri });
+            try {
+                const parseFile = new Parse.File(imageFileName, { base64: dataUri });
+                const savedFile = await parseFile.save();
 
-            parseFile.save().then(savedFile => {
                 newLocation.set("Name", valueFor("Title"));
                 newLocation.set("Latitude", Number(valueFor("Latitude")));
                 newLocation.set("Longitude", Number(valueFor("Longitude")));
                 newLocation.set("Type", valueFor("Type"));
-                newLocation.set("Difficulty", valueFor("Difficulty"));
                 newLocation.set("Description", valueFor("Description"));
                 newLocation.set("Picture", savedFile);
 
                 var Countries = Parse.Object.extend("Countries");
                 var query = new Parse.Query(Countries);
 
+                var Difficulty = Parse.Object.extend("Difficulty");
+                var querydifficulty = new Parse.Query(Difficulty);
+
                 query.equalTo("Country", formattedCountry);
-                query.first().then((country) => {
-                    if (!country) {
-                        country = new Countries();
-                        country.set("Country", formattedCountry);
-                        return country.save();
-                    } else {
-                        return country;
-                    }
-                }).then((country) => {
+                querydifficulty.equalTo("Difficulty", formattedDifficulty);
+
+                const country = await query.first();
+                if (!country) {
+                    const newCountry = new Countries();
+                    newCountry.set("Country", formattedCountry);
+                    await newCountry.save();
+                    newLocation.set("Country", newCountry);
+                } else {
                     newLocation.set("Country", country);
+                }
 
-                    let loggedInUser = Parse.User.current();
-                    if (loggedInUser) {
-                        newLocation.set("UserID", loggedInUser);
-                    } else {
-                        console.log("No user logged in");
-                    }
+                const difficulty = await querydifficulty.first();
+                if (!difficulty) {
+                    const newDifficulty = new Difficulty();
+                    newDifficulty.set("Difficulty", formattedDifficulty);
+                    await newDifficulty.save();
+                    newLocation.set("Difficulty", newDifficulty);
+                } else {
+                    newLocation.set("Difficulty", difficulty);
+                }
 
-                    newLocation.save().then(
-                        (result) => {
-                            if (typeof document !== 'undefined') console.log(`Location created successfully: ${JSON.stringify(result)}`);
-                            setSuccessMessage('Location created successfully!');
-                            setShowSuccessMessage(true);
-                            // Reset form data
-                            setFormData([
-                                { id: 1, label: 'Title', type: 'text', value: '' },
-                                { id: 2, label: 'Latitude', type: 'number', value: '' },
-                                { id: 3, label: 'Longitude', type: 'number', value: '' },
-                                { id: 4, label: 'Country', type: 'text', value: '' },
-                                { id: 5, label: 'Type', type: 'checkbox', value: '', options: ['Alpine', 'Boulder', 'Cliff', 'Freeclimb', 'Gym', 'Horizontal', 'Ice', 'Indoor', 'Lead', 'Outdoor', 'Speedclimb', 'Sport', 'Urban'] },
-                                { id: 6, label: 'Difficulty', type: 'radio', value: '', options: ['Beginner', 'Intermediate', 'Advanced'] },
-                                { id: 7, label: 'Description', type: 'text', value: '' },
-                                { id: 8, label: 'Picture', type: 'file', value: null },
-                            ]);
-                            // Wait for 2 seconds before hiding success message and refreshing
-                            setTimeout(() => {
-                                setShowSuccessMessage(false);
-                                window.location.reload();
-                            }, 2000);
-                        },
-                        (error) => {
-                            if (typeof document !== 'undefined') console.log(`Error while creating Location: ${JSON.stringify(error)}`);
-                        }
-                    );
-                }).catch(error => {
-                    console.error('Error while saving file: ', error);
-                });
-            });
+                let loggedInUser = Parse.User.current();
+                if (loggedInUser) {
+                    newLocation.set("UserID", loggedInUser);
+                } else {
+                    console.log("No user logged in");
+                }
+
+                await newLocation.save();
+
+                setSuccessMessage('Location created successfully!');
+                setShowSuccessMessage(true);
+
+                setFormData([
+                    { id: 1, label: 'Title', type: 'text', value: '' },
+                    { id: 2, label: 'Latitude', type: 'number', value: '' },
+                    { id: 3, label: 'Longitude', type: 'number', value: '' },
+                    { id: 4, label: 'Country', type: 'text', value: '' },
+                    { id: 5, label: 'Type', type: 'checkbox', value: '', options: ['Alpine', 'Boulder', 'Cliff', 'Freeclimb', 'Gym', 'Horizontal', 'Ice', 'Indoor', 'Lead', 'Outdoor', 'Speedclimb', 'Sport', 'Urban'] },
+                    { id: 6, label: 'Difficulty', type: 'text', value: '' },
+                    { id: 7, label: 'Description', type: 'text', value: '' },
+                    { id: 8, label: 'Picture', type: 'file', value: null },
+                ]);
+
+                setTimeout(() => {
+                    window.location.reload();
+                    setShowSuccessMessage(false);
+                }, 2000);
+            } catch (error) {
+                console.error('Error while creating Location: ', error);
+            }
         };
 
         reader.onerror = function (error) {
@@ -206,20 +219,15 @@ const CreateLocation = ({ show, handleClose }) => {
                                         </Form.Select>
                                     </Form.Group>
                                 </div>
-                                <div className="col border rounded margin-12">
+                                <div className="col">
                                     <Form.Group controlId="formControl_6">
                                         <Form.Label>Difficulty*</Form.Label>
-                                        {formData.find(item => item.label === "Difficulty").options.map(option => (
-                                            <Form.Check
-                                                id="radio-button"
-                                                type="radio"
-                                                label={option}
-                                                key={option}
-                                                name="radioGroup_5"
-                                                value={option}
-                                                onChange={(e) => handleInputChange(6, e)}
-                                            />
-                                        ))}
+                                        <FormControl
+                                            type="text"
+                                            placeholder="Enter Difficulty"
+                                            value={valueFor("Difficulty")}
+                                            onChange={(e) => handleInputChange(6, e)}
+                                        />
                                     </Form.Group>
                                 </div>
                             </div>
