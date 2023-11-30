@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "antd";
 import Parse from "parse/dist/parse.min.js";
 
-function Comment({ locationId }) {
+function Comment({ locationId, onCommentAdded }) {
   const [comments, setComments] = useState([]); // Store the list of comments
   const [newComment, setNewComment] = useState(""); // Store the new comment being typed by the user
 
@@ -35,7 +35,10 @@ function Comment({ locationId }) {
         // Clear the input field
         setNewComment("");
 
-        window.location.reload();
+        // Notify the CommentSectionFactory about the new comment
+        if (onCommentAdded) {
+          onCommentAdded(savedComment);
+        }
       } catch (error) {
         console.log(`Could not add comment. Error code: ${error}`);
       }
@@ -52,7 +55,12 @@ function Comment({ locationId }) {
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
-      <Button onClick={addComment} id="comment-button" className="form-button" size="large">
+      <Button
+        onClick={addComment}
+        id="comment-button"
+        className="form-button"
+        size="large"
+      >
         {" "}
         Comment{" "}
       </Button>
