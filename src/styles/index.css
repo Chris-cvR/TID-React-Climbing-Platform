@@ -165,7 +165,7 @@ footer {
 
 .divider {
   width: 1px;
-  background-color: #000;
+  background-color: rgb(205, 196, 196);
   margin: 0 15px;
   height: 100%;
 }
