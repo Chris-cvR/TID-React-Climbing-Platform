@@ -7,7 +7,7 @@ import Comment from '../components/common/Comment'
 import Navbar from '../components/common/Navbar'
 import Footer from '../components/common/Footer'
 import CommentSectionFactory from '../components/sections/CommentSectionFactory';
-import DetailedCard from '../components/common/DetailedCard'
+import DetailedLocationCard from '../components/common/DetailedLocationCard'
 
 const DetailedLocationPage = () => {
     const { id } = useParams();
@@ -36,7 +36,7 @@ const DetailedLocationPage = () => {
             <div className="detailed-container">
                 <Container className="detailed-container">
                     {locationDetails && (
-                        <DetailedCard
+                        <DetailedLocationCard
                             locationPicture={locationDetails.get('Picture')?.url()}
                             locationLatitude={locationDetails.get('Latitude')}
                             locationLongitude={locationDetails.get('Longitude')}

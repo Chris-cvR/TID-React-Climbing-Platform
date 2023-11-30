@@ -14,6 +14,7 @@ function CommentSectionFactory({ locationId }) {
             const parseQuery = new Parse.Query('Comment');
             parseQuery.include('UserID');
             parseQuery.include('Hashtags');
+            parseQuery.descending('createdAt'); //Now the comments will be sorted by the newest first
 
             // Use equalTo to find comments related to a specific locationId
             parseQuery.equalTo('LocationID', locationId);

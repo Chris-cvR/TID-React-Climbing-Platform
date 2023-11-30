@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import LikeFunctionality from '../common/LikeFunctionality';
+import LikeFunctionality from './LikeFunctionality';
 
-function DetailedCard({ locationPicture, locationLatitude, locationLongitude, locationType, locationName, locationCountry, locationDetails, locationID }) {
+function DetailedLocationCard({ locationPicture, locationLatitude, locationLongitude, locationType, locationName, locationCountry, locationDetails, locationID }) {
 
     return (
         <Card className=" detailed-card-style">
@@ -68,5 +68,5 @@ function DetailedCard({ locationPicture, locationLatitude, locationLongitude, lo
     );
 };
 
-export default DetailedCard;
+export default DetailedLocationCard;
 

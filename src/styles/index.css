@@ -479,6 +479,11 @@ input[type="radio"]:checked {
   padding: 50px;
   background-color: #fff;
 }
+
+#comment-button{
+  margin-top: 10px;
+}
+
 /*style for each posted comment*/
 .posted-comment {
   width: 500px;

@@ -52,7 +52,7 @@ function Comment({ locationId }) {
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
-      <Button onClick={addComment} className="form-button" size="large">
+      <Button onClick={addComment} id="comment-button" className="form-button" size="large">
         {" "}
         Comment{" "}
       </Button>
