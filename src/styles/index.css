@@ -117,6 +117,12 @@ code {
   z-index: 1;
   width: fit-content;
   padding-right: 8%;
+  width: 350px;
+  max-width: 350px;
+}
+
+.sidebar-buttons{
+margin-left: 35px;
 }
 
 footer {

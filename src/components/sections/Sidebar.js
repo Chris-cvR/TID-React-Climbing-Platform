@@ -9,16 +9,18 @@ function Sidebar({ handleShow }) {
     <div className="sidebar">
       <nav className="nav">
         <ul>
-          <Button onClick={handleShow} className="form-button" size="large"> Create Location </ Button>
-          <div className='dropdown-buttons-sidebar'>
-            <div className='dropdown-button-group'>
-              <DBFetcherDropdownButton parseClassName='Countries' columnName='Country' placeHolderText='Countries'></DBFetcherDropdownButton>
-            </div>
-            <div className='dropdown-button-group'>
-              <DBFetcherDropdownButton parseClassName='Types' columnName='TypeName' placeHolderText='Type'></DBFetcherDropdownButton>
-            </div>
-            <div className='dropdown-button-group'>
-              <DBFetcherDropdownButton parseClassName='Difficulty' columnName='Difficulty' placeHolderText='Difficulty'></DBFetcherDropdownButton>
+          <div className='sidebar-buttons'>
+            <Button onClick={handleShow} className="form-button" size="large"> Create Location </ Button>
+            <div className='dropdown-buttons-sidebar'>
+              <div className='dropdown-button-group'>
+                <DBFetcherDropdownButton parseClassName='Countries' columnName='Country' placeHolderText='Countries'></DBFetcherDropdownButton>
+              </div>
+              <div className='dropdown-button-group'>
+                <DBFetcherDropdownButton parseClassName='Types' columnName='TypeName' placeHolderText='Type'></DBFetcherDropdownButton>
+              </div>
+              <div className='dropdown-button-group'>
+                <DBFetcherDropdownButton parseClassName='Difficulty' columnName='Difficulty' placeHolderText='Difficulty'></DBFetcherDropdownButton>
+              </div>
             </div>
           </div>
         </ul>
