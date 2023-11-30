@@ -4,9 +4,8 @@ import Parse from 'parse/dist/parse.min.js';
 import { List } from 'antd';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/index.css';
+import LikeFunctionality from '../common/LikeFunctionality';
 
 export const LocationCardFactory = () => {
     const [readResults, setReadLocations] = useState([]);
@@ -40,7 +39,7 @@ export const LocationCardFactory = () => {
                         readResults !== undefined &&
                         readResults.length > 0 && (
                             <List
-                                dataSource={[...readResults].reverse()}
+                                dataSource={[...readResults]}
                                 renderItem={(item) => (
                                     <List.Item className="card-items">
                                         <Container className="my-4 location-card">
@@ -52,8 +51,7 @@ export const LocationCardFactory = () => {
                                                     <div className="d-flex align-items-top">
                                                         <div className="likes-container">
                                                             <div className="center-likes">
-                                                                <FontAwesomeIcon icon={faHeart} id="heart" />
-                                                                <div id="likes">{item.get('Likes')}</div>
+                                                                <LikeFunctionality id={item.id} />
                                                             </div>
                                                         </div>
                                                         <div className="location-details">

@@ -14,19 +14,9 @@ function FeedPage() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const navigate = useNavigate();
-
-    const logout = () => {
-        Parse.User.logOut().then(() => {
-            navigate('/');
-        }).catch((error) => {
-            console.error('Failed to log out, with error: ', error);
-        });
-    }
-
     return (
         <div>
-            <Navbar logout={logout} />
+            <Navbar />
             <div className="main-wrapper">
                 <Sidebar handleShow={handleShow} />
                 <CreateLocation show={show} handleClose={handleClose} />

@@ -9,6 +9,7 @@ import Comment from '../components/common/Comment'
 import Navbar from '../components/common/Navbar'
 import Footer from '../components/common/Footer'
 import CommentFactory from '../components/sections/CommentFactory';
+import LikeFunctionality from '../components/common/LikeFunctionality';
 
 const DetailedLocationPage = () => {
     const { id } = useParams();
@@ -77,8 +78,7 @@ const DetailedLocationPage = () => {
                                 <div>
                                     <div className="row detailed-location-info">
                                         <div className="col-auto .mr-auto detailed-likes-content">
-                                            <FontAwesomeIcon icon={faHeart} id="likes-heart" />
-                                            <div id="detailed-likes">{locationDetails.get('Likes')}</div>
+                                            <LikeFunctionality id={id}/>
                                         </div>
                                         <div className="col detailed-location-title">
                                             <Card.Title className="col float-start detailed-truncate-text">{locationDetails.get('Name')}</Card.Title>

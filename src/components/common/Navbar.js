@@ -5,8 +5,19 @@ import images from "../../assets/images/PeakPulse.png"
 import { Link } from "react-router-dom";
 import Parse from 'parse/dist/parse.min.js';
 import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
-const CompleteNavbar = ({ logout }) => {
+const CompleteNavbar = () => {
+
+    const navigate = useNavigate();
+
+    const logout = () => {
+        Parse.User.logOut().then(() => {
+            navigate('/');
+        }).catch((error) => {
+            console.error('Failed to log out, with error: ', error);
+        });
+    }
 
     const user = Parse.User.current();
 
