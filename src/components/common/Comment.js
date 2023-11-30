@@ -2,40 +2,62 @@ import React, { useState } from "react";
 import { Button } from "antd";
 import Parse from "parse/dist/parse.min.js";
 
-function Comment({ locationId }) {
-  const [comments, setComments] = useState([]); // Store the list of comments
-  const [newComment, setNewComment] = useState(""); // Store the new comment being typed by the user
+function Comment({ locationId, onCommentAdded }) {
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
+  const [newHashtags, setNewHashtags] = useState(""); // Add this line for new hashtags textbox
 
-  // Function to add a new comment to the list
+  //const normalizeHashtag = (hashtag) => hashtag.replace(/#\s*/g, ""); // Normalize hashtags input
+
   const addComment = async () => {
-    // Fetch data of the current user
     const currentUser = Parse.User.current();
 
     if (newComment) {
       try {
-        // Create Parse object for the Comment class and save it to the database
         const Comment = Parse.Object.extend("Comment");
         const commentToSave = new Comment();
 
-        // Set class attributes
         commentToSave.set("CommentText", newComment);
         commentToSave.set("UserID", currentUser);
 
-        // Set the LocationID for the comment
         const location = new Parse.Object("Location");
         location.id = locationId;
-        //We need to use location because parse expects an object and not a locationID string. Without this it is unable to know the correct location
         commentToSave.set("LocationID", location);
 
-        // Save the comment
+        const relation = commentToSave.relation("HashtagID"); // Add this line.
+
+        // Process newHashtags here: Explain to users that they need to begin their hashtag with # and seperate with a space
+        const hashtagStrings = newHashtags
+          .split(" ") // split by space
+          .filter((hashtag) => hashtag.startsWith("#")); // keep only strings that start with #
+
+        // Search for existing Hashtag
+        for (const hashtagStr of hashtagStrings) {
+          const Hashtags = Parse.Object.extend("Hashtags");
+          const hashtagQuery = new Parse.Query(Hashtags);
+
+          hashtagQuery.equalTo("Name", hashtagStr);
+          let hashtag = await hashtagQuery.first();
+
+          // If it doesn't exist, create it
+          if (!hashtag) {
+            hashtag = new Hashtags();
+            hashtag.set("Name", hashtagStr);
+            await hashtag.save();
+          }
+
+          relation.add(hashtag); // Add the new Hashtag to the relation.
+        }
+
         const savedComment = await commentToSave.save();
 
-        // Update the list of comments with the new comment
         setComments([...comments, savedComment]);
-        // Clear the input field
         setNewComment("");
+        setNewHashtags(""); // Clear the newHashtags input field
 
-        window.location.reload();
+        if (onCommentAdded) {
+          onCommentAdded(savedComment);
+        }
       } catch (error) {
         console.log(`Could not add comment. Error code: ${error}`);
       }
@@ -52,7 +74,20 @@ function Comment({ locationId }) {
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
-      <Button onClick={addComment} id="comment-button" className="form-button" size="large">
+
+      <input // Add this block for new hashtags input field
+        type="text"
+        placeholder="Enter your hashtags here, separated by commas"
+        value={newHashtags}
+        onChange={(e) => setNewHashtags(e.target.value)}
+      />
+
+      <Button
+        onClick={addComment}
+        id="comment-button"
+        className="form-button"
+        size="large"
+      >
         {" "}
         Comment{" "}
       </Button>
