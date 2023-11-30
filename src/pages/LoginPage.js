@@ -15,19 +15,13 @@ export const LoginPage = () => {
     const navigate = useNavigate();
 
     const doUserLogIn = async function () {
-        // Note that these values come from state variables that we've declared before
-        const usernameValue = username;
-        const passwordValue = password;
         try {
-            const loggedInUser = await Parse.User.logIn(usernameValue, passwordValue);
-            // To verify that this is in fact the current user, `current` can be used
-            const currentUser = await Parse.User.current();
-            console.log(loggedInUser === currentUser);
+            const loggedInUser = await Parse.User.logIn(username, password);
             // Clear input fields
             setUsername('');
             setPassword('');
             // Update state variable holding current user
-            getCurrentUser();
+            setCurrentUser(loggedInUser);
 
             navigate("/feed");
             return true;
@@ -41,14 +35,6 @@ export const LoginPage = () => {
     const clearErrorMessage = () => {
         setErrorMessage('');
     }
-
-    // Function that will return current user and also update current username
-    const getCurrentUser = async function () {
-        const currentUser = await Parse.User.current();
-        // Update state variable holding current user
-        setCurrentUser(currentUser);
-        return currentUser;
-    };
 
     return (
         <div style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', color: 'white' }}>
