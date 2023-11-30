@@ -39,7 +39,7 @@ export const LocationCardFactory = () => {
                         readResults !== undefined &&
                         readResults.length > 0 && (
                             <List
-                                dataSource={[...readResults].reverse()}
+                                dataSource={[...readResults]}
                                 renderItem={(item) => (
                                     <List.Item className="card-items">
                                         <Container className="my-4 location-card">
@@ -51,7 +51,7 @@ export const LocationCardFactory = () => {
                                                     <div className="d-flex align-items-top">
                                                         <div className="likes-container">
                                                             <div className="center-likes">
-                                                                <LikeFunctionality id={item.id}/>
+                                                                <LikeFunctionality id={item.id} />
                                                             </div>
                                                         </div>
                                                         <div className="location-details">
