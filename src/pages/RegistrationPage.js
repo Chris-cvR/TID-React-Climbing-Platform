@@ -45,7 +45,7 @@ export const RegistrationPage = () => {
             if (error.message.includes('username')) {
                 setErrorMessage('Username is already taken.');
             } else if (error.message.includes('password')) {
-                setErrorMessage('The password must contain at least one special character and uppercase letter.');
+                setErrorMessage('The password must be at least 8 characters and contain one number and uppercase letter.');
             } else if (!experienceValue) {
                 setErrorMessage('Please select a proficiency level.');
             } else {
