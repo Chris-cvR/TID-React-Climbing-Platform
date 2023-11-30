@@ -627,5 +627,9 @@ input[type="radio"]:checked {
 
 /* user page */
 .user-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
   margin: 5%;
 }

@@ -22,6 +22,7 @@ function UserPage() {
 
     const handlePasswordChange = async () => {
     try {
+        //this is neccessary the user won't get logout after updating the password
         const checkUser = new Parse.User();
         checkUser.set('username', user.get('username'));
         checkUser.set('password', currentPassword);
@@ -60,17 +61,19 @@ function UserPage() {
                 <p>Welcome to your user page.</p>
                     
                         <Form.Group>
-                            <label className='proficiency-selector'>
                             Change Proficiency Level:
-                                <select value={experience} onChange={(e) => setExperience(e.target.value)}>
-                                    <option value=""></option>
-                                    <option value="beginner">Beginner</option>
-                                    <option value="intermediate">Intermediate</option>
-                                    <option value="advanced">Advanced</option>
-                                    <option value="pro">Pro</option>
-                                </select>
-                            </label>
-                            <Button type="submit" className="form-button" size="large" onClick={handleExperienceChange}>Save Changes</Button>
+                            <div>
+                                <label className='user-page-selector' style={{ marginBottom: '10px', width: '70%'}}>
+                                    <select value={experience} onChange={(e) => setExperience(e.target.value)}>
+                                        <option value=""></option>
+                                        <option value="beginner">Beginner</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                        <option value="pro">Pro</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <Button type="submit" className="form-button" id="change-password-button" size="large" onClick={handleExperienceChange}>Save Changes</Button>
                         </Form.Group>
                         <Form.Group>
                             <FormControl className="custom-input" type="password" placeholder="Current Password" value={currentPassword} onChange={(e) => {setCurrentPassword(e.target.value); clearMessage();}}/>
