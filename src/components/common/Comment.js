@@ -1,30 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "antd";
 import Parse from "parse/dist/parse.min.js";
 
 function Comment({ locationId }) {
   const [comments, setComments] = useState([]); // Store the list of comments
   const [newComment, setNewComment] = useState(""); // Store the new comment being typed by the user
-  const [hashtags, setHashtags] = useState([]); // Keeping track of available hashtags
-  const [selectedHashtags, setSelectedHashtags] = useState([]); // Keeping track of selected hashtags
-  const [checkedStatus, setCheckedStatus] = useState({});
-
-  useEffect(() => {
-    const fetchHashtags = async () => {
-      const Hashtags = Parse.Object.extend("Hashtags");
-      const query = new Parse.Query(Hashtags);
-
-      try {
-        const hashtagResults = await query.find();
-        setHashtags(hashtagResults);
-      } catch (error) {
-        console.error(`Error while fetching Hashtags: ${error}`);
-      }
-    };
-
-    // Call the fetch function
-    fetchHashtags();
-  }, []);
 
   // Function to add a new comment to the list
   const addComment = async () => {
@@ -44,57 +24,22 @@ function Comment({ locationId }) {
         // Set the LocationID for the comment
         const location = new Parse.Object("Location");
         location.id = locationId;
+        //We need to use location because parse expects an object and not a locationID string. Without this it is unable to know the correct location
         commentToSave.set("LocationID", location);
-
-        // Set the selected hashtags
-        const relation = commentToSave.relation("HashtagID");
-        selectedHashtags.forEach((hashtag) => relation.add(hashtag));
 
         // Save the comment
         const savedComment = await commentToSave.save();
 
-        // Comment object saved successfully
-        const commentObject = {
-          id: savedComment.id,
-          locationID: locationId,
-          text: newComment,
-          username: currentUser.get("username"),
-          experience: currentUser.get("experience"),
-          tags: selectedHashtags
-            .map((hashtag) => "#" + hashtag.get("Name"))
-            .join(" "), // Added tags to the comment
-        };
-
         // Update the list of comments with the new comment
-        setComments([...comments, commentObject]);
+        setComments([...comments, savedComment]);
         // Clear the input field
         setNewComment("");
-        // Clear selected hashtags
-        setSelectedHashtags([]);
-        // Reset checked status
-        setCheckedStatus({});
 
         window.location.reload();
       } catch (error) {
         console.log(`Could not add comment. Error code: ${error}`);
       }
     }
-  };
-
-  // Call whenever Checkbox state changes
-  const handleCheckboxChange = (event, hashtagObj) => {
-    if (event.target.checked) {
-      setSelectedHashtags([...selectedHashtags, hashtagObj]);
-    } else {
-      setSelectedHashtags(
-        selectedHashtags.filter((tag) => tag.id !== hashtagObj.id)
-      );
-    }
-    // Record the checked status for specific checkbox
-    setCheckedStatus({
-      ...checkedStatus,
-      [hashtagObj.id]: event.target.checked,
-    });
   };
 
   return (
@@ -107,20 +52,6 @@ function Comment({ locationId }) {
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
-      <div className="checkbox-container">
-        Hashtags:&nbsp;
-        {hashtags.map((hashtagObj) => (
-          <label key={hashtagObj.id} className="checkbox-hashtag">
-            <input
-              type="checkbox"
-              checked={checkedStatus[hashtagObj.id] || false}
-              onChange={(event) => handleCheckboxChange(event, hashtagObj)}
-            />
-            {"#" + hashtagObj.get("Name")}&nbsp;&nbsp;&nbsp;
-          </label>
-        ))}
-      </div>
-
       <Button onClick={addComment} className="form-button" size="large">
         {" "}
         Comment{" "}

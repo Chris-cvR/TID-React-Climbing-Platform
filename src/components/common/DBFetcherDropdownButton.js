@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Select } from 'antd';
 import Parse from 'parse/dist/parse.min.js';
 
-const DropdownButton = ({ parseClassName, columnName, placeHolderText }) => {
+const DBFetcherDropdownButton = ({ parseClassName, columnName, placeHolderText }) => {
     const [options, setOptions] = useState([]);
 
     useEffect(() => {
@@ -47,4 +47,4 @@ const DropdownButton = ({ parseClassName, columnName, placeHolderText }) => {
     );
 };
 
-export default DropdownButton;
+export default DBFetcherDropdownButton;

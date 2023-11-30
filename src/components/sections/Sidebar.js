@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../styles/index.css";
 import { Button } from 'antd';
-import DropdownButton from '../common/DropdownButton'
+import DBFetcherDropdownButton from '../common/DBFetcherDropdownButton'
 
 function Sidebar({ handleShow }) {
 
@@ -12,10 +12,10 @@ function Sidebar({ handleShow }) {
           <Button onClick={handleShow} className="form-button" size="large"> Create Location </ Button>
           <div className='dropdown-buttons-sidebar'>
             <div className='dropdown-button-group'>
-              <DropdownButton parseClassName='Countries' columnName='Country' placeHolderText='Countries'></DropdownButton>
+              <DBFetcherDropdownButton parseClassName='Countries' columnName='Country' placeHolderText='Countries'></DBFetcherDropdownButton>
             </div>
             <div className='dropdown-button-group'>
-              <DropdownButton parseClassName='Types' columnName='TypeName' placeHolderText='Type'></DropdownButton>
+              <DBFetcherDropdownButton parseClassName='Types' columnName='TypeName' placeHolderText='Type'></DBFetcherDropdownButton>
             </div>
           </div>
         </ul>

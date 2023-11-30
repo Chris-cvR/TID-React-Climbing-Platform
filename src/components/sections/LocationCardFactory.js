@@ -8,12 +8,14 @@ import '../../styles/index.css';
 import LikeFunctionality from '../common/LikeFunctionality';
 
 export const LocationCardFactory = () => {
-    const [readResults, setReadLocations] = useState([]);
+    const [readLocations, setReadLocations] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const readLocations = async function () {
+    const readLocationsQuery = async function () {
         const parseQuery = new Parse.Query('Location');
         parseQuery.include('Country');
+        parseQuery.descending('updatedAt'); //Now the cards are sorted based on popularity 
+
         try {
             let locations = await parseQuery.find();
             setReadLocations(locations);
@@ -27,7 +29,7 @@ export const LocationCardFactory = () => {
     };
 
     useEffect(() => {
-        readLocations();
+        readLocationsQuery();
     }, []);
 
     return (
@@ -35,11 +37,11 @@ export const LocationCardFactory = () => {
             <div className="location-container">
                 <div>
                     {loading && <div>Loading...</div>}
-                    {!loading && readResults !== null &&
-                        readResults !== undefined &&
-                        readResults.length > 0 && (
+                    {!loading && readLocations !== null &&
+                        readLocations !== undefined &&
+                        readLocations.length > 0 && (
                             <List
-                                dataSource={[...readResults]}
+                                dataSource={[...readLocations]}
                                 renderItem={(item) => (
                                     <List.Item className="card-items">
                                         <Container className="my-4 location-card">

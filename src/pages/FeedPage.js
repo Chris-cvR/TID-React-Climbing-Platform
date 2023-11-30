@@ -4,8 +4,6 @@ import Navbar from "../components/common/Navbar"
 import Footer from "../components/common/Footer"
 import React, { useState } from 'react';
 import CreateLocation from "../components/common/CreateLocation";
-import Parse from 'parse/dist/parse.min.js';
-import { useNavigate } from 'react-router-dom';
 
 function FeedPage() {
 

@@ -5,11 +5,11 @@ import { List } from 'antd';
 import { Container } from 'react-bootstrap';
 
 
-function CommentFactory({ locationId }) {
+function CommentSectionFactory({ locationId }) {
     const [readResults, setReadComments] = useState([]);
 
     useEffect(() => {
-        const readComment = async function () {
+        const readComments = async function () {
             // Create a new query on the Comment class
             const parseQuery = new Parse.Query('Comment');
             parseQuery.include('UserID');
@@ -28,7 +28,7 @@ function CommentFactory({ locationId }) {
                 alert(`Error! ${error.message}`);
             }
         };
-        readComment();
+        readComments();
     }, [locationId]); // Depend on locationId to refetch when it changes
 
     return (
@@ -40,7 +40,7 @@ function CommentFactory({ locationId }) {
                         readResults !== undefined &&
                         readResults.length > 0 && (
                             <List
-                                dataSource={[...readResults].reverse()}
+                                dataSource={[...readResults]}
                                 renderItem={(item) => (
                                     <List.Item className="comment-card-items">
                                         <Container className="comment-card-container">
@@ -62,4 +62,4 @@ function CommentFactory({ locationId }) {
     );
 }
 
-export default CommentFactory;
+export default CommentSectionFactory;
