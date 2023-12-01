@@ -50,11 +50,13 @@ function CommentSectionFactory({ locationId }) {
                                                 <div className="comment-profile-picture">
                                                         <ProfilePicture user={item.get('UserID')} size="60px" />
                                                 </div>
-                                                <div className="user-info">
-                                                    <p className="comment-username">{item.get('UserID').get('username')}</p>
-                                                    <p className="comment-experience">{item.get('UserID').get('experience')}</p>
+                                                <div className="comment-content">
+                                                    <div className="user-info">
+                                                        <p className="comment-username">{item.get('UserID').get('username')}</p>
+                                                        <p className="comment-experience">{item.get('UserID').get('experience')}</p>
+                                                    </div>
+                                                    <p className="comment-text">{item.get('CommentText')}</p>
                                                 </div>
-                                                <p>{item.get('CommentText')}</p>
                                             </div>
                                         </Container>
                                     </List.Item>
