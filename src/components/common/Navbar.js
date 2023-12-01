@@ -1,6 +1,7 @@
 import "../../styles/index.css"
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import ProfilePicture from "./ProfilePicture";
 import images from "../../assets/images/PeakPulse.png"
 import { Link } from "react-router-dom";
 import Parse from 'parse/dist/parse.min.js';
@@ -37,6 +38,7 @@ const CompleteNavbar = () => {
                     PeakPulse
                 </Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
+                    <ProfilePicture size="60px" />
                     <Navbar.Text className="navbar-text">
                         Hello, {user ? (
                             <Link to={`/user/${user.get("username")}`}>

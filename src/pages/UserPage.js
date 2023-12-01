@@ -1,10 +1,9 @@
 import Navbar from "../components/common/Navbar"
 import Footer from "../components/common/Footer"
+import ProfilePicture from "../components/common/ProfilePicture";
 import Parse from 'parse/dist/parse.min.js';
 import React, { useState } from 'react';
 import { Button } from 'antd';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
 
 function UserPage() {
     const user = Parse.User.current();
@@ -83,8 +82,8 @@ function UserPage() {
         <div>
             <Navbar />
             <div className='user-page-container'>
-                {profilePicture && <img src={profilePicture.url()} alt="profile" height="160" width="160"/>}
-                <h3> Hello {user.get("username")}!</h3>
+                <ProfilePicture size='200px' />
+                <h3 className="greeting-user-page"> Hello {user.get("username")}!</h3>
                 <p>Welcome to your user page.</p>
                         <div>
                             Change Proficiency Level:

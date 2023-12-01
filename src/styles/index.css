@@ -27,6 +27,7 @@ code {
 
 .navbar-text{
   margin-right: 2%;
+  margin-left: 1%;
 }
 
 #logout-button{
@@ -574,13 +575,9 @@ input[type="radio"]:checked {
   margin-bottom: 10px;
 }
 
+/* comments */
 .comments-container{
   margin-bottom: 20px;
-}
-
-.checkbox-container{
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .comments-filters{
@@ -595,28 +592,31 @@ input[type="radio"]:checked {
   font-family: "Montserrat", sans-serif !important;
   margin-bottom: 2px;
   width: 780px;
-}
-
-.comment-card {
   display: flex;
-  flex-direction: column;
-  border: 1px solid  hsl(0, 0%, 83%, 0.3);
+  flex-direction: row;
+  border: 1px solid hsl(0, 0%, 83%, 0.3);
 }
 
 .user-info {
-  display: flex;
+  
   justify-content: space-between;
   font-weight: bold;
 }
 
 .comment-username{
   font-size: large;
+  margin-left: 2%;
 }
 
 .register-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.checkbox-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .center {
@@ -656,7 +656,6 @@ input[type="radio"]:checked {
   flex-direction: column;
 }
 
-.user-page-profile-picture{
-  height: 160;
-  width: 160;
+.greeting-user-page{
+  margin-top: 20px;
 }

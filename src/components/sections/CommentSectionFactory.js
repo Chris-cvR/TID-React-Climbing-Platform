@@ -3,6 +3,7 @@ import Parse from 'parse/dist/parse.min.js';
 import '../../styles/index.css'
 import { List } from 'antd';
 import { Container } from 'react-bootstrap';
+import ProfilePicture from '../common/ProfilePicture';
 
 
 function CommentSectionFactory({ locationId }) {
@@ -46,9 +47,12 @@ function CommentSectionFactory({ locationId }) {
                                     <List.Item className="comment-card-items">
                                         <Container className="comment-card-container">
                                             <div className="comment-card">
+                                                <div className="comment-profile-picture">
+                                                        <ProfilePicture user={item.get('UserID')} size="60px" />
+                                                </div>
                                                 <div className="user-info">
                                                     <p className="comment-username">{item.get('UserID').get('username')}</p>
-                                                    <p>{item.get('UserID').get('experience')}</p>
+                                                    <p className="comment-experience">{item.get('UserID').get('experience')}</p>
                                                 </div>
                                                 <p>{item.get('CommentText')}</p>
                                             </div>

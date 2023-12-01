@@ -14,7 +14,7 @@ export const RegistrationPage = () => {
     const [password, setPassword] = useState('');
     const [experience, setExperience] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [profilePicutre, setProfilePicture] = useState(null);
+    const [profilePicture, setProfilePicture] = useState(null);
 
     const navigate = useNavigate();
 
@@ -29,17 +29,17 @@ export const RegistrationPage = () => {
             const User = Parse.Object.extend("User");
             const user = new User();
 
-            let profilePictureoToSave;
-            if (profilePicutre) {
-                profilePictureoToSave = new Parse.File(profilePicutre.name, profilePicutre);
-                await profilePictureoToSave.save();
+            let profilePictureToSave;
+            if (profilePicture) {
+                profilePictureToSave = new Parse.File(profilePicture.name, profilePicture);
+                await profilePictureToSave.save();
             }
 
             // Set the user attributes
             user.set("username", usernameValue);
             user.set("password", passwordValue);
             user.set("experience", experienceValue);
-            if(profilePictureoToSave) user.set("ProfilePicture", profilePictureoToSave);
+            if(profilePictureToSave) user.set("ProfilePicture", profilePictureToSave);
 
             // Save the new user data object
             await user.signUp();
@@ -56,6 +56,8 @@ export const RegistrationPage = () => {
                 setErrorMessage('The password must be at least 8 characters and contain one number and uppercase letter.');
             } else if (!experienceValue) {
                 setErrorMessage('Please select a proficiency level.');
+            } else if (profilePicture == null) {
+                setErrorMessage('Please upload a profile picture.');
             } else {
                 setErrorMessage('An unexpected error occurred. Please try again.')
             }
