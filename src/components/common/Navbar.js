@@ -38,7 +38,9 @@ const CompleteNavbar = () => {
                     PeakPulse
                 </Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
-                    <ProfilePicture size="60px" />
+                    <Link to={`/user/${user.get("username")}`}>
+                        <ProfilePicture size="60px" />
+                    </Link>
                     <Navbar.Text className="navbar-text">
                         Hello, {user ? (
                             <Link to={`/user/${user.get("username")}`}>
