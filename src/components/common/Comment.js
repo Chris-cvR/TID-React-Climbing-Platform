@@ -67,9 +67,8 @@ function Comment({ locationId, onCommentAdded }) {
   return (
     <div className="comment-container">
       <h2>Add Comment</h2>
-      <input
+      <textarea
         className="add-comment-textbox"
-        type="text"
         placeholder="Enter your comment here"
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}

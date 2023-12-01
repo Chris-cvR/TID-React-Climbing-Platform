@@ -14,6 +14,7 @@ export const RegistrationPage = () => {
     const [password, setPassword] = useState('');
     const [experience, setExperience] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [profilePicture, setProfilePicture] = useState(null);
 
     const navigate = useNavigate();
 
@@ -28,10 +29,17 @@ export const RegistrationPage = () => {
             const User = Parse.Object.extend("User");
             const user = new User();
 
+            let profilePictureToSave;
+            if (profilePicture) {
+                profilePictureToSave = new Parse.File(profilePicture.name, profilePicture);
+                await profilePictureToSave.save();
+            }
+
             // Set the user attributes
             user.set("username", usernameValue);
             user.set("password", passwordValue);
             user.set("experience", experienceValue);
+            if(profilePictureToSave) user.set("ProfilePicture", profilePictureToSave);
 
             // Save the new user data object
             await user.signUp();
@@ -48,6 +56,8 @@ export const RegistrationPage = () => {
                 setErrorMessage('The password must be at least 8 characters and contain one number and uppercase letter.');
             } else if (!experienceValue) {
                 setErrorMessage('Please select a proficiency level.');
+            } else if (profilePicture == null) {
+                setErrorMessage('Please upload a profile picture.');
             } else {
                 setErrorMessage('An unexpected error occurred. Please try again.')
             }
@@ -95,6 +105,17 @@ export const RegistrationPage = () => {
                             placeholder="Password"
                             size="large"
                             type="password"
+                            className="custom-input"
+                            style={{ marginTop: '4%' }}
+                        />
+                        <Input
+                            type="file"
+                            onChange={(event) => {
+                                setProfilePicture(event.target.files[0]);
+                                clearErrorMessage();
+                            }}
+                            placeholder="Profile Picture"
+                            size="large"
                             className="custom-input"
                             style={{ marginTop: '4%' }}
                         />

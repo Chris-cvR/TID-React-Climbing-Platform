@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Parse from "parse/dist/parse.min.js";
-import "../../styles/index.css";
-import { List } from "antd";
-import { Container } from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import Parse from 'parse/dist/parse.min.js';
+import '../../styles/index.css'
+import { List } from 'antd';
+import { Container } from 'react-bootstrap';
+import ProfilePicture from '../common/ProfilePicture';
 
 function CommentSectionFactory({ locationId }) {
   const [readResults, setReadComments] = useState([]);
@@ -36,37 +37,40 @@ function CommentSectionFactory({ locationId }) {
     readComments();
   }, [locationId, readResults]); // Depend on locationId and readResults to refetch when they change
 
-  return (
-    <div>
-      <div className="comment-container">
-        <h2>Comments</h2>
+    return (
         <div>
-          {readResults !== null &&
-            readResults !== undefined &&
-            readResults.length > 0 && (
-              <List
-                dataSource={[...readResults]}
-                renderItem={(item) => (
-                  <List.Item className="comment-card-items">
-                    <Container className="comment-card-container">
-                      <div className="comment-card">
-                        <div className="user-info">
-                          <p className="comment-username">
-                            {item.get("UserID").get("username")}
-                          </p>
-                          <p>{item.get("UserID").get("experience")}</p>
-                        </div>
-                        <p>{item.get("CommentText")}</p>
-                      </div>
-                    </Container>
-                  </List.Item>
-                )}
-              />
-            )}
+            <div className="comment-container">
+                <h2>Comments</h2>
+                <div>
+                    {readResults !== null &&
+                        readResults !== undefined &&
+                        readResults.length > 0 && (
+                            <List
+                                dataSource={[...readResults]}
+                                renderItem={(item) => (
+                                    <List.Item className="comment-card-items">
+                                        <Container className="comment-card-container">
+                                            <div className="comment-card">
+                                                <div className="comment-profile-picture">
+                                                        <ProfilePicture user={item.get('UserID')} size="60px" />
+                                                </div>
+                                                <div className="comment-content">
+                                                    <div className="user-info">
+                                                        <p className="comment-username">{item.get('UserID').get('username')}</p>
+                                                        <p className="comment-experience">{item.get('UserID').get('experience')}</p>
+                                                    </div>
+                                                    <p className="comment-text">{item.get('CommentText')}</p>
+                                                </div>
+                                            </div>
+                                        </Container>
+                                    </List.Item>
+                                )}
+                            />
+                        )}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default CommentSectionFactory;
