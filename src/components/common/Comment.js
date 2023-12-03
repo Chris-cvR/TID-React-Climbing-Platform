@@ -24,7 +24,7 @@ function Comment({ locationId, onCommentAdded }) {
         location.id = locationId;
         commentToSave.set("LocationID", location);
 
-        const relation = commentToSave.relation("HashtagID"); // Add this line.
+        const relation = commentToSave.relation("HashtagID");
 
         // Process newHashtags here: Explain to users that they need to begin their hashtag with # and seperate with a space
         const hashtagStrings = newHashtags
@@ -67,16 +67,17 @@ function Comment({ locationId, onCommentAdded }) {
   return (
     <div className="comment-container">
       <h2>Add Comment</h2>
-      <textarea
+      <textarea //Comment textfield
         className="add-comment-textbox"
         placeholder="Enter your comment here"
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
 
-      <input // Add this block for new hashtags input field
+      <input // hashtags input field
+        className="hashtag-input-field"
         type="text"
-        placeholder="Enter your hashtags here, separated by commas"
+        placeholder="Begin each hashtag with a '#' and seperate with space"
         value={newHashtags}
         onChange={(e) => setNewHashtags(e.target.value)}
       />
