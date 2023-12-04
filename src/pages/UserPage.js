@@ -4,6 +4,8 @@ import ProfilePicture from "../components/common/ProfilePicture";
 import Parse from 'parse/dist/parse.min.js';
 import React, { useState } from 'react';
 import { Button } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
 
 function UserPage() {
     const user = Parse.User.current();
@@ -86,7 +88,7 @@ function UserPage() {
                 <h3 className="greeting-user-page"> Hello {user.get("username")}!</h3>
                 <p>Welcome to your user page.</p>
                         <div>
-                            Change Proficiency Level:
+                            Change proficiency level:
                             <div>
                                 <label className='user-page-selector' style={{ marginBottom: '10px'}}>
                                     <select value={experience} onChange={(e) => setExperience(e.target.value)}>
@@ -96,9 +98,10 @@ function UserPage() {
                                     </select>
                                 </label>
                             </div>
-                            <Button type="submit" className="form-button" id="change-password-button" size="large" onClick={handleExperienceChange}>Save Changes</Button>
+                            <Button type="submit" className="form-button" size="large" onClick={handleExperienceChange}>Save Changes</Button>
                         </div>
                         <div className="change-password-container">
+                            Change password:
                             <input className="user-page-input" type="password" placeholder="Current Password" value={currentPassword} onChange={(e) => {setCurrentPassword(e.target.value); clearMessage();}}/>
                             <input className="user-page-input" type="password" placeholder="New Password" value={password} onChange={(e) => {setPassword(e.target.value); clearMessage();}}/>
                             <input className="user-page-input" type="password" placeholder="Repeat Password" value={repeatPassword} onChange={(e) => {setRepeatPassword(e.target.value); clearMessage();}}/>
@@ -106,14 +109,19 @@ function UserPage() {
                             <Button type="submit" className="form-button" size="large" onClick={handlePasswordChange}>Change Password</Button>
                         </div>
                         <div className="change-profile-picture-container">
-                            <input
-                                type="file"
-                                onChange={(event) => {
-                                    setNewProfilePicture(event.target.files[0]);
-                                    clearMessage();
-                                }}
-                                />
-                            <Button type="submit" className="form-button" size="large" onClick={handleProfilePictureChange}>Change Profile Picture</Button>
+                            Change profile picture:
+                            <label className="profile-picture-upload">
+                                <input
+                                    type="file"
+                                    class="profile-picture-file-input"
+                                    onChange={(event) => {
+                                        setNewProfilePicture(event.target.files[0]);
+                                        clearMessage();
+                                    }}
+                                    />
+                                    <FontAwesomeIcon icon={faCamera} />
+                                </label>
+                            <Button type="submit" className="form-button change-picture-button" size="large" onClick={handleProfilePictureChange}>Change Profile Picture</Button>
                         </div>
             </div>
             <Footer />

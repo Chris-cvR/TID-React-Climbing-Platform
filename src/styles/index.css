@@ -125,10 +125,19 @@ code {
   margin-left: 35px;
 }
 
+/* footer */
 footer {
   position: relative;
   background: hsl(24, 8%, 88%);
   z-index: 2;
+}
+
+.footer-links{
+  display: flex;
+  justify-content: space-between;
+  width: 110px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .dropdown-buttons-sidebar {
@@ -656,17 +665,25 @@ input[type="radio"]:checked {
   margin-right: auto;
 }
 
+.location-difficulty {
+  margin-top: 15px;
+}
+
 /* user page */
 .user-page-container {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   justify-content: center;
+  width: fit-content;
   margin: 5%;
-}
-
-.location-difficulty {
-  margin-top: 15px;
+  border: 1px solid hsl(0, 0%, 83%);
+  background-color: white;
+  border-radius: 8px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .user-page-input {
@@ -689,8 +706,25 @@ input[type="radio"]:checked {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.change-picture-button{
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
 }
 
 .greeting-user-page {
   margin-top: 20px;
+}
+
+.profile-picture-upload{
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.profile-picture-file-input{
+  display: none;
 }
