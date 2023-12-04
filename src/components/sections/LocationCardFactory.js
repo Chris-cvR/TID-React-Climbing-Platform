@@ -5,12 +5,11 @@ import Container from 'react-bootstrap/Container';
 import '../../styles/index.css';
 import SimpleLocationCard from '../common/SimpleLocationCard';
 
-export const LocationCardFactory = () => {
+export const LocationCardFactory = ({parseQuery}) => {
     const [readLocations, setReadLocations] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const readLocationsQuery = async function () {
-        const parseQuery = new Parse.Query('Location');
         parseQuery.include('Country');
         parseQuery.include('Difficulty');
         parseQuery.descending('updatedAt'); //Now the cards are sorted based on popularity 

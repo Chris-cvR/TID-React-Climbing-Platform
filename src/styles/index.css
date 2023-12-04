@@ -670,13 +670,27 @@ input[type="radio"]:checked {
 }
 
 /* user page */
-.user-page-container {
+.user-page{
+  display: flex;
+  flex-direction: row;
+}
+
+.user-page-greeting{
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 15px;
+  text-align: justify;
+  padding: 20px;
+}
+
+.user-info-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  width: 350px;
   margin: 5%;
+  margin-top: 32px;
   border: 1px solid hsl(0, 0%, 83%);
   background-color: white;
   border-radius: 8px;

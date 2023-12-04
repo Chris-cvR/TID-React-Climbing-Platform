@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { LocationCardFactory } from "../components/sections/LocationCardFactory";
 
 function UserPage() {
     const user = Parse.User.current();
@@ -17,6 +18,11 @@ function UserPage() {
     const [profilePicture, setProfilePicture] = useState(user.get('ProfilePicture'));
     const [newProfilePicture, setNewProfilePicture] = useState(null);
     const proficiencyLevels = ['Beginner', 'Intermediate', 'Advanced', 'Pro'];
+
+    const greetingText = "This is your personalized space where you can manage your settings and keep track of all your created posts. This is your hub to revisit, edit, or interact with your content.";
+
+    const userLocationsQuery = new Parse.Query('Location');
+    userLocationsQuery.equalTo('UserID', user);
 
     const handleExperienceChange = async () => {
         user.set('experience', experience);
@@ -83,46 +89,51 @@ function UserPage() {
     return (
         <div>
             <Navbar />
-            <div className='user-page-container'>
-                <ProfilePicture size='200px' />
-                <h3 className="greeting-user-page"> Hello {user.get("username")}!</h3>
-                <p>Welcome to your user page.</p>
-                        <div>
-                            Change proficiency level:
+            <div className="user-page">
+                <div className='user-info-container'>
+                    <ProfilePicture size='200px' />
+                    <h3 className="greeting-user-page"> Hello {user.get("username")}!</h3>
+                    <p className="user-page-greeting">{greetingText}</p>
                             <div>
-                                <label className='user-page-selector' style={{ marginBottom: '10px'}}>
-                                    <select value={experience} onChange={(e) => setExperience(e.target.value)}>
-                                        {proficiencyLevels.map(level => (
-                                            <option key={level} value={level}>{level}</option>
-                                        ))}
-                                    </select>
-                                </label>
+                                Change proficiency level:
+                                <div>
+                                    <label className='user-page-selector' style={{ marginBottom: '10px'}}>
+                                        <select value={experience} onChange={(e) => setExperience(e.target.value)}>
+                                            {proficiencyLevels.map(level => (
+                                                <option key={level} value={level}>{level}</option>
+                                            ))}
+                                        </select>
+                                    </label>
+                                </div>
+                                <Button type="submit" className="form-button" size="large" onClick={handleExperienceChange}>Save Changes</Button>
                             </div>
-                            <Button type="submit" className="form-button" size="large" onClick={handleExperienceChange}>Save Changes</Button>
-                        </div>
-                        <div className="change-password-container">
-                            Change password:
-                            <input className="user-page-input" type="password" placeholder="Current Password" value={currentPassword} onChange={(e) => {setCurrentPassword(e.target.value); clearMessage();}}/>
-                            <input className="user-page-input" type="password" placeholder="New Password" value={password} onChange={(e) => {setPassword(e.target.value); clearMessage();}}/>
-                            <input className="user-page-input" type="password" placeholder="Repeat Password" value={repeatPassword} onChange={(e) => {setRepeatPassword(e.target.value); clearMessage();}}/>
-                            {message && <p className='error-message'>{message}</p>}
-                            <Button type="submit" className="form-button" size="large" onClick={handlePasswordChange}>Change Password</Button>
-                        </div>
-                        <div className="change-profile-picture-container">
-                            Change profile picture:
-                            <label className="profile-picture-upload">
-                                <input
-                                    type="file"
-                                    class="profile-picture-file-input"
-                                    onChange={(event) => {
-                                        setNewProfilePicture(event.target.files[0]);
-                                        clearMessage();
-                                    }}
-                                    />
-                                    <FontAwesomeIcon icon={faCamera} />
-                                </label>
-                            <Button type="submit" className="form-button change-picture-button" size="large" onClick={handleProfilePictureChange}>Change Profile Picture</Button>
-                        </div>
+                            <div className="change-password-container">
+                                Change password:
+                                <input className="user-page-input" type="password" placeholder="Current Password" value={currentPassword} onChange={(e) => {setCurrentPassword(e.target.value); clearMessage();}}/>
+                                <input className="user-page-input" type="password" placeholder="New Password" value={password} onChange={(e) => {setPassword(e.target.value); clearMessage();}}/>
+                                <input className="user-page-input" type="password" placeholder="Repeat Password" value={repeatPassword} onChange={(e) => {setRepeatPassword(e.target.value); clearMessage();}}/>
+                                {message && <p className='error-message'>{message}</p>}
+                                <Button type="submit" className="form-button" size="large" onClick={handlePasswordChange}>Change Password</Button>
+                            </div>
+                            <div className="change-profile-picture-container">
+                                Change profile picture:
+                                <label className="profile-picture-upload">
+                                    <input
+                                        type="file"
+                                        class="profile-picture-file-input"
+                                        onChange={(event) => {
+                                            setNewProfilePicture(event.target.files[0]);
+                                            clearMessage();
+                                        }}
+                                        />
+                                        <FontAwesomeIcon icon={faCamera} />
+                                    </label>
+                                <Button type="submit" className="form-button change-picture-button" size="large" onClick={handleProfilePictureChange}>Change Profile Picture</Button>
+                            </div>
+                </div>
+                <div className="personlized-feed">
+                    <LocationCardFactory parseQuery={userLocationsQuery}/>
+                </div>
             </div>
             <Footer />
         </div>
