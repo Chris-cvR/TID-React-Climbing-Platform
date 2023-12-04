@@ -4,6 +4,7 @@ import Navbar from "../components/common/Navbar"
 import Footer from "../components/common/Footer"
 import React, { useState } from 'react';
 import CreateLocation from "../components/common/CreateLocation";
+import Parse from 'parse/dist/parse.min.js';
 
 function FeedPage() {
 
@@ -12,13 +13,15 @@ function FeedPage() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const allLocationsQuery = new Parse.Query('Location');
+
     return (
         <div>
             <Navbar />
             <div className="main-wrapper">
                 <Sidebar handleShow={handleShow} />
                 <CreateLocation show={show} handleClose={handleClose} />
-                <LocationCardFactory />
+                <LocationCardFactory parseQuery={allLocationsQuery}/>
             </div>
             <Footer />
         </div>
