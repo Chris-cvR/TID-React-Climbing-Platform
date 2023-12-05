@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import FormControl from 'react-bootstrap/FormControl';
 import { Button } from 'antd';
 import Parse from 'parse/dist/parse.min.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const CreateLocation = ({ show, handleClose }) => {
     const [formData, setFormData] = useState([
@@ -222,6 +225,15 @@ const CreateLocation = ({ show, handleClose }) => {
                                 <div className="col">
                                     <Form.Group controlId="formControl_6">
                                         <Form.Label>Difficulty*</Form.Label>
+                                        <OverlayTrigger
+                                            placement="right"
+                                            overlay ={
+                                                <Tooltip className="tooltip">
+                                                    Unsure about the difficulty? Check our FAQs!
+                                                </Tooltip>
+                                            }>
+                                            <FontAwesomeIcon icon={faInfoCircle} />
+                                        </OverlayTrigger>
                                         <FormControl
                                             type="text"
                                             placeholder="Enter Difficulty"

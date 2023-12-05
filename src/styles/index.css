@@ -743,3 +743,12 @@ input[type="radio"]:checked {
 .profile-picture-file-input{
   display: none;
 }
+
+.tooltip .tooltip-inner {
+  background-color: hsl(25, 68%, 50%) !important;
+  color: white !important;
+}
+
+.tooltip.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: hsl(25, 68%, 50%);
+}
