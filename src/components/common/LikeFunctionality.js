@@ -10,15 +10,21 @@ import '../../styles/index.css';
 // Props: id = The ID of the post.
 export const LikeFunctionality = ({id}) => {
     const [likes, setLikes] = useState(0);
+    const [hasLiked, setHasLiked] = useState(false);
+    const user = Parse.User.current();
 
     // useEffect hook to fetch the current number of likes when the component mounts
     useEffect(() => {
         const fetchLikes = async () => {
-        const parseQuery = new Parse.Query('Location');
+        const parseQuery = new Parse.Query('Like');
+        parseQuery.equalTo('user', user);
+        parseQuery.equalTo('location', { "__type": 'Pointer', "className": 'Location', "objectId": id });
+    
 
         try {
-            const likes = await parseQuery.get(id);
-            setLikes(likes.get('Likes'));
+            const likes = await parseQuery.count();
+            setLikes(likes);
+            setHasLiked(likes > 0);
         } catch (error) {
             console.error('Error fetching likes: ', error);
         }
@@ -28,13 +34,27 @@ export const LikeFunctionality = ({id}) => {
 
     // Function to increase the likes by 1 when the heart icon is clicked
     const handleLike = async () => {
-        const parseQuery = new Parse.Query('Location');
+        const parseQuery = new Parse.Query('Like');
+        parseQuery.equalTo('user', user);
+        parseQuery.equalTo('location', { "__type": 'Pointer', "className": 'Location', "objectId": id });
 
-        try {
-            const location = await parseQuery.get(id);
-            location.increment('Likes');
-            await location.save();
-            setLikes(location.get('Likes'));
+         try {
+            const existingLike = await parseQuery.first();
+            if(existingLike) { //the user has already the location, unlike it
+                await existingLike.destroy();
+                setLikes(likes - 1);
+                setHasLiked(false);
+            } else {
+                // If the Like doesn't exist, create a new one
+                const like = new Parse.Object('Like');
+                like.set('user', user);
+                like.set('location', { "__type": "Pointer", "className": "Location", "objectId": id});
+                await like.save();
+
+                //update number of likes
+                setLikes(likes + 1);
+                setHasLiked(true);
+            }
         } catch (error) {
             console.error('Error updating likes: ', error);
         }
