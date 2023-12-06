@@ -689,6 +689,7 @@ input[type="radio"]:checked {
   align-items: center;
   justify-content: center;
   width: 350px;
+  height: 1000px;
   margin: 5%;
   margin-top: 32px;
   border: 1px solid hsl(0, 0%, 83%);
