@@ -8,6 +8,7 @@ import Navbar from '../components/common/Navbar'
 import Footer from '../components/common/Footer'
 import CommentSectionFactory from '../components/sections/CommentSectionFactory';
 import DetailedLocationCard from '../components/common/DetailedLocationCard'
+import EditLocation from '../components/common/EditLocation';
 
 const DetailedLocationPage = () => {
     const { id } = useParams();
@@ -39,6 +40,7 @@ const DetailedLocationPage = () => {
     return (
         <div>
             <Navbar />
+            <EditLocation show={show} handleClose={handleClose} />
             <div className="detailed-container">
                 <Container className="detailed-container">
                     {locationDetails && (
@@ -53,6 +55,7 @@ const DetailedLocationPage = () => {
                             locationID={id}
                             userID={locationDetails.get('UserID')}
                             currentUserID={user}
+                            handleShow={handleShow}
                         />
                     )}
                 </Container>

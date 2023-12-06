@@ -16,12 +16,13 @@ const LocationModal = ({
   handleSubmit,
   inputError,
   successMessage,
-  showSuccessMessage
+  showSuccessMessage,
+  title
 }) => {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Create Location</Modal.Title>
+        <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
