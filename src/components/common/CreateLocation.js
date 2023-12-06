@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
-import { Tooltip, OverlayTrigger } from 'react-bootstrap';
-import FormControl from 'react-bootstrap/FormControl';
-import { Button } from 'antd';
 import Parse from 'parse/dist/parse.min.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import LocationModal from './LocationModal';
 
 const CreateLocation = ({show, handleClose}) => {
@@ -17,7 +10,7 @@ const CreateLocation = ({show, handleClose}) => {
         { id: 4, label: 'Country', type: 'text', value: '', required: true  },
         { id: 5, label: 'Type', type: 'checkbox', value: '', options: ['Alpine', 'Boulder', 'Cliff', 'Freeclimb', 'Gym', 'Horizontal', 'Ice', 'Indoor', 'Lead', 'Outdoor', 'Speedclimb', 'Sport', 'Urban'], required: true  },
         { id: 6, label: 'Difficulty', type: 'text', value: '', required: true  },
-        { id: 7, label: 'Description', type: 'text', value: '', required: true  },
+        { id: 7, label: 'Description', type: 'text', value: '', required: true, textarea: true  },
         { id: 8, label: 'Picture', type: 'file', value: null, required: true  },
     ]);
 
@@ -31,6 +24,7 @@ const CreateLocation = ({show, handleClose}) => {
         );
 
         setFormData(updatedFormData);
+        setInputError(false); //clears error message when user starts typing
     };
 
     const valueFor = (label) => {

@@ -3,6 +3,10 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'antd';
 import FormControl from 'react-bootstrap/FormControl';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const LocationModal = ({
   show,
@@ -25,8 +29,23 @@ const LocationModal = ({
           {formData.map((item) => (
             <div className="row w-100" key={item.id}>
               <Form.Group controlId={`formControl_${item.id}`}>
-                <Form.Label>{item.label}{item.required ? '*' : ''}</Form.Label>
+                <Form.Label>
+                  {item.label}{item.required ? '*' : ''}
+                  {item.label === 'Difficulty' && (
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        <Tooltip id="tooltip-right">
+                          Unsure about the difficulty? Check our FAQs!
+                        </Tooltip>
+                      }
+                    >
+                      <FontAwesomeIcon icon={faInfoCircle} />
+                    </OverlayTrigger>
+                  )}
+                </Form.Label>
                 {item.type !== 'checkbox' && item.type !== 'file' ? (
+                  
                   <FormControl
                     type={item.type}
                     placeholder={`Enter ${item.label}`}
