@@ -7,8 +7,9 @@ import { Button } from 'antd';
 import Parse from 'parse/dist/parse.min.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import LocationModal from './LocationModal';
 
-const CreateLocation = ({ show, handleClose }) => {
+const CreateLocation = ({show, handleClose}) => {
     const [formData, setFormData] = useState([
         { id: 1, label: 'Title', type: 'text', value: '' },
         { id: 2, label: 'Latitude', type: 'number', value: '' },
@@ -24,26 +25,39 @@ const CreateLocation = ({ show, handleClose }) => {
     const [successMessage, setSuccessMessage] = useState('');
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-    function valueFor(label) {
-        const field = formData.find(item => item.label === label);
-        return field ? field.value : undefined;
-    }
+    // function valueFor(label) {
+    //     const field = formData.find(item => item.label === label);
+    //     return field ? field.value : undefined;
+    // }
 
-    const handleInputChange = (id, e) => {
-        let value = id === 8 ? e.target.files[0] : e.target.value;
+    // const handleInputChange = (e, id) => {
+    //     let value = id === 8 ? e.target.files[0] : e.target.value;
 
+    //     const updatedFormData = formData.map(item =>
+    //         item.id === id ? { ...item, value: value } : item
+    //     );
+
+    //     setFormData(updatedFormData);
+    // };
+
+    const handleInputChange = (label, value) => {
         const updatedFormData = formData.map(item =>
-            item.id === id ? { ...item, value: value } : item
+            item.label === label ? { ...item, value: value } : item
         );
 
         setFormData(updatedFormData);
     };
 
-    const handleCloseModal = () => {
-        setInputError(false);
-        setShowSuccessMessage(false);
-        handleClose();
+    const valueFor = (label) => {
+        const item = formData.find(item => item.label === label);
+        return item ? item.value : '';
     };
+
+    // const handleCloseModal = () => {
+    //     setInputError(false);
+    //     setShowSuccessMessage(false);
+    //     handleClose();
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -160,137 +174,16 @@ const CreateLocation = ({ show, handleClose }) => {
 
     return (
         <>
-            <Modal show={show} onHide={handleCloseModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Create Location</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form onSubmit={handleSubmit}>
-                        <div className="row w-100">
-                            <Form.Group controlId="formControl_1">
-                                <Form.Label>Title*</Form.Label>
-                                <FormControl
-                                    type="text"
-                                    placeholder="Enter Title"
-                                    value={valueFor("Title")}
-                                    onChange={(e) => handleInputChange(1, e)}
-                                />
-                            </Form.Group>
-                        </div>
-                        <div className='container-fluid mt-2'>
-                            <div className="row">
-                                <div className="col">
-                                    <Form.Group controlId="formControl_2">
-                                        <Form.Label>Latitude*</Form.Label>
-                                        <FormControl
-                                            type="number"
-                                            placeholder="Enter Latitude"
-                                            value={valueFor("Latitude")}
-                                            onChange={(e) => handleInputChange(2, e)}
-                                        />
-                                    </Form.Group>
-                                    <Form.Group controlId="formControl_3">
-                                        <Form.Label>Longitude*</Form.Label>
-                                        <FormControl
-                                            type="number"
-                                            placeholder="Enter Longitude"
-                                            value={valueFor("Longitude")}
-                                            onChange={(e) => handleInputChange(3, e)}
-                                        />
-                                    </Form.Group>
-
-                                </div>
-                                <div className="col">
-                                    <Form.Group controlId="formControl_4">
-                                        <Form.Label>Country*</Form.Label>
-                                        <FormControl
-                                            type="text"
-                                            placeholder="Enter Country"
-                                            value={valueFor("Country")}
-                                            onChange={(e) => handleInputChange(4, e)}
-                                        />
-                                    </Form.Group>
-                                    <Form.Group controlId="formControl_5">
-                                        <Form.Label>Type*</Form.Label>
-                                        <Form.Select onChange={(e) => handleInputChange(5, e)}>
-                                            <option value=""></option>
-                                            {formData.find(item => item.label === "Type").options.map(option => (
-                                                <option key={option} value={option}>
-                                                    {option}
-                                                </option>
-                                            ))}
-                                        </Form.Select>
-                                    </Form.Group>
-                                </div>
-                                <div className="col">
-                                    <Form.Group controlId="formControl_6">
-                                        <Form.Label>Difficulty*</Form.Label>
-                                        <OverlayTrigger
-                                            placement="right"
-                                            overlay ={
-                                                <Tooltip className="tooltip">
-                                                    Unsure about the difficulty? Check our FAQs!
-                                                </Tooltip>
-                                            }>
-                                            <FontAwesomeIcon icon={faInfoCircle} />
-                                        </OverlayTrigger>
-                                        <FormControl
-                                            type="text"
-                                            placeholder="Enter Difficulty"
-                                            value={valueFor("Difficulty")}
-                                            onChange={(e) => handleInputChange(6, e)}
-                                        />
-                                    </Form.Group>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row w-100">
-                            <Form.Group controlId="formControl_7">
-                                <Form.Label>Description*</Form.Label>
-                                <FormControl
-                                    type="text"
-                                    placeholder="Enter Description"
-                                    value={valueFor("Description")}
-                                    onChange={(e) => handleInputChange(7, e)}
-                                />
-                            </Form.Group>
-                        </div>
-                        <div className="row w-100">
-                            <Form.Group controlId="formControl_8">
-                                <Form.Label>Image*</Form.Label>
-                                <FormControl
-                                    type="file"
-                                    onChange={(e) => handleInputChange(8, e)}
-                                />
-                            </Form.Group>
-                        </div>
-
-                        {inputError && (
-                            <div className="row w-100 text-danger">
-                                Please provide input for all fields marked with a *
-                            </div>
-                        )}
-
-                        {showSuccessMessage && (
-                            <div className="row w-100 text-success">
-                                {successMessage}
-                            </div>
-                        )}
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="container">
-                        <div className="row w-100">
-                            <div className="col">
-                                <Button className="form-button-secondary" size="large" onClick={handleCloseModal}> Cancel </Button>
-                            </div>
-                            <div className="col">
-                                <Button type='submit' onClick={handleSubmit} className="form-button" size="large"> Save Changes </Button>
-                            </div>
-                        </div>
-                    </div>
-                </Modal.Footer>
-            </Modal>
+            <LocationModal
+                show={show}
+                handleClose={handleClose}
+                formData={formData}
+                handleInputChange={handleInputChange}
+                handleSubmit={handleSubmit}
+                inputError={inputError}
+                successMessage={successMessage}
+                showSuccessMessage={showSuccessMessage}
+            />
         </>
     );
 };
