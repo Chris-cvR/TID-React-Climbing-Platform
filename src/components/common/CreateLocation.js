@@ -11,34 +11,19 @@ import LocationModal from './LocationModal';
 
 const CreateLocation = ({show, handleClose}) => {
     const [formData, setFormData] = useState([
-        { id: 1, label: 'Title', type: 'text', value: '' },
-        { id: 2, label: 'Latitude', type: 'number', value: '' },
-        { id: 3, label: 'Longitude', type: 'number', value: '' },
-        { id: 4, label: 'Country', type: 'text', value: '' },
-        { id: 5, label: 'Type', type: 'checkbox', value: '', options: ['Alpine', 'Boulder', 'Cliff', 'Freeclimb', 'Gym', 'Horizontal', 'Ice', 'Indoor', 'Lead', 'Outdoor', 'Speedclimb', 'Sport', 'Urban'] },
-        { id: 6, label: 'Difficulty', type: 'text', value: '' },
-        { id: 7, label: 'Description', type: 'text', value: '' },
-        { id: 8, label: 'Picture', type: 'file', value: null },
+        { id: 1, label: 'Title', type: 'text', value: '', required: true },
+        { id: 2, label: 'Latitude', type: 'number', value: '', required: true  },
+        { id: 3, label: 'Longitude', type: 'number', value: '', required: true  },
+        { id: 4, label: 'Country', type: 'text', value: '', required: true  },
+        { id: 5, label: 'Type', type: 'checkbox', value: '', options: ['Alpine', 'Boulder', 'Cliff', 'Freeclimb', 'Gym', 'Horizontal', 'Ice', 'Indoor', 'Lead', 'Outdoor', 'Speedclimb', 'Sport', 'Urban'], required: true  },
+        { id: 6, label: 'Difficulty', type: 'text', value: '', required: true  },
+        { id: 7, label: 'Description', type: 'text', value: '', required: true  },
+        { id: 8, label: 'Picture', type: 'file', value: null, required: true  },
     ]);
 
     const [inputError, setInputError] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
-    // function valueFor(label) {
-    //     const field = formData.find(item => item.label === label);
-    //     return field ? field.value : undefined;
-    // }
-
-    // const handleInputChange = (e, id) => {
-    //     let value = id === 8 ? e.target.files[0] : e.target.value;
-
-    //     const updatedFormData = formData.map(item =>
-    //         item.id === id ? { ...item, value: value } : item
-    //     );
-
-    //     setFormData(updatedFormData);
-    // };
 
     const handleInputChange = (label, value) => {
         const updatedFormData = formData.map(item =>
@@ -53,18 +38,13 @@ const CreateLocation = ({show, handleClose}) => {
         return item ? item.value : '';
     };
 
-    // const handleCloseModal = () => {
-    //     setInputError(false);
-    //     setShowSuccessMessage(false);
-    //     handleClose();
-    // };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const isAnyFieldEmpty = formData.some(item => item.type !== 'file' && (item.value === '' || item.value === null));
+        const isFileUploaded = formData.some(item => item.type === 'file' && item.value);
 
-        if (isAnyFieldEmpty) {
+        if (isAnyFieldEmpty || !isFileUploaded) {
             setInputError(true);
             return;
         }

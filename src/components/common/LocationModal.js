@@ -25,7 +25,7 @@ const LocationModal = ({
           {formData.map((item) => (
             <div className="row w-100" key={item.id}>
               <Form.Group controlId={`formControl_${item.id}`}>
-                <Form.Label>{item.label}{item.type === 'file' ? '*' : ''}</Form.Label>
+                <Form.Label>{item.label}{item.required ? '*' : ''}</Form.Label>
                 {item.type !== 'checkbox' && item.type !== 'file' ? (
                   <FormControl
                     type={item.type}
