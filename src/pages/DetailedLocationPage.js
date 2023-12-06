@@ -13,6 +13,12 @@ const DetailedLocationPage = () => {
     const { id } = useParams();
     const [locationDetails, setLocationDetails] = useState(null);
 
+    const user = Parse.User.current();
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+    const allLocationsQuery = new Parse.Query('Location');
+
     const fetchLocationDetails = async () => {
         const parseQuery = new Parse.Query('Location');
         parseQuery.include('Country');
@@ -45,6 +51,8 @@ const DetailedLocationPage = () => {
                             locationCountry={locationDetails.get('Country').get('Country')}
                             locationDetails={locationDetails.get('Description')}
                             locationID={id}
+                            userID={locationDetails.get('UserID')}
+                            currentUserID={user}
                         />
                     )}
                 </Container>
