@@ -44,8 +44,7 @@ const LocationModal = ({
                     </OverlayTrigger>
                   )}
                 </Form.Label>
-                {item.type !== 'checkbox' && item.type !== 'file' ? (
-                  
+                {item.type !== 'checkbox' && item.type !== 'file' && !item.textarea ? (
                   <FormControl
                     type={item.type}
                     placeholder={`Enter ${item.label}`}
@@ -56,6 +55,14 @@ const LocationModal = ({
                   <FormControl
                     type={item.type}
                     onChange={(e) => handleInputChange(item.label, e.target.files[0])}
+                  />
+                ) : item.type === 'text' && item.textarea ? (
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder={`Enter ${item.label}`}
+                    value={item.value}
+                    onChange={(e) => handleInputChange(item.label, e.target.value)}
                   />
                 ) : (
                   <Form.Select onChange={(e) => handleInputChange(item.label, e.target.value)}>
