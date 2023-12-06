@@ -229,6 +229,16 @@ footer {
   max-height: 280px;
   word-wrap: break-word;
   overflow: auto;
+  /* to make sure the button is positioned relative to this container */
+  position: relative;
+  min-height: calc(100%-40px);
+}
+
+.edit-location-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
 }
 
 .detailed-truncate-text {
