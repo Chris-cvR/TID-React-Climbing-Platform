@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'antd';
@@ -19,6 +19,13 @@ const LocationModal = ({
   showSuccessMessage,
   title
 }) => {
+
+  const [formValues, setFormValues] = useState(formData.map(item => ({...item, value: ''})));
+
+  useEffect(() => {
+    setFormValues(formData.map(item => ({...item, value: item.value || ''})));
+  }, [formData]);
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -27,7 +34,7 @@ const LocationModal = ({
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           {/* form fields */}
-          {formData.map((item) => (
+          {formValues.map((item) => (
             <div className="row w-100" key={item.id}>
               <Form.Group controlId={`formControl_${item.id}`}>
                 <Form.Label>
@@ -66,7 +73,7 @@ const LocationModal = ({
                     onChange={(e) => handleInputChange(item.label, e.target.value)}
                   />
                 ) : (
-                  <Form.Select onChange={(e) => handleInputChange(item.label, e.target.value)}>
+                  <Form.Select value={item.value} onChange={(e) => handleInputChange(item.label, e.target.value)}>
                     <option value=""></option>
                     {item.options.map(option => (
                       <option key={option} value={option}>

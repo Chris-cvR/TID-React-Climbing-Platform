@@ -40,7 +40,7 @@ const DetailedLocationPage = () => {
     return (
         <div>
             <Navbar />
-            <EditLocation show={show} handleClose={handleClose} />
+            <EditLocation show={show} handleClose={handleClose} locationId={id} />
             <div className="detailed-container">
                 <Container className="detailed-container">
                     {locationDetails && (
