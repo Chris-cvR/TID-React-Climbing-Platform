@@ -80,7 +80,7 @@ code {
 }
 
 .card-img-custom {
-  max-width: 35rem;
+  max-width: 34rem;
   max-height: 25rem;
 }
 
@@ -321,6 +321,10 @@ footer {
 
 .crop-image {
   object-fit: cover;
+  width: 34rem;
+  height: 25rem;
+  max-width: 34rem;
+  max-height: 25rem;
 }
 
 .login-container {

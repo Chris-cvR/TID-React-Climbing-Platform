@@ -8,7 +8,7 @@ const CreateLocation = ({ show, handleClose }) => {
         { id: 2, label: 'Latitude', type: 'number', value: '', required: true },
         { id: 3, label: 'Longitude', type: 'number', value: '', required: true },
         { id: 4, label: 'Country', type: 'text', value: '', required: true },
-        { id: 5, label: 'Type', type: 'checkbox', value: '', options: ['Alpine', 'Bouldering', 'Cliff', 'Freeclimb', 'Gym', 'Horizontal', 'Ice', 'Indoor', 'Lead', 'Outdoor', 'Speedclimb', 'Sport', 'Urban'], required: true },
+        { id: 5, label: 'Type', type: 'checkbox', value: '', options: ['Alpine', 'Bouldering', 'Cliff', 'Freeclimb', 'Horizontal', 'Ice', 'Lead', 'Speedclimb', 'Sport', 'Urban'], required: true },
         { id: 6, label: 'Difficulty', type: 'text', value: '', required: true },
         { id: 7, label: 'Description', type: 'text', value: '', required: true, textarea: true },
         { id: 8, label: 'Picture', type: 'file', value: null, required: true },
