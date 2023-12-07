@@ -573,6 +573,13 @@ input[type="radio"]:checked {
   color: hsl(25, 68%, 50%);
   font-size: small;
   text-align: right;
+  align-self: last baseline;
+  width: fit-content;
+  height: 20px;
+  background-color: hsl(27, 26%, 92%);
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 /*styling for the hashtags*/
