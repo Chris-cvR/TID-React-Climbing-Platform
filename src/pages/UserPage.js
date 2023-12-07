@@ -99,10 +99,10 @@ function UserPage() {
                                 Change proficiency level:
                                 <div>
                                     <label className='user-page-selector' style={{ marginBottom: '10px'}}>
-                                        <Form.Control as="select" className="proficiency-selector">
+                                        <Form.Control as="select" className="proficiency-selector"
                                                 value={experience} 
                                                 onChange={(e) => setExperience(e.target.value)}
-                                            
+                                            >
                                             {proficiencyLevels.map(level => (
                                                 <option key={level} value={level}>{level}</option>
                                             ))}
