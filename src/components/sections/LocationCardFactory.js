@@ -5,30 +5,47 @@ import Container from 'react-bootstrap/Container';
 import '../../styles/index.css';
 import SimpleLocationCard from '../common/SimpleLocationCard';
 
-export const LocationCardFactory = ({parseQuery}) => {
+export const LocationCardFactory = ({ parseQuery, selectedCountry, selectedType, selectedDifficulty }) => {
     const [readLocations, setReadLocations] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const readLocationsQuery = async function () {
-        parseQuery.include('Country');
-        parseQuery.include('Difficulty');
-        parseQuery.descending('updatedAt'); //Now the cards are sorted based on popularity 
-
-        try {
-            let locations = await parseQuery.find();
-            setReadLocations(locations);
-            setLoading(false);
-            return true;
-        } catch (error) {
-            alert(`Error! ${error.message}`);
-            setLoading(false);
-            return false;
-        }
-    };
-
     useEffect(() => {
+        setLoading(true);
+
+        const readLocationsQuery = async function () {
+            parseQuery.include('Country');
+            parseQuery.include('Difficulty');
+            parseQuery.descending('updatedAt');
+
+            try {
+                let locations = await parseQuery.find();
+
+                // Apply filters based on the selected values
+                let filteredLocations = locations;
+
+                if (selectedCountry && selectedCountry !== 'None') {
+                    filteredLocations = filteredLocations.filter(item => item.get('Country').get('Country') === selectedCountry);
+                    console.log(filteredLocations)
+                }
+
+                if (selectedType && selectedType !== 'None') {
+                    filteredLocations = filteredLocations.filter(item => item.get('Type') === selectedType);
+                }
+
+                if (selectedDifficulty && selectedDifficulty !== 'None') {
+                    filteredLocations = filteredLocations.filter(item => item.get('Difficulty').get('Difficulty') === selectedDifficulty);
+                }
+
+                setReadLocations(filteredLocations);
+                setLoading(false);
+            } catch (error) {
+                alert(`Error! ${error.message}`);
+                setLoading(false);
+            }
+        };
+
         readLocationsQuery();
-    }, []);
+    }, [selectedCountry, selectedType, selectedDifficulty]);
 
     return (
         <div>
