@@ -80,7 +80,7 @@ code {
 }
 
 .card-img-custom {
-  max-width: 35rem;
+  max-width: 34rem;
   max-height: 25rem;
 }
 
@@ -132,12 +132,19 @@ footer {
   z-index: 2;
 }
 
-.footer-links{
+.navbar-links{
   display: flex;
   justify-content: space-between;
-  width: 110px;
+  width: 250px;
   font-size: 16px;
-  font-weight: bold;
+  margin-left: 30px;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+#navbar-link{
+  font-size: large;
+  margin-right: 30px;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .dropdown-buttons-sidebar {
@@ -226,7 +233,7 @@ footer {
   margin-left: 10px;
   width: 400px;
   max-width: 400px;
-  max-height: 280px;
+  max-height: 230px;
   word-wrap: break-word;
   overflow: auto;
   /* to make sure the button is positioned relative to this container */
@@ -239,11 +246,13 @@ footer {
   bottom: 0;
   right: 0;
   padding: 20px;
+  margin-right: 22px;
 }
 
 .detailed-truncate-text {
   max-width: 250px;
-  white-space: nowrap;
+  max-height: 70px;
+  white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -312,6 +321,10 @@ footer {
 
 .crop-image {
   object-fit: cover;
+  width: 34rem;
+  height: 25rem;
+  max-width: 34rem;
+  max-height: 25rem;
 }
 
 .login-container {

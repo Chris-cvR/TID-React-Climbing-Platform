@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import LikeFunctionality from './LikeFunctionality';
 import { Button } from 'antd';
 
-function DetailedLocationCard({ locationPicture, locationLatitude, locationLongitude, locationType, locationName, locationCountry, locationDetails, locationID, userID, currentUserID, handleShow }) {
+function DetailedLocationCard({ locationPicture, locationLatitude, locationLongitude, locationType, locationName, locationCountry, locationDetails, locationID, userID, currentUserID, locationDifficulty, handleShow }) {
 
     return (
         <Card className=" detailed-card-style">
@@ -34,6 +34,9 @@ function DetailedLocationCard({ locationPicture, locationLatitude, locationLongi
                                 <div className="col detailed-text-container">
                                     {locationType}
                                 </div>
+                                <div className="col detailed-text-container">
+                                    <b>{locationDifficulty}</b>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -60,8 +63,8 @@ function DetailedLocationCard({ locationPicture, locationLatitude, locationLongi
                         {locationDetails}
                     </div>
                     <div className='edit-location-button'>
-	                    {JSON.stringify(userID) === JSON.stringify(currentUserID) && <Button onClick={handleShow} className="form-button" size="large"> Edit </Button>}
-	                </div>
+                        {JSON.stringify(userID) === JSON.stringify(currentUserID) && <Button onClick={handleShow} className="form-button" size="large"> Edit </Button>}
+                    </div>
                     <div className="detailed-flex-container2">
 
                     </div>
