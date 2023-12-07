@@ -69,7 +69,7 @@ function CommentSectionFactory({ locationId }) {
                               Array.isArray(item.hashtags) &&
                               item.hashtags
                                 .map((hashtag) => hashtag.get("Name"))
-                                .join(", ")}
+                                .join(" ")}
                           </p>
                         </div>
                       </div>
