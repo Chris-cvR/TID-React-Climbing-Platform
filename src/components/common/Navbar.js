@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Parse from 'parse/dist/parse.min.js';
 import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const CompleteNavbar = () => {
 
@@ -37,6 +38,11 @@ const CompleteNavbar = () => {
                     />{' '}
                     PeakPulse
                 </Navbar.Brand>
+                <div className="navbar-links">
+                    <NavLink className="nav-link" id="navbar-link" to="/feed">Home</NavLink>
+                    <NavLink className="nav-link" id="navbar-link" to="/about">About</NavLink>
+                    <NavLink className="nav-link" id="navbar-link" to="/faq">FAQ</NavLink>
+                </div>
                 <Navbar.Collapse className="justify-content-end">
                     <Link to={`/user/${user.get("username")}`}>
                         <ProfilePicture size="60px" />

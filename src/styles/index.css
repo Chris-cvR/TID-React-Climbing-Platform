@@ -132,12 +132,19 @@ footer {
   z-index: 2;
 }
 
-.footer-links{
+.navbar-links{
   display: flex;
   justify-content: space-between;
-  width: 110px;
+  width: 250px;
   font-size: 16px;
-  font-weight: bold;
+  margin-left: 30px;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+#navbar-link{
+  font-size: large;
+  margin-right: 30px;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .dropdown-buttons-sidebar {

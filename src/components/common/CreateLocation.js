@@ -51,14 +51,10 @@ const CreateLocation = ({ show, handleClose }) => {
             ? countryValue.trim().charAt(0).toUpperCase() + countryValue.slice(1).toLowerCase()
             : "";
 
-        console.log("Formatted Country:", formattedCountry);
-
         const difficultyValue = valueFor("Difficulty");
         const formattedDifficulty = difficultyValue && difficultyValue.trim() !== ""
             ? difficultyValue.trim().charAt(0).toUpperCase() + difficultyValue.slice(1).toLowerCase()
             : "";
-
-        console.log("Formatted Difficulty", formattedDifficulty);
 
         const imageFile = valueFor("Picture");
         const reader = new FileReader();
