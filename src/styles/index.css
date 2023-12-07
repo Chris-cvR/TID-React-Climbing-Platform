@@ -712,6 +712,10 @@ input[type="radio"]:checked {
   font-size: 14px;
 }
 
+.proficiency-selector{
+  width: 200px;
+}
+
 .user-page-input {
   display: flex;
   flex-direction: column;
@@ -726,6 +730,7 @@ input[type="radio"]:checked {
 
 .change-password-container {
   margin-top: 20px;
+  width: 200px;
 }
 
 .change-profile-picture-container {
