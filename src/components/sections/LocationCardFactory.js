@@ -25,7 +25,6 @@ export const LocationCardFactory = ({ parseQuery, selectedCountry, selectedType,
 
                 if (selectedCountry && selectedCountry !== 'None') {
                     filteredLocations = filteredLocations.filter(item => item.get('Country').get('Country') === selectedCountry);
-                    console.log(filteredLocations)
                 }
 
                 if (selectedType && selectedType !== 'None') {
