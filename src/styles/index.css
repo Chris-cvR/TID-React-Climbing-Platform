@@ -321,6 +321,9 @@ footer {
 
 .crop-image {
   object-fit: cover;
+}
+
+.crop-image-two{
   width: 34rem;
   height: 25rem;
   max-width: 34rem;

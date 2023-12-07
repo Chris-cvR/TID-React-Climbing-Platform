@@ -9,7 +9,7 @@ function SimpleLocationCard({ locationURL, locationPicture, locationID, location
     return (
         <Card className="custom-card mx-auto">
             <Link to={locationURL}>
-                <Card.Img className="card-img-custom crop-image" src={locationPicture} />
+                <Card.Img className="card-img-custom crop-image-two" src={locationPicture} />
             </Link>
             <Card.Body>
                 <div className="d-flex align-items-top">
