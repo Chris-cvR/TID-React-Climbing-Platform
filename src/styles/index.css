@@ -233,7 +233,7 @@ footer {
   margin-left: 10px;
   width: 400px;
   max-width: 400px;
-  max-height: 280px;
+  max-height: 230px;
   word-wrap: break-word;
   overflow: auto;
   /* to make sure the button is positioned relative to this container */
@@ -246,11 +246,13 @@ footer {
   bottom: 0;
   right: 0;
   padding: 20px;
+  margin-right: 22px;
 }
 
 .detailed-truncate-text {
   max-width: 250px;
-  white-space: nowrap;
+  max-height: 70px;
+  white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
