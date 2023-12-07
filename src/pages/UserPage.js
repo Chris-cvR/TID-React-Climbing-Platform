@@ -7,6 +7,7 @@ import { Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { LocationCardFactory } from "../components/sections/LocationCardFactory";
+import Form from 'react-bootstrap/Form';
 
 function UserPage() {
     const user = Parse.User.current();
@@ -98,11 +99,14 @@ function UserPage() {
                                 Change proficiency level:
                                 <div>
                                     <label className='user-page-selector' style={{ marginBottom: '10px'}}>
-                                        <select value={experience} onChange={(e) => setExperience(e.target.value)}>
+                                        <Form.Control as="select" className="proficiency-selector">
+                                                value={experience} 
+                                                onChange={(e) => setExperience(e.target.value)}
+                                            
                                             {proficiencyLevels.map(level => (
                                                 <option key={level} value={level}>{level}</option>
                                             ))}
-                                        </select>
+                                        </Form.Control>
                                     </label>
                                 </div>
                                 <Button type="submit" className="form-button" size="large" onClick={handleExperienceChange}>Save Changes</Button>
