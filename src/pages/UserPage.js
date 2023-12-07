@@ -7,7 +7,6 @@ import { Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { LocationCardFactory } from "../components/sections/LocationCardFactory";
-import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 
 function UserPage() {

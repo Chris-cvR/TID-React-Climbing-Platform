@@ -62,6 +62,7 @@ export const LoginPage = () => {
                                 }
                                 placeholder="Username"
                                 size="large"
+                                style={{ fontFamily: 'Montserrat, sans-serif' }}
                             />
                         </div>
 
@@ -76,6 +77,7 @@ export const LoginPage = () => {
                                 placeholder="Password"
                                 size="large"
                                 type="password"
+                                style={{ fontFamily: 'Montserrat, sans-serif' }}
                             />
                         </div>
                         {errorMessage && <p className='error-message'>{errorMessage}</p>}

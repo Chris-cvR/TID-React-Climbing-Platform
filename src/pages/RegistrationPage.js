@@ -6,6 +6,7 @@ import Logo from "../assets/images/PeakPulse_white.png"
 import image from "../assets/images/climb_cliff.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from 'antd';
+import Form from 'react-bootstrap/Form';
 
 
 export const RegistrationPage = () => {
@@ -82,55 +83,63 @@ export const RegistrationPage = () => {
                     <p className="welcome-text">Join the PeakPulse community!</p>
                 </div>
                 <div className="register-form-container">
-                    <div className='register-input-fields'>
-                        <Input
-                            value={username}
-                            onChange={(event) => {
-                                setUsername(event.target.value);
-                                clearErrorMessage();
-                            }
-                            }
-                            placeholder="Username"
-                            size="large"
-                            className="custom-input"
-                            style={{ marginTop: '4%' }}
-                        />
-                        <Input
-                            value={password}
-                            onChange={(event) => {
-                                setPassword(event.target.value);
-                                clearErrorMessage();
-                            }
-                            }
-                            placeholder="Password"
-                            size="large"
-                            type="password"
-                            className="custom-input"
-                            style={{ marginTop: '4%' }}
-                        />
-                        <Input
-                            type="file"
-                            onChange={(event) => {
-                                setProfilePicture(event.target.files[0]);
-                                clearErrorMessage();
-                            }}
-                            placeholder="Profile Picture"
-                            size="large"
-                            className="custom-input"
-                            style={{ marginTop: '4%' }}
-                        />
+                    <div className='register-form'>
+                        <div className='register-input-fields'>
+                            <Input
+                                value={username}
+                                onChange={(event) => {
+                                    setUsername(event.target.value);
+                                    clearErrorMessage();
+                                }
+                                }
+                                placeholder="Username"
+                                size="large"
+                                className="custom-input"
+                                style={{ marginTop: '4%', fontFamily: 'Montserrat, sans-serif' }}
+                            />
+                            <Input
+                                value={password}
+                                onChange={(event) => {
+                                    setPassword(event.target.value);
+                                    clearErrorMessage();
+                                }
+                                }
+                                placeholder="Password"
+                                size="large"
+                                type="password"
+                                className="custom-input"
+                                style={{ marginTop: '4%', fontFamily: 'Montserrat, sans-serif' }}
+                            />
+                        </div>
+                        <div className='register-file-proficiency'>
+                            <Input
+                                type="file"
+                                onChange={(event) => {
+                                    setProfilePicture(event.target.files[0]);
+                                    clearErrorMessage();
+                                }}
+                                placeholder="Profile Picture"
+                                className="custom-input"
+                                style={{ marginTop: '4%', fontFamily: 'Montserrat, sans-serif' }}
+                            />
+                            <label className='proficiency-selector'>
+                                <Form.Control 
+                                    as="select" 
+                                    value={experience} 
+                                    onChange={(e) => setExperience(e.target.value)}
+                                    style={{color: experience ? 'initial' : '#adb5bd'}}>
+                                        <option value="">Proficiency level</option>
+                                        <option value="beginner">Beginner</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                        <option value="pro">Pro</option>
+                                </Form.Control>
+                            </label>
+                        </div>
                     </div>
-                    <label className='proficiency-selector' style={{ marginBottom: '20px' }}>
-                        Proficiency Level:
-                        <select value={experience} onChange={(e) => setExperience(e.target.value)}>
-                            <option value=""></option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                            <option value="pro">Pro</option>
-                        </select>
-                    </label>
-                    {errorMessage && <p className='error-message'>{errorMessage}</p>}
+                    <div className='error-message-container'>
+                        {errorMessage && <p className='error-message'>{errorMessage}</p>}
+                    </div>
                     <Button onClick={() => doUserRegistration()} className="form-button" size="large"> Sign Up </ Button>
                     <h6 className="member-status"> Already a member? <NavLink className="nav-link" to="/">Login</NavLink></h6>
                 </div>
