@@ -132,7 +132,7 @@ footer {
   z-index: 2;
 }
 
-.navbar-links{
+.navbar-links {
   display: flex;
   justify-content: space-between;
   width: 250px;
@@ -141,7 +141,7 @@ footer {
   font-family: "Montserrat", sans-serif !important;
 }
 
-#navbar-link{
+#navbar-link {
   font-size: large;
   margin-right: 30px;
   font-family: "Montserrat", sans-serif !important;
@@ -323,7 +323,7 @@ footer {
   object-fit: cover;
 }
 
-.crop-image-two{
+.crop-image-two {
   width: 34rem;
   height: 25rem;
   max-width: 34rem;
@@ -399,7 +399,7 @@ form {
   flex-direction: column;
   align-items: center;
 }
-.register-form{
+.register-form {
   display: flex;
   flex-direction: row;
 }
@@ -410,7 +410,7 @@ form {
   padding-right: 2%;
 }
 
-.register-file-proficiency{
+.register-file-proficiency {
   display: flex;
   flex-direction: column;
   padding-left: 2%;
@@ -424,7 +424,7 @@ form {
   height: 100%;
 }
 
-.error-message-container{
+.error-message-container {
   height: 70px;
 }
 
@@ -689,8 +689,8 @@ input[type="radio"]:checked {
   border: hidden 0.5px rgb(119, 113, 113);
   border-radius: 3px;
   margin-right: auto;
-  width: 62px;
-  line-height: 10px;
+  width: 70px;
+  line-height: 12px;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -711,12 +711,12 @@ input[type="radio"]:checked {
 }
 
 /* user page */
-.user-page{
+.user-page {
   display: flex;
   flex-direction: row;
 }
 
-.user-page-greeting{
+.user-page-greeting {
   word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 15px;
@@ -743,7 +743,7 @@ input[type="radio"]:checked {
   font-size: 14px;
 }
 
-.proficiency-selector{
+.proficiency-selector {
   width: 200px;
 }
 
@@ -771,7 +771,7 @@ input[type="radio"]:checked {
   align-items: center;
 }
 
-.change-picture-button{
+.change-picture-button {
   margin-top: 5px;
   display: flex;
   justify-content: center;
@@ -781,13 +781,13 @@ input[type="radio"]:checked {
   margin-top: 20px;
 }
 
-.profile-picture-upload{
+.profile-picture-upload {
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
 }
 
-.profile-picture-file-input{
+.profile-picture-file-input {
   display: none;
 }
 
