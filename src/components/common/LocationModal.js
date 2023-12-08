@@ -17,7 +17,8 @@ const LocationModal = ({
   inputError,
   successMessage,
   showSuccessMessage,
-  title
+  title,
+  disableCountry
 }) => {
 
   const [formValues, setFormValues] = useState(formData.map(item => ({...item, value: ''})));
@@ -57,6 +58,7 @@ const LocationModal = ({
                     type={item.type}
                     placeholder={`Enter ${item.label}`}
                     value={item.value}
+                    disabled={item.label === 'Country' && disableCountry}
                     onChange={(e) => handleInputChange(item.label, e.target.value)}
                   />
                 ) : item.type === 'file' ? (
