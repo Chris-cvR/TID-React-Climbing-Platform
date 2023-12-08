@@ -27,11 +27,11 @@ const EditLocation = ({ show, handleClose, locationId }) => {
                     { id: 1, label: 'Name', type: 'text', value: location.get('Name'), required: true },
                     { id: 2, label: 'Latitude', type: 'number', value: location.get('Latitude'), required: true  },
                     { id: 3, label: 'Longitude', type: 'number', value: location.get('Longitude'), required: true  },
-                    { id: 4, label: 'Country', type: 'text', value: location.get('Country').get('Country'), required: true  },
+                    { id: 4, label: 'Country', type: 'text', value: location.get('Country').get('Country'), required: false},
                     { id: 5, label: 'Type', type: 'checkbox', value: location.get('Type'), options: ['Alpine', 'Boulder', 'Cliff', 'Freeclimb', 'Gym', 'Horizontal', 'Ice', 'Indoor', 'Lead', 'Outdoor', 'Speedclimb', 'Sport', 'Urban'], required: true  },
                     { id: 6, label: 'Difficulty', type: 'text', value: location.get('Difficulty').get('Difficulty'), required: true  },
                     { id: 7, label: 'Description', type: 'text', value: location.get('Description'), required: true, textarea: true  },
-                    { id: 8, label: 'Picture', type: 'file', value: pictureUrl, required: true  },
+                    { id: 8, label: 'Picture', type: 'file', value: pictureUrl, required: false  },
                 ]);
             } catch (error) {
                 console.error('Error fetching location data:', error);
@@ -40,6 +40,7 @@ const EditLocation = ({ show, handleClose, locationId }) => {
         }
         fetchLocationData();
     }, [locationId]);
+
     const handleInputChange = (label, value) => {
         // Find the index of the item being updated
         const updatedIndex = formData.findIndex(item => item.label === label);
@@ -49,11 +50,46 @@ const EditLocation = ({ show, handleClose, locationId }) => {
         setFormData(updatedFormData);
         setInputError(false); //clears error message when user starts typing
     };
-    
+
     const handleSubmit = async (event) => {
-    event.preventDefault();
-       
+        event.preventDefault();
+
+        const locationQuery = new Parse.Query('Location');
+        const location = await locationQuery.get(locationId);
+
+        formData.forEach(async item => {
+            if(item.type === 'file') {
+                if(item.value && item.value instanceof Blob) {
+                const file = new Parse.File(item.label, item.value);
+                location.set(item.label, file);
+                }
+            }else if(item.label === 'Difficulty') {
+                const pointerClass = Parse.Object.extend(item.label.charAt(0).toUpperCase() + item.label.slice(1));
+                const query = new Parse.Query(pointerClass);
+                query.equalTo("objectId", item.value);
+                const pointerObject = await query.first();
+                if (!pointerObject) {
+                    const newPointerObject = new pointerClass();
+                    newPointerObject.set(item.label, item.value);
+                    await newPointerObject.save();
+                    location.set(item.label, newPointerObject);
+                }else{
+                    location.set(item.label, pointerObject);
+                }
+            }else if(item.label !== 'Country') {
+                location.set(item.label, item.value);
+            }
+        });
+
+        try {
+            await location.save();
+            setSuccessMessage('Location updated successfully!');
+            setShowSuccessMessage(true);
+        } catch (error){
+            console.error('Error while updating location: ', error);
+        }
     };
+
     return (
         <>
             <LocationModal
@@ -66,6 +102,7 @@ const EditLocation = ({ show, handleClose, locationId }) => {
                 successMessage={successMessage}
                 showSuccessMessage={showSuccessMessage}
                 title="Edit Location"
+                disableCountry={true}
             />
         </>
     );
