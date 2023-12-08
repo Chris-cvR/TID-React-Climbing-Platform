@@ -44,6 +44,7 @@ const DBFetcherDropdownButton = ({ parseClassName, columnName, placeHolderText, 
             size='large'
             style={{
                 width: '100%',
+                borderRadius: '5px',
             }}
             placeholder={placeHolderText}
             onChange={handleChange}
