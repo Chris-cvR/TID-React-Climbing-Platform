@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartO} from '@fortawesome/free-regular-svg-icons';
 import '../../styles/index.css';
-
 // This component is responsible for displaying the like functionality for a post.
 // It fetches the current number of likes for the post from the Parse server and updates the number of likes when the heart icon is clicked.
 // Props: id = The ID of the post.
@@ -12,19 +11,15 @@ export const LikeFunctionality = ({id}) => {
     const [likes, setLikes] = useState(0);
     const [hasLiked, setHasLiked] = useState(false);
     const user = Parse.User.current();
-
     // useEffect hook to fetch the current number of likes when the component mounts
     useEffect(() => {
         const fetchLikes = async () => {
         const parseQuery = new Parse.Query('Like');
-        parseQuery.equalTo('user', user);
         parseQuery.equalTo('location', { "__type": 'Pointer', "className": 'Location', "objectId": id });
     
-
         try {
             const likes = await parseQuery.count();
             setLikes(likes);
-            setHasLiked(likes > 0);
         } catch (error) {
             console.error('Error fetching likes: ', error);
         }
@@ -37,11 +32,14 @@ export const LikeFunctionality = ({id}) => {
         const parseQuery = new Parse.Query('Like');
         parseQuery.equalTo('user', user);
         parseQuery.equalTo('location', { "__type": 'Pointer', "className": 'Location', "objectId": id });
-
+        const locationQuery = new Parse.Query('Location');
+        const location = await locationQuery.get(id);
          try {
             const existingLike = await parseQuery.first();
             if(existingLike) { //the user has already the location, unlike it
                 await existingLike.destroy();
+                location.increment('likes', -1);
+                await location.save();
                 setLikes(likes - 1);
                 setHasLiked(false);
             } else {
@@ -50,7 +48,8 @@ export const LikeFunctionality = ({id}) => {
                 like.set('user', user);
                 like.set('location', { "__type": "Pointer", "className": "Location", "objectId": id});
                 await like.save();
-
+                location.increment('likes');
+                await location.save();
                 //update number of likes
                 setLikes(likes + 1);
                 setHasLiked(true);
@@ -59,7 +58,6 @@ export const LikeFunctionality = ({id}) => {
             console.error('Error updating likes: ', error);
         }
     }
-
     return (
         <div>
             {/* If the number of likes is greater than 0, display the solid heart icon. Otherwise, display the outlined heart icon. */}
@@ -68,5 +66,4 @@ export const LikeFunctionality = ({id}) => {
         </div>
     )
 }
-
 export default LikeFunctionality;
