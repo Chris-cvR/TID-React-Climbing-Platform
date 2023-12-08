@@ -4,6 +4,8 @@ import { List } from 'antd';
 import Container from 'react-bootstrap/Container';
 import '../../styles/index.css';
 import SimpleLocationCard from '../common/SimpleLocationCard';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export const LocationCardFactory = ({ parseQuery, selectedCountry, selectedType, selectedDifficulty }) => {
     const [readLocations, setReadLocations] = useState([]);
@@ -50,29 +52,31 @@ export const LocationCardFactory = ({ parseQuery, selectedCountry, selectedType,
         <div>
             <div className="location-container">
                 <div>
-                    {loading && <div>Loading...</div>}
-                    {!loading && readLocations !== null &&
-                        readLocations !== undefined &&
-                        readLocations.length > 0 && (
-                            <List
-                                dataSource={[...readLocations]}
-                                renderItem={(item) => (
-                                    <List.Item className="card-items">
-                                        <Container className="my-4 location-card">
-                                            <SimpleLocationCard
-                                                locationURL={`/location/${item.id}`}
-                                                locationPicture={item.get('Picture')?.url()}
-                                                locationID={item.id}
-                                                locationName={item.get('Name')}
-                                                locationCountry={item.get('Country').get('Country')}
-                                                locationType={item.get('Type')}
-                                                locationDifficulty={item.get('Difficulty').get('Difficulty')}
-                                            />
-                                        </Container>
-                                    </List.Item>
-                                )}
-                            />
-                        )}
+                    {loading && (
+                        <div>
+                            <Skeleton height={400} count={7} />
+                        </div>
+                    )}
+                    {!loading && readLocations !== null && readLocations !== undefined && readLocations.length > 0 && (
+                        <List
+                            dataSource={[...readLocations]}
+                            renderItem={(item) => (
+                                <List.Item className="card-items">
+                                    <Container className="my-4 location-card">
+                                        <SimpleLocationCard
+                                            locationURL={`/location/${item.id}`}
+                                            locationPicture={item.get('Picture')?.url()}
+                                            locationID={item.id}
+                                            locationName={item.get('Name')}
+                                            locationCountry={item.get('Country').get('Country')}
+                                            locationType={item.get('Type')}
+                                            locationDifficulty={item.get('Difficulty').get('Difficulty')}
+                                        />
+                                    </Container>
+                                </List.Item>
+                            )}
+                        />
+                    )}
                 </div>
             </div>
         </div>
