@@ -1,10 +1,10 @@
-# Getting Started with PeakPulse
+**Getting Started with PeakPulse**
 
-In order to run our website successfully, you need to follow a few steps that are outlined below. 
+In order to run our website successfully, there are a few steps you need to follow which are outlined below.
 
 1. Clone the github repository
-2. Run the command `npm install react-scripts --save`
-3. After this it is possible to launch our website using `npm start`
-4. Enjoy PeakPulse!
+2. Run the command `npm install`
+3. After this you will be able to launch our website using `npm start`
+4. Explore and enjoy PeakPulse!
 
 The website opens at [http://localhost:3000](http://localhost:3000) 
