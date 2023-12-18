@@ -1,55 +1,96 @@
 import React, { useState } from "react";
-import "../../styles/index.css";
+import { Button } from "antd";
+import Parse from "parse/dist/parse.min.js";
 
-function Comment() {
-  // Initialize state variables using the useState hook
-  const [comments, setComments] = useState([]); // Store the list of comments
-  const [newComment, setNewComment] = useState(""); // Store the new comment being typed by the user
+function Comment({ locationId, onCommentAdded }) {
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
+  const [newHashtags, setNewHashtags] = useState(""); // Add this line for new hashtags textbox
 
-  // Function to add a new comment to the list
-  const addComment = () => {
+  //const normalizeHashtag = (hashtag) => hashtag.replace(/#\s*/g, ""); // Normalize hashtags input
+
+  const addComment = async () => {
+    const currentUser = Parse.User.current();
+
     if (newComment) {
-      setComments([...comments, newComment]); // Update the list of comments with the new comment
-      setNewComment(""); // Clear the input field
+      try {
+        const Comment = Parse.Object.extend("Comment");
+        const commentToSave = new Comment();
+
+        commentToSave.set("CommentText", newComment);
+        commentToSave.set("UserID", currentUser);
+
+        const location = new Parse.Object("Location");
+        location.id = locationId;
+        commentToSave.set("LocationID", location);
+
+        const relation = commentToSave.relation("HashtagID");
+
+        // Process newHashtags here: Explain to users that they need to begin their hashtag with # and seperate with a space
+        const hashtagStrings = newHashtags
+          .split(" ") // split by space
+          .filter((hashtag) => hashtag.startsWith("#")); // keep only strings that start with #
+
+        // Search for existing Hashtag
+        for (const hashtagStr of hashtagStrings) {
+          const Hashtags = Parse.Object.extend("Hashtags");
+          const hashtagQuery = new Parse.Query(Hashtags);
+
+          hashtagQuery.equalTo("Name", hashtagStr);
+          let hashtag = await hashtagQuery.first();
+
+          // If it doesn't exist, create it
+          if (!hashtag) {
+            hashtag = new Hashtags();
+            hashtag.set("Name", hashtagStr);
+            await hashtag.save();
+          }
+
+          relation.add(hashtag); // Add the new Hashtag to the relation.
+        }
+
+        const savedComment = await commentToSave.save();
+
+        setComments([...comments, savedComment]);
+        setNewComment("");
+        setNewHashtags(""); // Clear the newHashtags input field
+
+        if (onCommentAdded) {
+          onCommentAdded(savedComment);
+        }
+      } catch (error) {
+        console.log(`Could not add comment. Error code: ${error}`);
+      }
     }
   };
 
   return (
     <div className="comment-container">
-      <h2>Comments</h2>
-      {comments.map((comment, index) => (
-        <div key={index} className="posted-comment">
-          <p className="comment-title">UserName </p>
-          <p className="user-experience">(Beginner)</p>
-          <p className="comment-text">{comment}</p>
-        </div> // Map through the list of comments and display each in a separate container + add "UserName" as a title for each comment
-      ))}
-      <input
+      <h2>Add Comment</h2>
+      <textarea //Comment textfield
         className="add-comment-textbox"
-        type="text"
         placeholder="Enter your comment here"
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
-      <div className="checkbox-container">
-        Hashtags:&nbsp;
-        <label className="checkbox-hashtag">
-          <input type="checkbox" />
-          #Safety&nbsp;&nbsp;&nbsp;
-        </label>
-        <label className="checkbox-hashtag">
-          <input type="checkbox" />
-          #Experience&nbsp;&nbsp;&nbsp;
-        </label>
-        <label className="checkbox-hashtag">
-          <input type="checkbox" />
-          #State&nbsp;&nbsp;&nbsp;
-        </label>
-      </div>
 
-      <button className="comment-button" onClick={addComment}>
-        Add Comment
-      </button>
+      <input // hashtags input field
+        className="hashtag-input-field"
+        type="text"
+        placeholder="Begin each hashtag with a '#' and seperate with space"
+        value={newHashtags}
+        onChange={(e) => setNewHashtags(e.target.value)}
+      />
+
+      <Button
+        onClick={addComment}
+        id="comment-button"
+        className="form-button"
+        size="large"
+      >
+        {" "}
+        Comment{" "}
+      </Button>
     </div>
   );
 }

@@ -1,17 +1,34 @@
 import "../../styles/index.css"
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import ProfilePicture from "./ProfilePicture";
 import images from "../../assets/images/PeakPulse.png"
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Parse from 'parse/dist/parse.min.js';
+import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-function CompleteNavbar() {
+const CompleteNavbar = () => {
+
+    const navigate = useNavigate();
+
+    const logout = () => {
+        Parse.User.logOut().then(() => {
+            navigate('/');
+        }).catch((error) => {
+            console.error('Failed to log out, with error: ', error);
+        });
+    }
+
+    const user = Parse.User.current();
 
     const PeakPulseImage = images;
 
     return (
         <Navbar sticky="top" className="custom-navbar">
             <Container>
-                <Navbar.Brand as={Link} to="/" className="custom-brand">
+                <Navbar.Brand as={Link} to="/feed" className="custom-brand">
                     <img
                         alt=""
                         src={PeakPulseImage}
@@ -21,11 +38,23 @@ function CompleteNavbar() {
                     />{' '}
                     PeakPulse
                 </Navbar.Brand>
+                <div className="navbar-links">
+                    <NavLink className="nav-link" id="navbar-link" to="/feed">Home</NavLink>
+                    <NavLink className="nav-link" id="navbar-link" to="/about">About</NavLink>
+                    <NavLink className="nav-link" id="navbar-link" to="/faq">FAQ</NavLink>
+                </div>
                 <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                        Signed in as:
-                        <NavLink className="nav-link" to="/login">User!</NavLink>
+                    <Link to={`/user/${user.get("username")}`}>
+                        <ProfilePicture size="60px" />
+                    </Link>
+                    <Navbar.Text className="navbar-text">
+                        Hello, {user ? (
+                            <Link to={`/user/${user.get("username")}`}>
+                                {user.get("username")}
+                            </Link>
+                        ) : 'Guest'}!
                     </Navbar.Text>
+                    <Button id="logout-button" className="form-button" size="large" onClick={logout}>Logout</Button>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

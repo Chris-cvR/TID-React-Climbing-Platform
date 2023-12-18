@@ -2,8 +2,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -12,13 +12,12 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 /* src/index.css */
 @import "~bootstrap/dist/css/bootstrap.min.css";
-
 
 /*Navbar CSS*/
 .custom-navbar {
@@ -26,11 +25,23 @@ code {
   background-color: hsl(24, 8%, 88%);
 }
 
+.navbar-text {
+  margin-right: 2%;
+  margin-left: 1%;
+}
+
+#logout-button {
+  width: 100px !important;
+}
 
 /*LocationCard CSS*/
 .custom-card {
-  margin-top: 40px;
   max-width: 35rem;
+}
+
+.location-container {
+  display: flex;
+  align-items: center !important;
 }
 
 .location-details {
@@ -38,7 +49,6 @@ code {
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
-  margin-bottom: 5px;
 }
 
 .location-title {
@@ -51,8 +61,8 @@ code {
 }
 
 .card-text {
-  margin-left: 50px; 
-  margin-top: -25px;
+  margin-left: 50px;
+  margin-top: -35px;
 }
 
 #heart {
@@ -69,6 +79,11 @@ code {
   align-content: right;
 }
 
+.card-img-custom {
+  max-width: 34rem;
+  max-height: 25rem;
+}
+
 #likes {
   margin-top: 10px;
 }
@@ -78,6 +93,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: -20px;
 }
 
 .center-likes {
@@ -85,6 +101,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 4px;
 }
 
 .truncate-text {
@@ -98,49 +115,42 @@ code {
   position: float;
   background: hsl(24, 8%, 88%);
   z-index: 1;
+  width: fit-content;
+  padding-right: 8%;
+  width: 350px;
+  max-width: 350px;
 }
 
-footer{
+.sidebar-buttons {
+  margin-left: 35px;
+}
+
+/* footer */
+footer {
   position: relative;
   background: hsl(24, 8%, 88%);
   z-index: 2;
 }
 
-.dropdown-toggle{
-  color: hsl(25, 68%, 50%);
-  background-color: white;
-  border-color: rgb(205, 196, 196);
-  
+.navbar-links {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  font-size: 16px;
+  margin-left: 30px;
+  font-family: "Montserrat", sans-serif !important;
 }
 
-.dropdown-toggle {
-  width: 200px;
-  margin-top: 5%;
-  color: hsl(25, 68%, 50%);
-  background-color: white;
-  border-color: white;
+#navbar-link {
+  font-size: large;
+  margin-right: 30px;
+  font-family: "Montserrat", sans-serif !important;
 }
 
-.dropdown-toggle:hover {
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
-}
-
-.dropdown-buttons-sidebar{
+.dropdown-buttons-sidebar {
   margin-top: 10%;
-}
-
-.dropdown input[type="checkbox"]{
-  margin-left: 10px;
-  margin-right: 2px;
-}
-
-.dropdown input[type="radio"] {
-  margin-left: 10px;
-  margin-right: 2px;
-}
-
-.dropdown-menu label {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav {
@@ -149,7 +159,7 @@ footer{
   padding-left: 50;
 }
 
-#dropdown-basic{
+#dropdown-basic {
   margin-top: 20px;
   margin-bottom: 20;
   border-bottom: 1px solid hsl(0, 0%, 83%);
@@ -160,44 +170,35 @@ footer{
   width: 100%;
 }
 
-#primary-button{
-  background-color: hsl(25, 68%, 50%);
-  border-color: hsl(25, 68%, 50%);
-  border-radius: 5px;
-  color: hsl(24, 8%, 88%);
-  width: 100%;
+.form-button-secondary {
+  width: 100% !important;
+  color: hsl(25, 68%, 50%) !important;
+  background-color: white !important;
+  border-color: rgb(205, 196, 196) !important;
+  text-align: center !important;
+  border-width: 1px !important;
+  border-radius: 5px !important;
+  height: 40px !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
-#primary-button:hover{
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
-}
-
-#secondary-button {
-  width: 100%;
-  margin-top: 5%;
-  color: hsl(25, 68%, 50%);
-  background-color: white;
-  border-color: rgb(205, 196, 196);
-  text-align: center;
-}
-
-#secondary-button:hover {
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
+.form-button-secondary:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19) !important;
 }
 
 .divider {
-  width: 1px; 
-  background-color: #000; 
-  margin: 0 15px; 
-  height: 100%; 
+  width: 1px;
+  background-color: rgb(205, 196, 196);
+  margin: 0 15px;
+  height: 100%;
 }
 
 /* DetailedLocationCard Css */
-.DetailedCardStyle {
+.detailed-card-style {
   width: 900px;
   height: 450px;
-
-}.DetailedContainer {
+}
+.detailed-container {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
@@ -205,9 +206,9 @@ footer{
   align-items: center;
 }
 
-.DetailedLocationImage {
-  max-width: 700px;
-  max-height: 800px;
+.detailed-location-image {
+  width: 400px;
+  height: 300px;
 }
 
 .detailed-location-info {
@@ -219,12 +220,12 @@ footer{
 }
 
 .detailed-location-place {
-    margin-top: 8px;
-    margin-right: 37px;
+  margin-top: 12px;
+  margin-right: 15px;
 }
 
 .detailed-location-title {
-  margin-left: 10px;
+  margin-top: 4px;
 }
 
 .detailed-text {
@@ -232,14 +233,26 @@ footer{
   margin-left: 10px;
   width: 400px;
   max-width: 400px;
-  max-height: 200px;
+  max-height: 230px;
   word-wrap: break-word;
   overflow: auto;
+  /* to make sure the button is positioned relative to this container */
+  position: relative;
+  min-height: calc(100%-40px);
+}
+
+.edit-location-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
+  margin-right: 22px;
 }
 
 .detailed-truncate-text {
   max-width: 250px;
-  white-space: nowrap;
+  max-height: 70px;
+  white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -247,18 +260,18 @@ footer{
 .detailed-flex-container {
   margin-top: 15px;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 .detailed-flex-container2 {
   margin-top: 25px;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 .detailed-text-container {
   flex: 1;
-  padding: 10px; 
+  padding: 10px;
   font-size: small;
   display: flex;
   justify-content: space-between;
@@ -270,7 +283,7 @@ footer{
   text-decoration: underline;
 }
 
-.detailed-likes-content h8  {
+.detailed-likes-content h8 {
   margin-right: 120px;
   text-decoration: underline;
 }
@@ -288,22 +301,33 @@ footer{
 
 .coordinate-container {
   display: flex;
-  align-items:column; 
+  align-items: column;
   align-items: flex-start;
 }
 
 .coordinate-container p {
   margin: 0;
-  margin-right: 5px; 
+  margin-right: 5px;
 }
 
 .coordinate-value p {
-  display: inline-block; 
+  display: inline-block;
 }
 
 .custom-input {
-  width: 150%;
+  width: 200px !important;
   font-size: 16px;
+}
+
+.crop-image {
+  object-fit: cover;
+}
+
+.crop-image-two {
+  width: 34rem;
+  height: 25rem;
+  max-width: 34rem;
+  max-height: 25rem;
 }
 
 .login-container {
@@ -314,20 +338,28 @@ footer{
   height: 100vh;
 }
 
-form{
+.error-message {
+  color: hsl(9, 68%, 50%);
+  font-size: 15px;
+  font-weight: 600;
+  max-width: 300px;
+  text-align: center;
+}
+
+form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.login-logo{
+.login-logo {
   width: 200px;
   height: 200px;
   padding: 20px;
 }
 
-.not-a-member{
+.not-a-member {
   margin-top: 20px;
   text-align: center;
 }
@@ -336,31 +368,80 @@ form{
   color: hsl(25, 68%, 50%) !important;
 }
 
-.register-form{
-  height: 100vh;
-  padding-top: 5%;
+.form_wrapper {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-.register{
+.form_input {
+  margin-bottom: 20px;
+}
+
+.form-button {
+  background-color: hsl(25, 68%, 50%) !important;
+  border-color: hsl(25, 68%, 50%) !important;
+  border-radius: 5px !important;
+  color: hsl(24, 8%, 88%) !important;
+  width: 200px !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.form-button:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19) !important;
+}
+/*Register page*/
+.register-container {
+  padding-top: 8%;
+}
+
+.register-form-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
+.register-form {
+  display: flex;
+  flex-direction: row;
+}
 
-.logo-welcome{
+.register-input-fields {
+  display: flex;
+  flex-direction: column;
+  padding-right: 2%;
+}
+
+.register-file-proficiency {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2%;
+}
+
+.proficiency-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.error-message-container {
+  height: 70px;
+}
+
+.logo-welcome {
   text-align: center;
 }
 
-.welcome-text{
-  margin-top: 4%;
+.welcome-text {
+  margin-top: 2%;
 }
 
-.custom-input{
+.custom-input {
   width: 70%;
   margin-bottom: 2%;
 }
 
-.input-field{
+.input-field {
   border: 1px solid hsl(0, 0%, 83%);
   padding: 10px;
   border-radius: 5px;
@@ -371,11 +452,11 @@ form{
   height: 40px;
 }
 
-.form-checkbox-label{
+.form-checkbox-label {
   margin-left: 5px;
 }
 
-input[type="radio"] {
+#radio-button {
   box-sizing: border-box;
   appearance: none;
   background: white;
@@ -386,7 +467,7 @@ input[type="radio"] {
   border-radius: 10%;
 }
 
-input[type="radio"]:checked {
+#radio-button:checked {
   background: hsl(25, 68%, 50%);
 }
 
@@ -406,19 +487,38 @@ input[type="checkbox"]:checked {
   background: hsl(25, 68%, 50%);
 }
 
+input[type="radio"] {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  outline: 1px solid hsl(0, 0%, 83%);
+  border: 1px solid white;
+  width: 13px;
+  height: 13px;
+  border-radius: 10%;
+  padding-right: 10px;
+}
+
+input[type="radio"]:checked {
+  background: hsl(25, 68%, 50%);
+}
+
+.margin-12 {
+  margin-right: 12px !important;
+}
+
 .experience-container {
   border: 1px solid hsl(0, 0%, 83%);
   padding: 10px;
   border-radius: 5px;
   position: relative;
-  left: -90px;
   background: white;
   margin-top: 10px;
-  width: 150%;
+  width: 200px;
   color: black;
 }
 
-.margin-bottom{
+.margin-bottom {
   margin-bottom: -5%;
 }
 
@@ -433,58 +533,68 @@ input[type="checkbox"]:checked {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  border: 1px solid hsl(300, 1%, 19%);
+  border: 1px solid rgb(0, 0, 0, 0.175);
+  border-radius: 5px;
   width: 900px;
   height: fit-content;
   margin: auto;
   padding: 50px;
-  background-color: hsl(27, 26%, 92%);
+  background-color: #fff;
 }
+
+#comment-button {
+  margin-top: 10px;
+}
+
 /*style for each posted comment*/
 .posted-comment {
-  border-top: 1px solid hsl(300, 1%, 19%);
-  border-left: 1px solid hsl(300, 1%, 19%);
   width: 500px;
   height: fit-content;
-  background-color: hsl(27, 26%, 92%);
+  background-color: hsl(0, 0%, 83%, 0.3);
+  border-left: 2px solid hsl(0, 0%, 83%);
+  border-top: 2px solid hsl(0, 0%, 83%);
   padding: 5px;
   margin-bottom: 15px;
-}
-/*Stying for the user name*/
-.comment-title {
-  color: hsl(25, 68%, 50%);
-  font-weight: bold;
-  display: inline;
 }
 
 /*The input text-box for adding comments */
 .add-comment-textbox {
   width: 500px;
   height: 100px;
+  border: 1px solid rgb(0, 0, 0, 0.175);
+  border-radius: 5px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
-/*Styling for the "Add comment" button*/
-.comment-button {
-  background-color: hsl(25, 68%, 50%);
-  color: hsl(27, 26%, 92%);
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-/*Styling for "User Experience"*/
-.user-experience {
-  display: inline;
+.comment-tags {
+  display: flex;
+  flex-direction: column;
+  color: hsl(25, 68%, 50%);
   font-size: small;
+  text-align: right;
+  align-self: last baseline;
+  width: fit-content;
+  height: 20px;
+  background-color: hsl(27, 26%, 92%);
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 /*styling for the hashtags*/
-.checkbox-hashtag {
-  font-weight: initial;
+.hashtag-input-field {
+  width: 500px;
+  height: 25px;
+  border: 1px solid rgb(0, 0, 0, 0.175);
+  border-radius: 5px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
   font-size: small;
-  color: hsl(25, 68%, 50%);
+  margin-top: 10px;
 }
 
-.page-container{
+.page-container {
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 50px;
@@ -496,5 +606,205 @@ input[type="checkbox"]:checked {
 .main-wrapper {
   display: grid;
   gap: 3rem;
-  grid-template-columns: minmax(0,1fr) minmax(0,2fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+}
+
+.location-container {
+  margin-left: 80px;
+}
+
+.location-container a {
+  text-decoration: none; /* Remove default underline */
+  color: #000;
+}
+
+.location-container .card-title-link:hover {
+  text-decoration: underline;
+}
+
+.dropdown-button-group {
+  margin-bottom: 10px;
+  border-radius: 5px !important;
+}
+
+.custom-dropdown {
+  font-family: "Montserrat", sans-serif !important;
+  border-color: black !important;
+}
+
+.custom-dropdown:hover {
+  border-color: red !important;
+}
+
+.detailed-container {
+  margin-bottom: 10px;
+}
+
+/* comments */
+.comments-container {
+  margin-bottom: 20px;
+}
+
+.comments-filters {
+  margin-bottom: 10px;
+  max-width: 270px;
+  margin-left: 900px;
+}
+
+.comment-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif !important;
+  margin-bottom: 2px;
+  width: 780px;
+  border: 1px solid hsl(0, 0%, 83%, 0.3);
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+}
+
+.comment-profile-picture {
+  flex: 1;
+}
+
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  flex: 9;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  flex: 2;
+}
+
+.comment-username {
+  font-size: large;
+  color: hsl(25, 68%, 50%);
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: 2px;
+  padding-bottom: 0px;
+  line-height: 15px;
+}
+
+.comment-experience {
+  color: hsl(25, 68%, 50%);
+  font-size: 70%;
+  background-color: hsla(25, 68%, 50%, 0.254);
+  border: hidden 0.5px rgb(119, 113, 113);
+  border-radius: 5px;
+  margin-right: auto;
+  width: 70px;
+  line-height: 12px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.comment-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.location-difficulty {
+  margin-top: 15px;
+}
+
+/* user page */
+.user-page {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-page-greeting {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 15px;
+  text-align: justify;
+  padding: 20px;
+}
+
+.user-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 1000px;
+  margin: 5%;
+  margin-top: 32px;
+  border: 1px solid hsl(0, 0%, 83%);
+  background-color: white;
+  border-radius: 5px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 14px;
+}
+
+.proficiency-selector {
+  width: 200px;
+}
+
+.user-page-input {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  border: 1px solid;
+  border-color: rgb(205, 196, 196);
+  font-family: Montserrat, sans-serif;
+}
+
+.change-password-container {
+  margin-top: 20px;
+  width: 200px;
+}
+
+.change-profile-picture-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.change-picture-button {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.greeting-user-page {
+  margin-top: 20px;
+}
+
+.profile-picture-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.profile-picture-file-input {
+  display: none;
+}
+
+.tooltip .tooltip-inner {
+  background-color: hsl(25, 68%, 50%) !important;
+  color: white !important;
+}
+
+.tooltip.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: hsl(25, 68%, 50%);
 }
