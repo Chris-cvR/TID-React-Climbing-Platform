@@ -66,7 +66,6 @@ function DetailedLocationCard({ locationPicture, locationLatitude, locationLongi
                         {JSON.stringify(userID) === JSON.stringify(currentUserID) && <Button onClick={handleShow} className="form-button" size="large"> Edit </Button>}
                     </div>
                     <div className="detailed-flex-container2">
-
                     </div>
                 </div>
             </Card.Body>

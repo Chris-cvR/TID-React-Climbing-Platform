@@ -36,7 +36,7 @@ function CommentSectionFactory({ locationId }) {
     <div>
       <div className="comment-container">
         <h2>Comments</h2>
-        <div>
+        <div className="comment-user-text">
           {readResults !== null &&
             readResults !== undefined &&
             readResults.length > 0 && (

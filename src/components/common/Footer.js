@@ -14,7 +14,7 @@ function Footer() {
                 <FontAwesomeIcon className="me-3 text" />PeakPulse
               </h6>
               <p className="text">
-                Unlock New Heights with PeakPulse: Your Ultimate Destination to share your Climbing Adventures. Discover, Explore, and Conquer the World's Most Thrilling Climbing Locations. © 2023 PeakPulse
+                Unlock New Heights with PeakPulse: Your Ultimate Destination to share your Climbing Adventures. Discover, Explore, and Conquer the World's Most Thrilling Climbing Locations. © 2024 PeakPulse
               </p>
             </div>
 
@@ -35,7 +35,7 @@ function Footer() {
       </section>
 
       <div className="text-center p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
-        © 2023 PeakPulse International
+        © 2024 PeakPulse International
       </div>
     </footer>
   );

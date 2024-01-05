@@ -217,6 +217,7 @@ footer {
   flex-grow: 1;
   justify-content: space-between;
   margin-bottom: 5px;
+  margin-left: 1px;
 }
 
 .detailed-location-place {
@@ -239,6 +240,7 @@ footer {
   /* to make sure the button is positioned relative to this container */
   position: relative;
   min-height: calc(100%-40px);
+  text-align: justify;
 }
 
 .edit-location-button {
@@ -540,6 +542,10 @@ input[type="radio"]:checked {
   margin: auto;
   padding: 50px;
   background-color: #fff;
+}
+
+.comment-user-text{
+  margin-left: -10px;
 }
 
 #comment-button {
