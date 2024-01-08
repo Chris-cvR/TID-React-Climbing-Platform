@@ -7,13 +7,15 @@ import { RegistrationPage } from './pages/RegistrationPage';
 import DetailedLocationPage from './pages/DetailedLocationPage';
 import FAQPage from './pages/FAQPage';
 import UserPage from './pages/UserPage';
+import LandingPage from './pages/LandingPage';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<LoginPage />} />
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/login' element={<LoginPage />} />
           <Route path='/feed' element={<FeedPage />} />
           <Route path='/location/:id' element={<DetailedLocationPage />} />
           <Route path='/about' element={<AboutPage />} />

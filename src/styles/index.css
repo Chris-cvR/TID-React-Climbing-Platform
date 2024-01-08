@@ -815,3 +815,45 @@ input[type="radio"]:checked {
 .tooltip.bs-tooltip-end .tooltip-arrow::before {
   border-right-color: hsl(25, 68%, 50%);
 }
+
+/* Landing page */
+.landing-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.landing-page-info, .mockup-container{
+  flex: 1;
+}
+
+.landing-page-text{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.landing-page-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 10%;
+  margin-top: -5%;
+}
+
+.landing-page-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mockup-container{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}

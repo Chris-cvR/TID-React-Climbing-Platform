@@ -141,7 +141,7 @@ export const RegistrationPage = () => {
                         {errorMessage && <p className='error-message'>{errorMessage}</p>}
                     </div>
                     <Button onClick={() => doUserRegistration()} className="form-button" size="large"> Sign Up </ Button>
-                    <h6 className="member-status"> Already a member? <NavLink className="nav-link" to="/">Login</NavLink></h6>
+                    <h6 className="member-status"> Already a member? <NavLink className="nav-link" to="/login">Login</NavLink></h6>
                 </div>
             </div>
         </div>
