@@ -416,6 +416,7 @@ form {
   display: flex;
   flex-direction: column;
   padding-left: 2%;
+  height: 100%;
 }
 
 .proficiency-selector {
@@ -423,7 +424,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  padding-top: 8px;
 }
 
 .error-message-container {
