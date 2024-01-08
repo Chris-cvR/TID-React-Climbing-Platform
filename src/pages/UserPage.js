@@ -33,7 +33,7 @@ function UserPage() {
 
     const handlePasswordChange = async () => {
         try {
-            //this is neccessary the user won't get logout after updating the password
+            //this is neccessary so the user won't get logged out after updating the password
             const checkUser = new Parse.User();
             checkUser.set('username', user.get('username'));
             checkUser.set('password', currentPassword);
@@ -56,7 +56,7 @@ function UserPage() {
             setPassword('');           // Reset password
             setRepeatPassword('');     // Reset repeatPassword
         } catch (error) {
-            setMessage('Failed to save user. Please try again later.');
+            setMessage('Failed to save password. Please try again later.');
         }
     };
 

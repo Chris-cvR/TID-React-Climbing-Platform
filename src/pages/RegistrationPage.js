@@ -20,13 +20,13 @@ export const RegistrationPage = () => {
     const navigate = useNavigate();
 
     const doUserRegistration = async function () {
-        // Note that these values come from state variables that we've declared before
+        // Values come from state variables that we've declared before
         const usernameValue = username;
         const passwordValue = password;
         const experienceValue = experience;
 
         try {
-            // Create a new Parse Object for your custom class (e.g., UserData)
+            // Create a new Parse Object for user class
             const User = Parse.Object.extend("User");
             const user = new User();
 
@@ -141,7 +141,7 @@ export const RegistrationPage = () => {
                         {errorMessage && <p className='error-message'>{errorMessage}</p>}
                     </div>
                     <Button onClick={() => doUserRegistration()} className="form-button" size="large"> Sign Up </ Button>
-                    <h6 className="member-status"> Already a member? <NavLink className="nav-link" to="/">Login</NavLink></h6>
+                    <h6 className="member-status"> Already a member? <NavLink className="nav-link" to="/login">Login</NavLink></h6>
                 </div>
             </div>
         </div>
