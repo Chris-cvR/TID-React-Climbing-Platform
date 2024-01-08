@@ -48,7 +48,7 @@ export const LoginPage = () => {
                     />
                 </div>
 
-                <p className="welcome-text"><i className="fas fa-home"></i> Welcome to PeakPulse!</p>
+                <p className="welcome-text">Welcome to PeakPulse!</p>
 
                 <div>
                     <form>
