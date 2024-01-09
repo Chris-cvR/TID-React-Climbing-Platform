@@ -4,12 +4,15 @@ import "../../styles/index.css";
 import { List } from "antd";
 import { Container } from "react-bootstrap";
 import ProfilePicture from "../common/ProfilePicture";
+import Comment from "../common/Comment";
 
 function CommentSectionFactory({ locationId }) {
   const [readResults, setReadComments] = useState([]);
+  const [newCommentAdded, setNewCommentAdded] = useState(false);
 
   useEffect(() => {
     const readComments = async function () {
+      console.log("Fetching comments from database...");
       const parseQuery = new Parse.Query("Comment");
       parseQuery.include("UserID");
       parseQuery.descending("createdAt");
@@ -30,12 +33,20 @@ function CommentSectionFactory({ locationId }) {
       }
     };
     readComments();
-  }, [locationId, readResults]); // Depend on locationId and readResults to refetch when they change
+  }, [locationId, newCommentAdded]); // Depend on locationId and readResults to refetch when they change
+  const handleNewCommentAdded = () => {
+    setNewCommentAdded((prevState) => !prevState); // Toggle the state to trigger re-fetch
+  };
 
   return (
     <div>
       <div className="comment-container">
         <h2>Comments</h2>
+        <Comment
+          locationId={locationId}
+          onCommentAdded={handleNewCommentAdded}
+        />{" "}
+        {/* Passing the callback function as a prop */}
         <div className="comment-user-text">
           {readResults !== null &&
             readResults !== undefined &&

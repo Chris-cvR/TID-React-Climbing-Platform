@@ -3,11 +3,8 @@ import { Button } from "antd";
 import Parse from "parse/dist/parse.min.js";
 
 function Comment({ locationId, onCommentAdded }) {
-  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [newHashtags, setNewHashtags] = useState(""); // Add this line for new hashtags textbox
-
-  //const normalizeHashtag = (hashtag) => hashtag.replace(/#\s*/g, ""); // Normalize hashtags input
 
   const addComment = async () => {
     const currentUser = Parse.User.current();
@@ -48,7 +45,7 @@ function Comment({ locationId, onCommentAdded }) {
 
           relation.add(hashtag); // Add the new Hashtag to the relation.
         }
-
+        console.log("Saving new comment to database...");
         const savedComment = await commentToSave.save();
 
         setComments([...comments, savedComment]);
