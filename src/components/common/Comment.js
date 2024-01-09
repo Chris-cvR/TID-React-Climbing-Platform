@@ -3,93 +3,98 @@ import { Button } from "antd";
 import Parse from "parse/dist/parse.min.js";
 
 function Comment({ locationId, onCommentAdded }) {
-  const [comments, setComments] = useState([]);
+  // State for storing the new comment and hashtags
   const [newComment, setNewComment] = useState("");
-  const [newHashtags, setNewHashtags] = useState(""); // Add this line for new hashtags textbox
-
-  //const normalizeHashtag = (hashtag) => hashtag.replace(/#\s*/g, ""); // Normalize hashtags input
+  const [newHashtags, setNewHashtags] = useState("");
 
   const addComment = async () => {
+    // Get the current logged-in user
     const currentUser = Parse.User.current();
 
+    // Check if the new comment is not empty
     if (newComment) {
       try {
+        // Create a new Comment object
         const Comment = Parse.Object.extend("Comment");
         const commentToSave = new Comment();
 
+        // Set the comment text and user details
         commentToSave.set("CommentText", newComment);
         commentToSave.set("UserID", currentUser);
 
+        // Associate the comment with a location
         const location = new Parse.Object("Location");
         location.id = locationId;
         commentToSave.set("LocationID", location);
 
+        // Create a relation for hashtags
         const relation = commentToSave.relation("HashtagID");
 
-        // Process newHashtags here: Explain to users that they need to begin their hashtag with # and seperate with a space
+        // Process and add hashtags to the comment
         const hashtagStrings = newHashtags
-          .split(" ") // split by space
-          .filter((hashtag) => hashtag.startsWith("#")); // keep only strings that start with #
+          .split(" ")
+          .filter((hashtag) => hashtag.startsWith("#"));
 
-        // Search for existing Hashtag
         for (const hashtagStr of hashtagStrings) {
           const Hashtags = Parse.Object.extend("Hashtags");
           const hashtagQuery = new Parse.Query(Hashtags);
 
+          // Check if the hashtag already exists
           hashtagQuery.equalTo("Name", hashtagStr);
           let hashtag = await hashtagQuery.first();
 
-          // If it doesn't exist, create it
+          // If not, create a new hashtag object
           if (!hashtag) {
             hashtag = new Hashtags();
             hashtag.set("Name", hashtagStr);
             await hashtag.save();
           }
 
-          relation.add(hashtag); // Add the new Hashtag to the relation.
+          // Add the hashtag to the relation
+          relation.add(hashtag);
         }
 
+        // Save the new comment to the database
+        console.log("Saving new comment to database...");
         const savedComment = await commentToSave.save();
 
-        setComments([...comments, savedComment]);
+        // Reset the comment and hashtag input fields
         setNewComment("");
-        setNewHashtags(""); // Clear the newHashtags input field
+        setNewHashtags("");
 
+        // Invoke the callback if provided
         if (onCommentAdded) {
-          onCommentAdded(savedComment);
+          onCommentAdded();
         }
       } catch (error) {
+        // Log error if the comment could not be added
         console.log(`Could not add comment. Error code: ${error}`);
       }
     }
   };
-
   return (
     <div className="comment-container">
       <h2>Add Comment</h2>
-      <textarea //Comment textfield
+      <textarea
         className="add-comment-textbox"
         placeholder="Enter your comment here"
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
-
-      <input // hashtags input field
+      <input
         className="hashtag-input-field"
         type="text"
-        placeholder="Begin each hashtag with a '#' and seperate with space"
+        placeholder="Begin each hashtag with a '#' and separate with space"
         value={newHashtags}
         onChange={(e) => setNewHashtags(e.target.value)}
       />
-
       <Button
         onClick={addComment}
         id="comment-button"
         className="form-button"
         size="large"
       >
-        {" "}
-        Comment{" "}
+        Comment
       </Button>
     </div>
   );
