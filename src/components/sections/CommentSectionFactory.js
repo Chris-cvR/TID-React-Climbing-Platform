@@ -9,11 +9,15 @@ function CommentSectionFactory({ locationId, refreshComments }) {
   const [readResults, setReadComments] = useState([]);
 
   useEffect(() => {
+    // Asynchronous function to fetch comments from the database
     const readComments = async function () {
       console.log("Fetching comments from database...");
       const parseQuery = new Parse.Query("Comment");
+      // Include the user details in the query
       parseQuery.include("UserID");
+      // Order comments by creation time (newest first)
       parseQuery.descending("createdAt");
+      // Filter comments by the current location
       parseQuery.equalTo("LocationID", locationId);
 
       try {
@@ -22,22 +26,27 @@ function CommentSectionFactory({ locationId, refreshComments }) {
         // Fetch associated hashtags for each comment
         for (let comment of commentsReceived) {
           let hashtagRelation = comment.relation("HashtagID");
+          // Fetch and store hashtags for each comment
           comment.hashtags = await hashtagRelation.query().find();
         }
 
+        // Update state with fetched comments
         setReadComments(commentsReceived);
       } catch (error) {
+        // Handle any errors that occur during fetch
         alert(`Error! ${error.message}`);
       }
     };
+    // Execute the fetch function
     readComments();
-  }, [locationId, refreshComments]); // Rely on locationId and refreshComments to refetch when they change
+  }, [locationId, refreshComments]); // Effect dependencies; rerun effect if these values change
 
   return (
     <div>
       <div className="comment-container">
         <h2>Comments</h2>
         <div className="comment-user-text">
+          {/* Check and render comments if available */}
           {readResults.length > 0 && (
             <List
               dataSource={[...readResults]}
@@ -46,10 +55,12 @@ function CommentSectionFactory({ locationId, refreshComments }) {
                   <Container className="comment-card-container">
                     <div className="comment-card">
                       <div className="comment-profile-picture">
+                        {/* Render user profile picture */}
                         <ProfilePicture user={item.get("UserID")} size="60px" />
                       </div>
                       <div className="comment-content">
                         <div className="user-info">
+                          {/* Display username and experience level */}
                           <p className="comment-username">
                             {item.get("UserID").get("username")}
                           </p>
@@ -57,6 +68,7 @@ function CommentSectionFactory({ locationId, refreshComments }) {
                             {item.get("UserID").get("experience")}
                           </p>
                         </div>
+                        {/* Display comment text and associated hashtags */}
                         <p className="comment-text">
                           {item.get("CommentText")}
                         </p>
