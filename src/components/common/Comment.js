@@ -4,7 +4,7 @@ import Parse from "parse/dist/parse.min.js";
 
 function Comment({ locationId, onCommentAdded }) {
   const [newComment, setNewComment] = useState("");
-  const [newHashtags, setNewHashtags] = useState(""); // Add this line for new hashtags textbox
+  const [newHashtags, setNewHashtags] = useState("");
 
   const addComment = async () => {
     const currentUser = Parse.User.current();
@@ -23,12 +23,10 @@ function Comment({ locationId, onCommentAdded }) {
 
         const relation = commentToSave.relation("HashtagID");
 
-        // Process newHashtags here: Explain to users that they need to begin their hashtag with # and seperate with a space
         const hashtagStrings = newHashtags
-          .split(" ") // split by space
-          .filter((hashtag) => hashtag.startsWith("#")); // keep only strings that start with #
+          .split(" ")
+          .filter((hashtag) => hashtag.startsWith("#"));
 
-        // Search for existing Hashtag
         for (const hashtagStr of hashtagStrings) {
           const Hashtags = Parse.Object.extend("Hashtags");
           const hashtagQuery = new Parse.Query(Hashtags);
@@ -36,24 +34,22 @@ function Comment({ locationId, onCommentAdded }) {
           hashtagQuery.equalTo("Name", hashtagStr);
           let hashtag = await hashtagQuery.first();
 
-          // If it doesn't exist, create it
           if (!hashtag) {
             hashtag = new Hashtags();
             hashtag.set("Name", hashtagStr);
             await hashtag.save();
           }
 
-          relation.add(hashtag); // Add the new Hashtag to the relation.
+          relation.add(hashtag);
         }
         console.log("Saving new comment to database...");
         const savedComment = await commentToSave.save();
 
-        setComments([...comments, savedComment]);
         setNewComment("");
-        setNewHashtags(""); // Clear the newHashtags input field
+        setNewHashtags("");
 
         if (onCommentAdded) {
-          onCommentAdded(savedComment);
+          onCommentAdded();
         }
       } catch (error) {
         console.log(`Could not add comment. Error code: ${error}`);
@@ -64,29 +60,26 @@ function Comment({ locationId, onCommentAdded }) {
   return (
     <div className="comment-container">
       <h2>Add Comment</h2>
-      <textarea //Comment textfield
+      <textarea
         className="add-comment-textbox"
         placeholder="Enter your comment here"
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
-
-      <input // hashtags input field
+      <input
         className="hashtag-input-field"
         type="text"
-        placeholder="Begin each hashtag with a '#' and seperate with space"
+        placeholder="Begin each hashtag with a '#' and separate with space"
         value={newHashtags}
         onChange={(e) => setNewHashtags(e.target.value)}
       />
-
       <Button
         onClick={addComment}
         id="comment-button"
         className="form-button"
         size="large"
       >
-        {" "}
-        Comment{" "}
+        Comment
       </Button>
     </div>
   );

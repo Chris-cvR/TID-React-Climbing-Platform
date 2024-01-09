@@ -4,11 +4,9 @@ import "../../styles/index.css";
 import { List } from "antd";
 import { Container } from "react-bootstrap";
 import ProfilePicture from "../common/ProfilePicture";
-import Comment from "../common/Comment";
 
-function CommentSectionFactory({ locationId }) {
+function CommentSectionFactory({ locationId, refreshComments }) {
   const [readResults, setReadComments] = useState([]);
-  const [newCommentAdded, setNewCommentAdded] = useState(false);
 
   useEffect(() => {
     const readComments = async function () {
@@ -33,62 +31,48 @@ function CommentSectionFactory({ locationId }) {
       }
     };
     readComments();
-  }, [locationId, newCommentAdded]); // Depend on locationId and readResults to refetch when they change
-  const handleNewCommentAdded = () => {
-    setNewCommentAdded((prevState) => !prevState); // Toggle the state to trigger re-fetch
-  };
+  }, [locationId, refreshComments]); // Rely on locationId and refreshComments to refetch when they change
 
   return (
     <div>
       <div className="comment-container">
         <h2>Comments</h2>
-        <Comment
-          locationId={locationId}
-          onCommentAdded={handleNewCommentAdded}
-        />{" "}
-        {/* Passing the callback function as a prop */}
         <div className="comment-user-text">
-          {readResults !== null &&
-            readResults !== undefined &&
-            readResults.length > 0 && (
-              <List
-                dataSource={[...readResults]}
-                renderItem={(item) => (
-                  <List.Item className="comment-card-items">
-                    <Container className="comment-card-container">
-                      <div className="comment-card">
-                        <div className="comment-profile-picture">
-                          <ProfilePicture
-                            user={item.get("UserID")}
-                            size="60px"
-                          />
-                        </div>
-                        <div className="comment-content">
-                          <div className="user-info">
-                            <p className="comment-username">
-                              {item.get("UserID").get("username")}
-                            </p>
-                            <p className="comment-experience">
-                              {item.get("UserID").get("experience")}
-                            </p>
-                          </div>
-                          <p className="comment-text">
-                            {item.get("CommentText")}
-                          </p>
-                          <p className="comment-tags">
-                            {item.hashtags &&
-                              Array.isArray(item.hashtags) &&
-                              item.hashtags
-                                .map((hashtag) => hashtag.get("Name"))
-                                .join(" ")}
-                          </p>
-                        </div>
+          {readResults.length > 0 && (
+            <List
+              dataSource={[...readResults]}
+              renderItem={(item) => (
+                <List.Item className="comment-card-items">
+                  <Container className="comment-card-container">
+                    <div className="comment-card">
+                      <div className="comment-profile-picture">
+                        <ProfilePicture user={item.get("UserID")} size="60px" />
                       </div>
-                    </Container>
-                  </List.Item>
-                )}
-              />
-            )}
+                      <div className="comment-content">
+                        <div className="user-info">
+                          <p className="comment-username">
+                            {item.get("UserID").get("username")}
+                          </p>
+                          <p className="comment-experience">
+                            {item.get("UserID").get("experience")}
+                          </p>
+                        </div>
+                        <p className="comment-text">
+                          {item.get("CommentText")}
+                        </p>
+                        <p className="comment-tags">
+                          {item.hashtags &&
+                            item.hashtags
+                              .map((hashtag) => hashtag.get("Name"))
+                              .join(" ")}
+                        </p>
+                      </div>
+                    </div>
+                  </Container>
+                </List.Item>
+              )}
+            />
+          )}
         </div>
       </div>
     </div>
