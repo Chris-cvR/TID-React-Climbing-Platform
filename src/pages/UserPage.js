@@ -73,8 +73,11 @@ function UserPage() {
             user.set('ProfilePicture', newPictureFile);
             await user.save();
             await user.fetch(); //fetch the user again to get the updated profile picture
-
             setMessage('Profile picture successfully updated!');
+            setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            
             setNewProfilePicture(null); // Reset file input field
             setProfilePicture(user.get('ProfilePicture')); // Update profile picture state
         }catch(error){
